@@ -1,0 +1,18 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  three:
+    specifier: ^0.159.0
+    version: registry.npmmirror.com/three@0.159.0
+
+packages:
+
+  registry.npmmirror.com/three@0.159.0:
+    resolution: {integrity: sha512-eCmhlLGbBgucuo4VEA9IO3Qpc7dh8Bd4VKzr7WfW4+8hMcIfoAVi1ev0pJYN9PTTsCslbcKgBwr2wNZ1EvLInA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/three/-/three-0.159.0.tgz}
+    name: three
+    version: 0.159.0
+    dev: false
