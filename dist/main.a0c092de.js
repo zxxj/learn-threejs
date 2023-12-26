@@ -38901,14 +38901,14 @@ var OrbitControls = exports.OrbitControls = /*#__PURE__*/function (_EventDispatc
   }
   return _createClass(OrbitControls);
 }(_three.EventDispatcher);
-},{"three":"../node_modules/three/build/three.module.js"}],"2.材质/main.js":[function(require,module,exports) {
+},{"three":"../node_modules/three/build/three.module.js"}],"3.灯光与阴影/main.js":[function(require,module,exports) {
 "use strict";
 
 var THREE = _interopRequireWildcard(require("three"));
 var _OrbitControls = require("three/examples/jsm/controls/OrbitControls");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-// 灯光与阴影的关系与设置
+// 聚光灯
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -38916,7 +38916,7 @@ camera.position.set(0, 0, 10);
 scene.add(camera);
 
 // 创建一个球体
-var sphereGeometry = new THREE.SphereGeometry();
+var sphereGeometry = new THREE.SphereGeometry(1, 20, 20);
 var sphereMaterial = new THREE.MeshStandardMaterial();
 var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 // 3.设置物体投射阴影
@@ -38924,10 +38924,10 @@ sphere.castShadow = true;
 scene.add(sphere);
 
 // 创建一个平面
-var planeGeometry = new THREE.PlaneGeometry(10, 10);
+var planeGeometry = new THREE.PlaneGeometry(50, 50);
 var planeMaterial = new THREE.MeshStandardMaterial();
 var plane = new THREE.Mesh(planeGeometry, planeMaterial);
-plane.position.y = -1;
+plane.position.set(0, -1, 0);
 plane.rotation.x = -Math.PI / 2;
 // 4.设置物体接收阴影
 plane.receiveShadow = true;
@@ -38935,14 +38935,21 @@ scene.add(plane);
 var light = new THREE.AmbientLight('#ffffff'); // 添加环境光
 scene.add(light);
 
-// 从上方照射的白色平行光，强度为 0.5。
-var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5); // 添加平行光
-directionalLight.position.set(0, 1, 0); // 假如这个值设置为 Object3D.DEFAULT_UP (0, 1, 0)，光线将会从上往下照射
-directionalLight.position.set(10, 10, 10); // 假如这个值设置为 Object3D.DEFAULT_UP (0, 1, 0)，光线将会从上往下照射
+// 设置聚光灯
+var spotLight = new THREE.SpotLight(0xffffff, 1);
+spotLight.position.set(5, 5, 5);
+spotLight.castShadow = true; // 灯光将投射阴影
+spotLight.intensity = 2; // 光照强度。默认值为 1
+spotLight.shadow.radius = 20; // 设置阴影贴图模糊度
+spotLight.shadow.mapSize.set(512, 512); // 设置阴影贴图的分辨率
+spotLight.target = sphere; // 光从它的位置（position）指向目标位置。默认的目标位置为(0, 0, 0)
+spotLight.angle = Math.PI / 6; // 光线照射范围的角度。默认值为 Math.PI/3
+spotLight.distance = 0; // 光源照射的最大距离。默认值为 0（无限远）
+spotLight.penumbra = 0; // 聚光锥的半影衰减百分比。默认值为 0
+spotLight.decay = 0; // 沿着光照距离的衰减量。默认值为 2
 
-// 2.设置光照投射阴影
-directionalLight.castShadow = true;
-scene.add(directionalLight);
+// 将聚光灯添加到场景中
+scene.add(spotLight);
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -39003,7 +39010,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64346" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49302" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
@@ -39147,5 +39154,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../.nvm/versions/node/v16.19.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","2.材质/main.js"], null)
-//# sourceMappingURL=/main.8037f839.js.map
+},{}]},{},["../../../.nvm/versions/node/v16.19.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","3.灯光与阴影/main.js"], null)
+//# sourceMappingURL=/main.a0c092de.js.map

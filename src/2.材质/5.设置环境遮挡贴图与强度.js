@@ -32,8 +32,8 @@ const basicMaterial = new THREE.MeshBasicMaterial({
   transparent: true, // 定义此材质是否透明, 设置为true时, 通过设置材质的opacity属性来控制材质透明的程度, 默认值为false
   opacity: 0.8, // 在0.0 - 1.0的范围内的浮点数，表明材质的透明度。值0.0表示完全透明，1.0表示完全不透明, 如果材质的transparent属性未设置为true，则材质将保持完全不透明，此值仅影响其颜色。 默认值为1.0
   side: THREE.DoubleSide, // 正反面都显示, 默认只显示正面
-  aoMap: AoTexture,
-  aoMapIntensity: 1,
+  aoMap: AoTexture, // 设置环境遮挡贴图
+  aoMapIntensity: 1, // 设置强度
 });
 
 // 为cube添加第二组uv
