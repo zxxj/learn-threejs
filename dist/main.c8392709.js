@@ -38911,6 +38911,7 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 var particlesGeometry = new THREE.BufferGeometry();
+// 想要创建的points数量
 var count = 5000;
 // 设置缓冲区数组
 var positions = new Float32Array(count * 3);
@@ -38928,6 +38929,8 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 
 
 // 设置颜色
 particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+// 设置材质
 var pointsMaterial = new THREE.PointsMaterial();
 pointsMaterial.color.set(0xfff000);
 pointsMaterial.size = 0.5;
@@ -38985,7 +38988,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56952" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57478" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

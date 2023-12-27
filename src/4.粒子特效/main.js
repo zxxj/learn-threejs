@@ -11,6 +11,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 const particlesGeometry = new THREE.BufferGeometry();
+// 想要创建的points数量
 const count = 5000;
 // 设置缓冲区数组
 const positions = new Float32Array(count * 3);
@@ -32,6 +33,7 @@ particlesGeometry.setAttribute(
 // 设置颜色
 particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
+// 设置材质
 const pointsMaterial = new THREE.PointsMaterial();
 pointsMaterial.color.set(0xfff000);
 pointsMaterial.size = 0.5;
