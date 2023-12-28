@@ -133,17 +133,18 @@ exports.WebGLUtils = WebGLUtils;
 exports._SRGBAFormat = exports.ZeroStencilOp = exports.ZeroSlopeEnding = exports.ZeroFactor = exports.ZeroCurvatureEnding = exports.WrapAroundEnding = exports.WireframeGeometry = exports.WebGPUCoordinateSystem = void 0;
 exports.createCanvasElement = createCanvasElement;
 exports.sRGBEncoding = void 0;
+var _COLOR_SPACES;
 function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
 function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
-function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get.bind(); } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
 function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
@@ -161,20 +162,21 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, catch: function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator.return && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, catch: function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 /**
  * @license
  * Copyright 2010-2023 Three.js Authors
  * SPDX-License-Identifier: MIT
  */
-var REVISION = exports.REVISION = '159';
-var MOUSE = exports.MOUSE = {
+var REVISION = '159';
+exports.REVISION = REVISION;
+var MOUSE = {
   LEFT: 0,
   MIDDLE: 1,
   RIGHT: 2,
@@ -182,219 +184,417 @@ var MOUSE = exports.MOUSE = {
   DOLLY: 1,
   PAN: 2
 };
-var TOUCH = exports.TOUCH = {
+exports.MOUSE = MOUSE;
+var TOUCH = {
   ROTATE: 0,
   PAN: 1,
   DOLLY_PAN: 2,
   DOLLY_ROTATE: 3
 };
-var CullFaceNone = exports.CullFaceNone = 0;
-var CullFaceBack = exports.CullFaceBack = 1;
-var CullFaceFront = exports.CullFaceFront = 2;
-var CullFaceFrontBack = exports.CullFaceFrontBack = 3;
-var BasicShadowMap = exports.BasicShadowMap = 0;
-var PCFShadowMap = exports.PCFShadowMap = 1;
-var PCFSoftShadowMap = exports.PCFSoftShadowMap = 2;
-var VSMShadowMap = exports.VSMShadowMap = 3;
-var FrontSide = exports.FrontSide = 0;
-var BackSide = exports.BackSide = 1;
-var DoubleSide = exports.DoubleSide = 2;
-var TwoPassDoubleSide = exports.TwoPassDoubleSide = 2; // r149
-var NoBlending = exports.NoBlending = 0;
-var NormalBlending = exports.NormalBlending = 1;
-var AdditiveBlending = exports.AdditiveBlending = 2;
-var SubtractiveBlending = exports.SubtractiveBlending = 3;
-var MultiplyBlending = exports.MultiplyBlending = 4;
-var CustomBlending = exports.CustomBlending = 5;
-var AddEquation = exports.AddEquation = 100;
-var SubtractEquation = exports.SubtractEquation = 101;
-var ReverseSubtractEquation = exports.ReverseSubtractEquation = 102;
-var MinEquation = exports.MinEquation = 103;
-var MaxEquation = exports.MaxEquation = 104;
-var ZeroFactor = exports.ZeroFactor = 200;
-var OneFactor = exports.OneFactor = 201;
-var SrcColorFactor = exports.SrcColorFactor = 202;
-var OneMinusSrcColorFactor = exports.OneMinusSrcColorFactor = 203;
-var SrcAlphaFactor = exports.SrcAlphaFactor = 204;
-var OneMinusSrcAlphaFactor = exports.OneMinusSrcAlphaFactor = 205;
-var DstAlphaFactor = exports.DstAlphaFactor = 206;
-var OneMinusDstAlphaFactor = exports.OneMinusDstAlphaFactor = 207;
-var DstColorFactor = exports.DstColorFactor = 208;
-var OneMinusDstColorFactor = exports.OneMinusDstColorFactor = 209;
-var SrcAlphaSaturateFactor = exports.SrcAlphaSaturateFactor = 210;
-var ConstantColorFactor = exports.ConstantColorFactor = 211;
-var OneMinusConstantColorFactor = exports.OneMinusConstantColorFactor = 212;
-var ConstantAlphaFactor = exports.ConstantAlphaFactor = 213;
-var OneMinusConstantAlphaFactor = exports.OneMinusConstantAlphaFactor = 214;
-var NeverDepth = exports.NeverDepth = 0;
-var AlwaysDepth = exports.AlwaysDepth = 1;
-var LessDepth = exports.LessDepth = 2;
-var LessEqualDepth = exports.LessEqualDepth = 3;
-var EqualDepth = exports.EqualDepth = 4;
-var GreaterEqualDepth = exports.GreaterEqualDepth = 5;
-var GreaterDepth = exports.GreaterDepth = 6;
-var NotEqualDepth = exports.NotEqualDepth = 7;
-var MultiplyOperation = exports.MultiplyOperation = 0;
-var MixOperation = exports.MixOperation = 1;
-var AddOperation = exports.AddOperation = 2;
-var NoToneMapping = exports.NoToneMapping = 0;
-var LinearToneMapping = exports.LinearToneMapping = 1;
-var ReinhardToneMapping = exports.ReinhardToneMapping = 2;
-var CineonToneMapping = exports.CineonToneMapping = 3;
-var ACESFilmicToneMapping = exports.ACESFilmicToneMapping = 4;
-var CustomToneMapping = exports.CustomToneMapping = 5;
-var AttachedBindMode = exports.AttachedBindMode = 'attached';
-var DetachedBindMode = exports.DetachedBindMode = 'detached';
-var UVMapping = exports.UVMapping = 300;
-var CubeReflectionMapping = exports.CubeReflectionMapping = 301;
-var CubeRefractionMapping = exports.CubeRefractionMapping = 302;
-var EquirectangularReflectionMapping = exports.EquirectangularReflectionMapping = 303;
-var EquirectangularRefractionMapping = exports.EquirectangularRefractionMapping = 304;
-var CubeUVReflectionMapping = exports.CubeUVReflectionMapping = 306;
-var RepeatWrapping = exports.RepeatWrapping = 1000;
-var ClampToEdgeWrapping = exports.ClampToEdgeWrapping = 1001;
-var MirroredRepeatWrapping = exports.MirroredRepeatWrapping = 1002;
-var NearestFilter = exports.NearestFilter = 1003;
-var NearestMipmapNearestFilter = exports.NearestMipmapNearestFilter = 1004;
-var NearestMipMapNearestFilter = exports.NearestMipMapNearestFilter = 1004;
-var NearestMipmapLinearFilter = exports.NearestMipmapLinearFilter = 1005;
-var NearestMipMapLinearFilter = exports.NearestMipMapLinearFilter = 1005;
-var LinearFilter = exports.LinearFilter = 1006;
-var LinearMipmapNearestFilter = exports.LinearMipmapNearestFilter = 1007;
-var LinearMipMapNearestFilter = exports.LinearMipMapNearestFilter = 1007;
-var LinearMipmapLinearFilter = exports.LinearMipmapLinearFilter = 1008;
-var LinearMipMapLinearFilter = exports.LinearMipMapLinearFilter = 1008;
-var UnsignedByteType = exports.UnsignedByteType = 1009;
-var ByteType = exports.ByteType = 1010;
-var ShortType = exports.ShortType = 1011;
-var UnsignedShortType = exports.UnsignedShortType = 1012;
-var IntType = exports.IntType = 1013;
-var UnsignedIntType = exports.UnsignedIntType = 1014;
-var FloatType = exports.FloatType = 1015;
-var HalfFloatType = exports.HalfFloatType = 1016;
-var UnsignedShort4444Type = exports.UnsignedShort4444Type = 1017;
-var UnsignedShort5551Type = exports.UnsignedShort5551Type = 1018;
-var UnsignedInt248Type = exports.UnsignedInt248Type = 1020;
-var AlphaFormat = exports.AlphaFormat = 1021;
-var RGBAFormat = exports.RGBAFormat = 1023;
-var LuminanceFormat = exports.LuminanceFormat = 1024;
-var LuminanceAlphaFormat = exports.LuminanceAlphaFormat = 1025;
-var DepthFormat = exports.DepthFormat = 1026;
-var DepthStencilFormat = exports.DepthStencilFormat = 1027;
-var RedFormat = exports.RedFormat = 1028;
-var RedIntegerFormat = exports.RedIntegerFormat = 1029;
-var RGFormat = exports.RGFormat = 1030;
-var RGIntegerFormat = exports.RGIntegerFormat = 1031;
-var RGBAIntegerFormat = exports.RGBAIntegerFormat = 1033;
-var RGB_S3TC_DXT1_Format = exports.RGB_S3TC_DXT1_Format = 33776;
-var RGBA_S3TC_DXT1_Format = exports.RGBA_S3TC_DXT1_Format = 33777;
-var RGBA_S3TC_DXT3_Format = exports.RGBA_S3TC_DXT3_Format = 33778;
-var RGBA_S3TC_DXT5_Format = exports.RGBA_S3TC_DXT5_Format = 33779;
-var RGB_PVRTC_4BPPV1_Format = exports.RGB_PVRTC_4BPPV1_Format = 35840;
-var RGB_PVRTC_2BPPV1_Format = exports.RGB_PVRTC_2BPPV1_Format = 35841;
-var RGBA_PVRTC_4BPPV1_Format = exports.RGBA_PVRTC_4BPPV1_Format = 35842;
-var RGBA_PVRTC_2BPPV1_Format = exports.RGBA_PVRTC_2BPPV1_Format = 35843;
-var RGB_ETC1_Format = exports.RGB_ETC1_Format = 36196;
-var RGB_ETC2_Format = exports.RGB_ETC2_Format = 37492;
-var RGBA_ETC2_EAC_Format = exports.RGBA_ETC2_EAC_Format = 37496;
-var RGBA_ASTC_4x4_Format = exports.RGBA_ASTC_4x4_Format = 37808;
-var RGBA_ASTC_5x4_Format = exports.RGBA_ASTC_5x4_Format = 37809;
-var RGBA_ASTC_5x5_Format = exports.RGBA_ASTC_5x5_Format = 37810;
-var RGBA_ASTC_6x5_Format = exports.RGBA_ASTC_6x5_Format = 37811;
-var RGBA_ASTC_6x6_Format = exports.RGBA_ASTC_6x6_Format = 37812;
-var RGBA_ASTC_8x5_Format = exports.RGBA_ASTC_8x5_Format = 37813;
-var RGBA_ASTC_8x6_Format = exports.RGBA_ASTC_8x6_Format = 37814;
-var RGBA_ASTC_8x8_Format = exports.RGBA_ASTC_8x8_Format = 37815;
-var RGBA_ASTC_10x5_Format = exports.RGBA_ASTC_10x5_Format = 37816;
-var RGBA_ASTC_10x6_Format = exports.RGBA_ASTC_10x6_Format = 37817;
-var RGBA_ASTC_10x8_Format = exports.RGBA_ASTC_10x8_Format = 37818;
-var RGBA_ASTC_10x10_Format = exports.RGBA_ASTC_10x10_Format = 37819;
-var RGBA_ASTC_12x10_Format = exports.RGBA_ASTC_12x10_Format = 37820;
-var RGBA_ASTC_12x12_Format = exports.RGBA_ASTC_12x12_Format = 37821;
-var RGBA_BPTC_Format = exports.RGBA_BPTC_Format = 36492;
-var RGB_BPTC_SIGNED_Format = exports.RGB_BPTC_SIGNED_Format = 36494;
-var RGB_BPTC_UNSIGNED_Format = exports.RGB_BPTC_UNSIGNED_Format = 36495;
-var RED_RGTC1_Format = exports.RED_RGTC1_Format = 36283;
-var SIGNED_RED_RGTC1_Format = exports.SIGNED_RED_RGTC1_Format = 36284;
-var RED_GREEN_RGTC2_Format = exports.RED_GREEN_RGTC2_Format = 36285;
-var SIGNED_RED_GREEN_RGTC2_Format = exports.SIGNED_RED_GREEN_RGTC2_Format = 36286;
-var LoopOnce = exports.LoopOnce = 2200;
-var LoopRepeat = exports.LoopRepeat = 2201;
-var LoopPingPong = exports.LoopPingPong = 2202;
-var InterpolateDiscrete = exports.InterpolateDiscrete = 2300;
-var InterpolateLinear = exports.InterpolateLinear = 2301;
-var InterpolateSmooth = exports.InterpolateSmooth = 2302;
-var ZeroCurvatureEnding = exports.ZeroCurvatureEnding = 2400;
-var ZeroSlopeEnding = exports.ZeroSlopeEnding = 2401;
-var WrapAroundEnding = exports.WrapAroundEnding = 2402;
-var NormalAnimationBlendMode = exports.NormalAnimationBlendMode = 2500;
-var AdditiveAnimationBlendMode = exports.AdditiveAnimationBlendMode = 2501;
-var TrianglesDrawMode = exports.TrianglesDrawMode = 0;
-var TriangleStripDrawMode = exports.TriangleStripDrawMode = 1;
-var TriangleFanDrawMode = exports.TriangleFanDrawMode = 2;
+exports.TOUCH = TOUCH;
+var CullFaceNone = 0;
+exports.CullFaceNone = CullFaceNone;
+var CullFaceBack = 1;
+exports.CullFaceBack = CullFaceBack;
+var CullFaceFront = 2;
+exports.CullFaceFront = CullFaceFront;
+var CullFaceFrontBack = 3;
+exports.CullFaceFrontBack = CullFaceFrontBack;
+var BasicShadowMap = 0;
+exports.BasicShadowMap = BasicShadowMap;
+var PCFShadowMap = 1;
+exports.PCFShadowMap = PCFShadowMap;
+var PCFSoftShadowMap = 2;
+exports.PCFSoftShadowMap = PCFSoftShadowMap;
+var VSMShadowMap = 3;
+exports.VSMShadowMap = VSMShadowMap;
+var FrontSide = 0;
+exports.FrontSide = FrontSide;
+var BackSide = 1;
+exports.BackSide = BackSide;
+var DoubleSide = 2;
+exports.DoubleSide = DoubleSide;
+var TwoPassDoubleSide = 2; // r149
+exports.TwoPassDoubleSide = TwoPassDoubleSide;
+var NoBlending = 0;
+exports.NoBlending = NoBlending;
+var NormalBlending = 1;
+exports.NormalBlending = NormalBlending;
+var AdditiveBlending = 2;
+exports.AdditiveBlending = AdditiveBlending;
+var SubtractiveBlending = 3;
+exports.SubtractiveBlending = SubtractiveBlending;
+var MultiplyBlending = 4;
+exports.MultiplyBlending = MultiplyBlending;
+var CustomBlending = 5;
+exports.CustomBlending = CustomBlending;
+var AddEquation = 100;
+exports.AddEquation = AddEquation;
+var SubtractEquation = 101;
+exports.SubtractEquation = SubtractEquation;
+var ReverseSubtractEquation = 102;
+exports.ReverseSubtractEquation = ReverseSubtractEquation;
+var MinEquation = 103;
+exports.MinEquation = MinEquation;
+var MaxEquation = 104;
+exports.MaxEquation = MaxEquation;
+var ZeroFactor = 200;
+exports.ZeroFactor = ZeroFactor;
+var OneFactor = 201;
+exports.OneFactor = OneFactor;
+var SrcColorFactor = 202;
+exports.SrcColorFactor = SrcColorFactor;
+var OneMinusSrcColorFactor = 203;
+exports.OneMinusSrcColorFactor = OneMinusSrcColorFactor;
+var SrcAlphaFactor = 204;
+exports.SrcAlphaFactor = SrcAlphaFactor;
+var OneMinusSrcAlphaFactor = 205;
+exports.OneMinusSrcAlphaFactor = OneMinusSrcAlphaFactor;
+var DstAlphaFactor = 206;
+exports.DstAlphaFactor = DstAlphaFactor;
+var OneMinusDstAlphaFactor = 207;
+exports.OneMinusDstAlphaFactor = OneMinusDstAlphaFactor;
+var DstColorFactor = 208;
+exports.DstColorFactor = DstColorFactor;
+var OneMinusDstColorFactor = 209;
+exports.OneMinusDstColorFactor = OneMinusDstColorFactor;
+var SrcAlphaSaturateFactor = 210;
+exports.SrcAlphaSaturateFactor = SrcAlphaSaturateFactor;
+var ConstantColorFactor = 211;
+exports.ConstantColorFactor = ConstantColorFactor;
+var OneMinusConstantColorFactor = 212;
+exports.OneMinusConstantColorFactor = OneMinusConstantColorFactor;
+var ConstantAlphaFactor = 213;
+exports.ConstantAlphaFactor = ConstantAlphaFactor;
+var OneMinusConstantAlphaFactor = 214;
+exports.OneMinusConstantAlphaFactor = OneMinusConstantAlphaFactor;
+var NeverDepth = 0;
+exports.NeverDepth = NeverDepth;
+var AlwaysDepth = 1;
+exports.AlwaysDepth = AlwaysDepth;
+var LessDepth = 2;
+exports.LessDepth = LessDepth;
+var LessEqualDepth = 3;
+exports.LessEqualDepth = LessEqualDepth;
+var EqualDepth = 4;
+exports.EqualDepth = EqualDepth;
+var GreaterEqualDepth = 5;
+exports.GreaterEqualDepth = GreaterEqualDepth;
+var GreaterDepth = 6;
+exports.GreaterDepth = GreaterDepth;
+var NotEqualDepth = 7;
+exports.NotEqualDepth = NotEqualDepth;
+var MultiplyOperation = 0;
+exports.MultiplyOperation = MultiplyOperation;
+var MixOperation = 1;
+exports.MixOperation = MixOperation;
+var AddOperation = 2;
+exports.AddOperation = AddOperation;
+var NoToneMapping = 0;
+exports.NoToneMapping = NoToneMapping;
+var LinearToneMapping = 1;
+exports.LinearToneMapping = LinearToneMapping;
+var ReinhardToneMapping = 2;
+exports.ReinhardToneMapping = ReinhardToneMapping;
+var CineonToneMapping = 3;
+exports.CineonToneMapping = CineonToneMapping;
+var ACESFilmicToneMapping = 4;
+exports.ACESFilmicToneMapping = ACESFilmicToneMapping;
+var CustomToneMapping = 5;
+exports.CustomToneMapping = CustomToneMapping;
+var AttachedBindMode = 'attached';
+exports.AttachedBindMode = AttachedBindMode;
+var DetachedBindMode = 'detached';
+exports.DetachedBindMode = DetachedBindMode;
+var UVMapping = 300;
+exports.UVMapping = UVMapping;
+var CubeReflectionMapping = 301;
+exports.CubeReflectionMapping = CubeReflectionMapping;
+var CubeRefractionMapping = 302;
+exports.CubeRefractionMapping = CubeRefractionMapping;
+var EquirectangularReflectionMapping = 303;
+exports.EquirectangularReflectionMapping = EquirectangularReflectionMapping;
+var EquirectangularRefractionMapping = 304;
+exports.EquirectangularRefractionMapping = EquirectangularRefractionMapping;
+var CubeUVReflectionMapping = 306;
+exports.CubeUVReflectionMapping = CubeUVReflectionMapping;
+var RepeatWrapping = 1000;
+exports.RepeatWrapping = RepeatWrapping;
+var ClampToEdgeWrapping = 1001;
+exports.ClampToEdgeWrapping = ClampToEdgeWrapping;
+var MirroredRepeatWrapping = 1002;
+exports.MirroredRepeatWrapping = MirroredRepeatWrapping;
+var NearestFilter = 1003;
+exports.NearestFilter = NearestFilter;
+var NearestMipmapNearestFilter = 1004;
+exports.NearestMipmapNearestFilter = NearestMipmapNearestFilter;
+var NearestMipMapNearestFilter = 1004;
+exports.NearestMipMapNearestFilter = NearestMipMapNearestFilter;
+var NearestMipmapLinearFilter = 1005;
+exports.NearestMipmapLinearFilter = NearestMipmapLinearFilter;
+var NearestMipMapLinearFilter = 1005;
+exports.NearestMipMapLinearFilter = NearestMipMapLinearFilter;
+var LinearFilter = 1006;
+exports.LinearFilter = LinearFilter;
+var LinearMipmapNearestFilter = 1007;
+exports.LinearMipmapNearestFilter = LinearMipmapNearestFilter;
+var LinearMipMapNearestFilter = 1007;
+exports.LinearMipMapNearestFilter = LinearMipMapNearestFilter;
+var LinearMipmapLinearFilter = 1008;
+exports.LinearMipmapLinearFilter = LinearMipmapLinearFilter;
+var LinearMipMapLinearFilter = 1008;
+exports.LinearMipMapLinearFilter = LinearMipMapLinearFilter;
+var UnsignedByteType = 1009;
+exports.UnsignedByteType = UnsignedByteType;
+var ByteType = 1010;
+exports.ByteType = ByteType;
+var ShortType = 1011;
+exports.ShortType = ShortType;
+var UnsignedShortType = 1012;
+exports.UnsignedShortType = UnsignedShortType;
+var IntType = 1013;
+exports.IntType = IntType;
+var UnsignedIntType = 1014;
+exports.UnsignedIntType = UnsignedIntType;
+var FloatType = 1015;
+exports.FloatType = FloatType;
+var HalfFloatType = 1016;
+exports.HalfFloatType = HalfFloatType;
+var UnsignedShort4444Type = 1017;
+exports.UnsignedShort4444Type = UnsignedShort4444Type;
+var UnsignedShort5551Type = 1018;
+exports.UnsignedShort5551Type = UnsignedShort5551Type;
+var UnsignedInt248Type = 1020;
+exports.UnsignedInt248Type = UnsignedInt248Type;
+var AlphaFormat = 1021;
+exports.AlphaFormat = AlphaFormat;
+var RGBAFormat = 1023;
+exports.RGBAFormat = RGBAFormat;
+var LuminanceFormat = 1024;
+exports.LuminanceFormat = LuminanceFormat;
+var LuminanceAlphaFormat = 1025;
+exports.LuminanceAlphaFormat = LuminanceAlphaFormat;
+var DepthFormat = 1026;
+exports.DepthFormat = DepthFormat;
+var DepthStencilFormat = 1027;
+exports.DepthStencilFormat = DepthStencilFormat;
+var RedFormat = 1028;
+exports.RedFormat = RedFormat;
+var RedIntegerFormat = 1029;
+exports.RedIntegerFormat = RedIntegerFormat;
+var RGFormat = 1030;
+exports.RGFormat = RGFormat;
+var RGIntegerFormat = 1031;
+exports.RGIntegerFormat = RGIntegerFormat;
+var RGBAIntegerFormat = 1033;
+exports.RGBAIntegerFormat = RGBAIntegerFormat;
+var RGB_S3TC_DXT1_Format = 33776;
+exports.RGB_S3TC_DXT1_Format = RGB_S3TC_DXT1_Format;
+var RGBA_S3TC_DXT1_Format = 33777;
+exports.RGBA_S3TC_DXT1_Format = RGBA_S3TC_DXT1_Format;
+var RGBA_S3TC_DXT3_Format = 33778;
+exports.RGBA_S3TC_DXT3_Format = RGBA_S3TC_DXT3_Format;
+var RGBA_S3TC_DXT5_Format = 33779;
+exports.RGBA_S3TC_DXT5_Format = RGBA_S3TC_DXT5_Format;
+var RGB_PVRTC_4BPPV1_Format = 35840;
+exports.RGB_PVRTC_4BPPV1_Format = RGB_PVRTC_4BPPV1_Format;
+var RGB_PVRTC_2BPPV1_Format = 35841;
+exports.RGB_PVRTC_2BPPV1_Format = RGB_PVRTC_2BPPV1_Format;
+var RGBA_PVRTC_4BPPV1_Format = 35842;
+exports.RGBA_PVRTC_4BPPV1_Format = RGBA_PVRTC_4BPPV1_Format;
+var RGBA_PVRTC_2BPPV1_Format = 35843;
+exports.RGBA_PVRTC_2BPPV1_Format = RGBA_PVRTC_2BPPV1_Format;
+var RGB_ETC1_Format = 36196;
+exports.RGB_ETC1_Format = RGB_ETC1_Format;
+var RGB_ETC2_Format = 37492;
+exports.RGB_ETC2_Format = RGB_ETC2_Format;
+var RGBA_ETC2_EAC_Format = 37496;
+exports.RGBA_ETC2_EAC_Format = RGBA_ETC2_EAC_Format;
+var RGBA_ASTC_4x4_Format = 37808;
+exports.RGBA_ASTC_4x4_Format = RGBA_ASTC_4x4_Format;
+var RGBA_ASTC_5x4_Format = 37809;
+exports.RGBA_ASTC_5x4_Format = RGBA_ASTC_5x4_Format;
+var RGBA_ASTC_5x5_Format = 37810;
+exports.RGBA_ASTC_5x5_Format = RGBA_ASTC_5x5_Format;
+var RGBA_ASTC_6x5_Format = 37811;
+exports.RGBA_ASTC_6x5_Format = RGBA_ASTC_6x5_Format;
+var RGBA_ASTC_6x6_Format = 37812;
+exports.RGBA_ASTC_6x6_Format = RGBA_ASTC_6x6_Format;
+var RGBA_ASTC_8x5_Format = 37813;
+exports.RGBA_ASTC_8x5_Format = RGBA_ASTC_8x5_Format;
+var RGBA_ASTC_8x6_Format = 37814;
+exports.RGBA_ASTC_8x6_Format = RGBA_ASTC_8x6_Format;
+var RGBA_ASTC_8x8_Format = 37815;
+exports.RGBA_ASTC_8x8_Format = RGBA_ASTC_8x8_Format;
+var RGBA_ASTC_10x5_Format = 37816;
+exports.RGBA_ASTC_10x5_Format = RGBA_ASTC_10x5_Format;
+var RGBA_ASTC_10x6_Format = 37817;
+exports.RGBA_ASTC_10x6_Format = RGBA_ASTC_10x6_Format;
+var RGBA_ASTC_10x8_Format = 37818;
+exports.RGBA_ASTC_10x8_Format = RGBA_ASTC_10x8_Format;
+var RGBA_ASTC_10x10_Format = 37819;
+exports.RGBA_ASTC_10x10_Format = RGBA_ASTC_10x10_Format;
+var RGBA_ASTC_12x10_Format = 37820;
+exports.RGBA_ASTC_12x10_Format = RGBA_ASTC_12x10_Format;
+var RGBA_ASTC_12x12_Format = 37821;
+exports.RGBA_ASTC_12x12_Format = RGBA_ASTC_12x12_Format;
+var RGBA_BPTC_Format = 36492;
+exports.RGBA_BPTC_Format = RGBA_BPTC_Format;
+var RGB_BPTC_SIGNED_Format = 36494;
+exports.RGB_BPTC_SIGNED_Format = RGB_BPTC_SIGNED_Format;
+var RGB_BPTC_UNSIGNED_Format = 36495;
+exports.RGB_BPTC_UNSIGNED_Format = RGB_BPTC_UNSIGNED_Format;
+var RED_RGTC1_Format = 36283;
+exports.RED_RGTC1_Format = RED_RGTC1_Format;
+var SIGNED_RED_RGTC1_Format = 36284;
+exports.SIGNED_RED_RGTC1_Format = SIGNED_RED_RGTC1_Format;
+var RED_GREEN_RGTC2_Format = 36285;
+exports.RED_GREEN_RGTC2_Format = RED_GREEN_RGTC2_Format;
+var SIGNED_RED_GREEN_RGTC2_Format = 36286;
+exports.SIGNED_RED_GREEN_RGTC2_Format = SIGNED_RED_GREEN_RGTC2_Format;
+var LoopOnce = 2200;
+exports.LoopOnce = LoopOnce;
+var LoopRepeat = 2201;
+exports.LoopRepeat = LoopRepeat;
+var LoopPingPong = 2202;
+exports.LoopPingPong = LoopPingPong;
+var InterpolateDiscrete = 2300;
+exports.InterpolateDiscrete = InterpolateDiscrete;
+var InterpolateLinear = 2301;
+exports.InterpolateLinear = InterpolateLinear;
+var InterpolateSmooth = 2302;
+exports.InterpolateSmooth = InterpolateSmooth;
+var ZeroCurvatureEnding = 2400;
+exports.ZeroCurvatureEnding = ZeroCurvatureEnding;
+var ZeroSlopeEnding = 2401;
+exports.ZeroSlopeEnding = ZeroSlopeEnding;
+var WrapAroundEnding = 2402;
+exports.WrapAroundEnding = WrapAroundEnding;
+var NormalAnimationBlendMode = 2500;
+exports.NormalAnimationBlendMode = NormalAnimationBlendMode;
+var AdditiveAnimationBlendMode = 2501;
+exports.AdditiveAnimationBlendMode = AdditiveAnimationBlendMode;
+var TrianglesDrawMode = 0;
+exports.TrianglesDrawMode = TrianglesDrawMode;
+var TriangleStripDrawMode = 1;
+exports.TriangleStripDrawMode = TriangleStripDrawMode;
+var TriangleFanDrawMode = 2;
 /** @deprecated Use LinearSRGBColorSpace or NoColorSpace in three.js r152+. */
-var LinearEncoding = exports.LinearEncoding = 3000;
+exports.TriangleFanDrawMode = TriangleFanDrawMode;
+var LinearEncoding = 3000;
 /** @deprecated Use SRGBColorSpace in three.js r152+. */
-var sRGBEncoding = exports.sRGBEncoding = 3001;
-var BasicDepthPacking = exports.BasicDepthPacking = 3200;
-var RGBADepthPacking = exports.RGBADepthPacking = 3201;
-var TangentSpaceNormalMap = exports.TangentSpaceNormalMap = 0;
-var ObjectSpaceNormalMap = exports.ObjectSpaceNormalMap = 1;
+exports.LinearEncoding = LinearEncoding;
+var sRGBEncoding = 3001;
+exports.sRGBEncoding = sRGBEncoding;
+var BasicDepthPacking = 3200;
+exports.BasicDepthPacking = BasicDepthPacking;
+var RGBADepthPacking = 3201;
+exports.RGBADepthPacking = RGBADepthPacking;
+var TangentSpaceNormalMap = 0;
+exports.TangentSpaceNormalMap = TangentSpaceNormalMap;
+var ObjectSpaceNormalMap = 1;
 
 // Color space string identifiers, matching CSS Color Module Level 4 and WebGPU names where available.
-var NoColorSpace = exports.NoColorSpace = '';
-var SRGBColorSpace = exports.SRGBColorSpace = 'srgb';
-var LinearSRGBColorSpace = exports.LinearSRGBColorSpace = 'srgb-linear';
-var DisplayP3ColorSpace = exports.DisplayP3ColorSpace = 'display-p3';
-var LinearDisplayP3ColorSpace = exports.LinearDisplayP3ColorSpace = 'display-p3-linear';
-var LinearTransfer = exports.LinearTransfer = 'linear';
-var SRGBTransfer = exports.SRGBTransfer = 'srgb';
-var Rec709Primaries = exports.Rec709Primaries = 'rec709';
-var P3Primaries = exports.P3Primaries = 'p3';
-var ZeroStencilOp = exports.ZeroStencilOp = 0;
-var KeepStencilOp = exports.KeepStencilOp = 7680;
-var ReplaceStencilOp = exports.ReplaceStencilOp = 7681;
-var IncrementStencilOp = exports.IncrementStencilOp = 7682;
-var DecrementStencilOp = exports.DecrementStencilOp = 7683;
-var IncrementWrapStencilOp = exports.IncrementWrapStencilOp = 34055;
-var DecrementWrapStencilOp = exports.DecrementWrapStencilOp = 34056;
-var InvertStencilOp = exports.InvertStencilOp = 5386;
-var NeverStencilFunc = exports.NeverStencilFunc = 512;
-var LessStencilFunc = exports.LessStencilFunc = 513;
-var EqualStencilFunc = exports.EqualStencilFunc = 514;
-var LessEqualStencilFunc = exports.LessEqualStencilFunc = 515;
-var GreaterStencilFunc = exports.GreaterStencilFunc = 516;
-var NotEqualStencilFunc = exports.NotEqualStencilFunc = 517;
-var GreaterEqualStencilFunc = exports.GreaterEqualStencilFunc = 518;
-var AlwaysStencilFunc = exports.AlwaysStencilFunc = 519;
-var NeverCompare = exports.NeverCompare = 512;
-var LessCompare = exports.LessCompare = 513;
-var EqualCompare = exports.EqualCompare = 514;
-var LessEqualCompare = exports.LessEqualCompare = 515;
-var GreaterCompare = exports.GreaterCompare = 516;
-var NotEqualCompare = exports.NotEqualCompare = 517;
-var GreaterEqualCompare = exports.GreaterEqualCompare = 518;
-var AlwaysCompare = exports.AlwaysCompare = 519;
-var StaticDrawUsage = exports.StaticDrawUsage = 35044;
-var DynamicDrawUsage = exports.DynamicDrawUsage = 35048;
-var StreamDrawUsage = exports.StreamDrawUsage = 35040;
-var StaticReadUsage = exports.StaticReadUsage = 35045;
-var DynamicReadUsage = exports.DynamicReadUsage = 35049;
-var StreamReadUsage = exports.StreamReadUsage = 35041;
-var StaticCopyUsage = exports.StaticCopyUsage = 35046;
-var DynamicCopyUsage = exports.DynamicCopyUsage = 35050;
-var StreamCopyUsage = exports.StreamCopyUsage = 35042;
-var GLSL1 = exports.GLSL1 = '100';
-var GLSL3 = exports.GLSL3 = '300 es';
-var _SRGBAFormat = exports._SRGBAFormat = 1035; // fallback for WebGL 1
-
-var WebGLCoordinateSystem = exports.WebGLCoordinateSystem = 2000;
-var WebGPUCoordinateSystem = exports.WebGPUCoordinateSystem = 2001;
+exports.ObjectSpaceNormalMap = ObjectSpaceNormalMap;
+var NoColorSpace = '';
+exports.NoColorSpace = NoColorSpace;
+var SRGBColorSpace = 'srgb';
+exports.SRGBColorSpace = SRGBColorSpace;
+var LinearSRGBColorSpace = 'srgb-linear';
+exports.LinearSRGBColorSpace = LinearSRGBColorSpace;
+var DisplayP3ColorSpace = 'display-p3';
+exports.DisplayP3ColorSpace = DisplayP3ColorSpace;
+var LinearDisplayP3ColorSpace = 'display-p3-linear';
+exports.LinearDisplayP3ColorSpace = LinearDisplayP3ColorSpace;
+var LinearTransfer = 'linear';
+exports.LinearTransfer = LinearTransfer;
+var SRGBTransfer = 'srgb';
+exports.SRGBTransfer = SRGBTransfer;
+var Rec709Primaries = 'rec709';
+exports.Rec709Primaries = Rec709Primaries;
+var P3Primaries = 'p3';
+exports.P3Primaries = P3Primaries;
+var ZeroStencilOp = 0;
+exports.ZeroStencilOp = ZeroStencilOp;
+var KeepStencilOp = 7680;
+exports.KeepStencilOp = KeepStencilOp;
+var ReplaceStencilOp = 7681;
+exports.ReplaceStencilOp = ReplaceStencilOp;
+var IncrementStencilOp = 7682;
+exports.IncrementStencilOp = IncrementStencilOp;
+var DecrementStencilOp = 7683;
+exports.DecrementStencilOp = DecrementStencilOp;
+var IncrementWrapStencilOp = 34055;
+exports.IncrementWrapStencilOp = IncrementWrapStencilOp;
+var DecrementWrapStencilOp = 34056;
+exports.DecrementWrapStencilOp = DecrementWrapStencilOp;
+var InvertStencilOp = 5386;
+exports.InvertStencilOp = InvertStencilOp;
+var NeverStencilFunc = 512;
+exports.NeverStencilFunc = NeverStencilFunc;
+var LessStencilFunc = 513;
+exports.LessStencilFunc = LessStencilFunc;
+var EqualStencilFunc = 514;
+exports.EqualStencilFunc = EqualStencilFunc;
+var LessEqualStencilFunc = 515;
+exports.LessEqualStencilFunc = LessEqualStencilFunc;
+var GreaterStencilFunc = 516;
+exports.GreaterStencilFunc = GreaterStencilFunc;
+var NotEqualStencilFunc = 517;
+exports.NotEqualStencilFunc = NotEqualStencilFunc;
+var GreaterEqualStencilFunc = 518;
+exports.GreaterEqualStencilFunc = GreaterEqualStencilFunc;
+var AlwaysStencilFunc = 519;
+exports.AlwaysStencilFunc = AlwaysStencilFunc;
+var NeverCompare = 512;
+exports.NeverCompare = NeverCompare;
+var LessCompare = 513;
+exports.LessCompare = LessCompare;
+var EqualCompare = 514;
+exports.EqualCompare = EqualCompare;
+var LessEqualCompare = 515;
+exports.LessEqualCompare = LessEqualCompare;
+var GreaterCompare = 516;
+exports.GreaterCompare = GreaterCompare;
+var NotEqualCompare = 517;
+exports.NotEqualCompare = NotEqualCompare;
+var GreaterEqualCompare = 518;
+exports.GreaterEqualCompare = GreaterEqualCompare;
+var AlwaysCompare = 519;
+exports.AlwaysCompare = AlwaysCompare;
+var StaticDrawUsage = 35044;
+exports.StaticDrawUsage = StaticDrawUsage;
+var DynamicDrawUsage = 35048;
+exports.DynamicDrawUsage = DynamicDrawUsage;
+var StreamDrawUsage = 35040;
+exports.StreamDrawUsage = StreamDrawUsage;
+var StaticReadUsage = 35045;
+exports.StaticReadUsage = StaticReadUsage;
+var DynamicReadUsage = 35049;
+exports.DynamicReadUsage = DynamicReadUsage;
+var StreamReadUsage = 35041;
+exports.StreamReadUsage = StreamReadUsage;
+var StaticCopyUsage = 35046;
+exports.StaticCopyUsage = StaticCopyUsage;
+var DynamicCopyUsage = 35050;
+exports.DynamicCopyUsage = DynamicCopyUsage;
+var StreamCopyUsage = 35042;
+exports.StreamCopyUsage = StreamCopyUsage;
+var GLSL1 = '100';
+exports.GLSL1 = GLSL1;
+var GLSL3 = '300 es';
+exports.GLSL3 = GLSL3;
+var _SRGBAFormat = 1035; // fallback for WebGL 1
+exports._SRGBAFormat = _SRGBAFormat;
+var WebGLCoordinateSystem = 2000;
+exports.WebGLCoordinateSystem = WebGLCoordinateSystem;
+var WebGPUCoordinateSystem = 2001;
 
 /**
  * https://github.com/mrdoob/eventdispatcher.js/
  */
-var EventDispatcher = exports.EventDispatcher = /*#__PURE__*/function () {
+exports.WebGPUCoordinateSystem = WebGPUCoordinateSystem;
+var EventDispatcher = /*#__PURE__*/function () {
   function EventDispatcher() {
     _classCallCheck(this, EventDispatcher);
   }
@@ -450,6 +650,7 @@ var EventDispatcher = exports.EventDispatcher = /*#__PURE__*/function () {
   }]);
   return EventDispatcher;
 }();
+exports.EventDispatcher = EventDispatcher;
 var _lut = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '0a', '0b', '0c', '0d', '0e', '0f', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '1a', '1b', '1c', '1d', '1e', '1f', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '2a', '2b', '2c', '2d', '2e', '2f', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '3a', '3b', '3c', '3d', '3e', '3f', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '4a', '4b', '4c', '4d', '4e', '4f', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '5a', '5b', '5c', '5d', '5e', '5f', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '6a', '6b', '6c', '6d', '6e', '6f', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '7a', '7b', '7c', '7d', '7e', '7f', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '8a', '8b', '8c', '8d', '8e', '8f', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '9a', '9b', '9c', '9d', '9e', '9f', 'a0', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'aa', 'ab', 'ac', 'ad', 'ae', 'af', 'b0', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'ba', 'bb', 'bc', 'bd', 'be', 'bf', 'c0', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'ca', 'cb', 'cc', 'cd', 'ce', 'cf', 'd0', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9', 'da', 'db', 'dc', 'dd', 'de', 'df', 'e0', 'e1', 'e2', 'e3', 'e4', 'e5', 'e6', 'e7', 'e8', 'e9', 'ea', 'eb', 'ec', 'ed', 'ee', 'ef', 'f0', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'fa', 'fb', 'fc', 'fd', 'fe', 'ff'];
 var _seed = 1234567;
 var DEG2RAD = Math.PI / 180;
@@ -501,8 +702,7 @@ function damp(x, y, lambda, dt) {
 }
 
 // https://www.desmos.com/calculator/vcsjnyz7x4
-function pingpong(x) {
-  var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+function pingpong(x, length = 1) {
   return length - Math.abs(euclideanModulo(x, length * 2) - length);
 }
 
@@ -641,7 +841,7 @@ function normalize(value, array) {
       throw new Error('Invalid component type.');
   }
 }
-var MathUtils = exports.MathUtils = {
+var MathUtils = {
   DEG2RAD: DEG2RAD,
   RAD2DEG: RAD2DEG,
   generateUUID: generateUUID,
@@ -667,10 +867,9 @@ var MathUtils = exports.MathUtils = {
   normalize: normalize,
   denormalize: denormalize
 };
-var Vector2 = exports.Vector2 = /*#__PURE__*/function (_Symbol$iterator) {
-  function Vector2() {
-    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+exports.MathUtils = MathUtils;
+var Vector2 = /*#__PURE__*/function (_Symbol$iterator) {
+  function Vector2(x = 0, y = 0) {
     _classCallCheck(this, Vector2);
     Vector2.prototype.isVector2 = true;
     this.x = x;
@@ -1005,17 +1204,14 @@ var Vector2 = exports.Vector2 = /*#__PURE__*/function (_Symbol$iterator) {
     }
   }, {
     key: "fromArray",
-    value: function fromArray(array) {
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function fromArray(array, offset = 0) {
       this.x = array[offset];
       this.y = array[offset + 1];
       return this;
     }
   }, {
     key: "toArray",
-    value: function toArray() {
-      var array = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function toArray(array = [], offset = 0) {
       array[offset] = this.x;
       array[offset + 1] = this.y;
       return array;
@@ -1065,7 +1261,8 @@ var Vector2 = exports.Vector2 = /*#__PURE__*/function (_Symbol$iterator) {
   }]);
   return Vector2;
 }(Symbol.iterator);
-var Matrix3 = exports.Matrix3 = /*#__PURE__*/function () {
+exports.Vector2 = Vector2;
+var Matrix3 = /*#__PURE__*/function () {
   function Matrix3(n11, n12, n13, n21, n22, n23, n31, n32, n33) {
     _classCallCheck(this, Matrix3);
     Matrix3.prototype.isMatrix3 = true;
@@ -1337,8 +1534,7 @@ var Matrix3 = exports.Matrix3 = /*#__PURE__*/function () {
     }
   }, {
     key: "fromArray",
-    value: function fromArray(array) {
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function fromArray(array, offset = 0) {
       for (var i = 0; i < 9; i++) {
         this.elements[i] = array[i + offset];
       }
@@ -1346,9 +1542,7 @@ var Matrix3 = exports.Matrix3 = /*#__PURE__*/function () {
     }
   }, {
     key: "toArray",
-    value: function toArray() {
-      var array = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function toArray(array = [], offset = 0) {
       var te = this.elements;
       array[offset] = te[0];
       array[offset + 1] = te[1];
@@ -1369,6 +1563,7 @@ var Matrix3 = exports.Matrix3 = /*#__PURE__*/function () {
   }]);
   return Matrix3;
 }();
+exports.Matrix3 = Matrix3;
 var _m3 = /*@__PURE__*/new Matrix3();
 function arrayNeedsUint32(array) {
   // assumes larger values usually on last
@@ -1376,6 +1571,7 @@ function arrayNeedsUint32(array) {
   for (var i = array.length - 1; i >= 0; --i) {
     if (array[i] >= 65535) return true; // account for PRIMITIVE_RESTART_FIXED_INDEX, #24565
   }
+
   return false;
 }
 var TYPED_ARRAYS = {
@@ -1426,7 +1622,7 @@ var LINEAR_DISPLAY_P3_TO_LINEAR_SRGB = /*@__PURE__*/new Matrix3().set(1.2249401,
  * Defines supported color spaces by transfer function and primaries,
  * and provides conversions to/from the Linear-sRGB reference space.
  */
-var COLOR_SPACES = _defineProperty(_defineProperty(_defineProperty(_defineProperty({}, LinearSRGBColorSpace, {
+var COLOR_SPACES = (_COLOR_SPACES = {}, _defineProperty(_COLOR_SPACES, LinearSRGBColorSpace, {
   transfer: LinearTransfer,
   primaries: Rec709Primaries,
   toReference: function toReference(color) {
@@ -1435,7 +1631,7 @@ var COLOR_SPACES = _defineProperty(_defineProperty(_defineProperty(_defineProper
   fromReference: function fromReference(color) {
     return color;
   }
-}), SRGBColorSpace, {
+}), _defineProperty(_COLOR_SPACES, SRGBColorSpace, {
   transfer: SRGBTransfer,
   primaries: Rec709Primaries,
   toReference: function toReference(color) {
@@ -1444,7 +1640,7 @@ var COLOR_SPACES = _defineProperty(_defineProperty(_defineProperty(_defineProper
   fromReference: function fromReference(color) {
     return color.convertLinearToSRGB();
   }
-}), LinearDisplayP3ColorSpace, {
+}), _defineProperty(_COLOR_SPACES, LinearDisplayP3ColorSpace, {
   transfer: LinearTransfer,
   primaries: P3Primaries,
   toReference: function toReference(color) {
@@ -1453,7 +1649,7 @@ var COLOR_SPACES = _defineProperty(_defineProperty(_defineProperty(_defineProper
   fromReference: function fromReference(color) {
     return color.applyMatrix3(LINEAR_SRGB_TO_LINEAR_DISPLAY_P3);
   }
-}), DisplayP3ColorSpace, {
+}), _defineProperty(_COLOR_SPACES, DisplayP3ColorSpace, {
   transfer: SRGBTransfer,
   primaries: P3Primaries,
   toReference: function toReference(color) {
@@ -1462,9 +1658,9 @@ var COLOR_SPACES = _defineProperty(_defineProperty(_defineProperty(_defineProper
   fromReference: function fromReference(color) {
     return color.applyMatrix3(LINEAR_SRGB_TO_LINEAR_DISPLAY_P3).convertLinearToSRGB();
   }
-});
+}), _COLOR_SPACES);
 var SUPPORTED_WORKING_COLOR_SPACES = new Set([LinearSRGBColorSpace, LinearDisplayP3ColorSpace]);
-var ColorManagement = exports.ColorManagement = {
+var ColorManagement = {
   enabled: true,
   _workingColorSpace: LinearSRGBColorSpace,
   get legacyMode() {
@@ -1506,6 +1702,7 @@ var ColorManagement = exports.ColorManagement = {
     return COLOR_SPACES[colorSpace].transfer;
   }
 };
+exports.ColorManagement = ColorManagement;
 function SRGBToLinear(c) {
   return c < 0.04045 ? c * 0.0773993808 : Math.pow(c * 0.9478672986 + 0.0521327014, 2.4);
 }
@@ -1513,7 +1710,7 @@ function LinearToSRGB(c) {
   return c < 0.0031308 ? c * 12.92 : 1.055 * Math.pow(c, 0.41666) - 0.055;
 }
 var _canvas;
-var ImageUtils = exports.ImageUtils = /*#__PURE__*/function () {
+var ImageUtils = /*#__PURE__*/function () {
   function ImageUtils() {
     _classCallCheck(this, ImageUtils);
   }
@@ -1588,10 +1785,10 @@ var ImageUtils = exports.ImageUtils = /*#__PURE__*/function () {
   }]);
   return ImageUtils;
 }();
+exports.ImageUtils = ImageUtils;
 var _sourceId = 0;
-var Source = exports.Source = /*#__PURE__*/function () {
-  function Source() {
-    var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+var Source = /*#__PURE__*/function () {
+  function Source(data = null) {
     _classCallCheck(this, Source);
     this.isSource = true;
     Object.defineProperty(this, 'id', {
@@ -1646,6 +1843,7 @@ var Source = exports.Source = /*#__PURE__*/function () {
   }]);
   return Source;
 }();
+exports.Source = Source;
 function serializeImage(image) {
   if (typeof HTMLImageElement !== 'undefined' && image instanceof HTMLImageElement || typeof HTMLCanvasElement !== 'undefined' && image instanceof HTMLCanvasElement || typeof ImageBitmap !== 'undefined' && image instanceof ImageBitmap) {
     // default images
@@ -1668,21 +1866,11 @@ function serializeImage(image) {
   }
 }
 var _textureId = 0;
-var Texture = exports.Texture = /*#__PURE__*/function (_EventDispatcher) {
+var Texture = /*#__PURE__*/function (_EventDispatcher) {
   _inherits(Texture, _EventDispatcher);
   var _super = _createSuper(Texture);
-  function Texture() {
+  function Texture(image = Texture.DEFAULT_IMAGE, mapping = Texture.DEFAULT_MAPPING, wrapS = ClampToEdgeWrapping, wrapT = ClampToEdgeWrapping, magFilter = LinearFilter, minFilter = LinearMipmapLinearFilter, format = RGBAFormat, type = UnsignedByteType, anisotropy = Texture.DEFAULT_ANISOTROPY, colorSpace = NoColorSpace) {
     var _this2;
-    var image = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Texture.DEFAULT_IMAGE;
-    var mapping = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Texture.DEFAULT_MAPPING;
-    var wrapS = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ClampToEdgeWrapping;
-    var wrapT = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : ClampToEdgeWrapping;
-    var magFilter = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : LinearFilter;
-    var minFilter = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : LinearMipmapLinearFilter;
-    var format = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : RGBAFormat;
-    var type = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : UnsignedByteType;
-    var anisotropy = arguments.length > 8 && arguments[8] !== undefined ? arguments[8] : Texture.DEFAULT_ANISOTROPY;
-    var colorSpace = arguments.length > 9 && arguments[9] !== undefined ? arguments[9] : NoColorSpace;
     _classCallCheck(this, Texture);
     _this2 = _super.call(this);
     _this2.isTexture = true;
@@ -1734,8 +1922,7 @@ var Texture = exports.Texture = /*#__PURE__*/function (_EventDispatcher) {
     get: function get() {
       return this.source.data;
     },
-    set: function set() {
-      var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    set: function set(value = null) {
       this.source.data = value;
     }
   }, {
@@ -1896,15 +2083,12 @@ var Texture = exports.Texture = /*#__PURE__*/function (_EventDispatcher) {
   }]);
   return Texture;
 }(EventDispatcher);
+exports.Texture = Texture;
 Texture.DEFAULT_IMAGE = null;
 Texture.DEFAULT_MAPPING = UVMapping;
 Texture.DEFAULT_ANISOTROPY = 1;
-var Vector4 = exports.Vector4 = /*#__PURE__*/function (_Symbol$iterator2) {
-  function Vector4() {
-    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    var z = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-    var w = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+var Vector4 = /*#__PURE__*/function (_Symbol$iterator2) {
+  function Vector4(x = 0, y = 0, z = 0, w = 1) {
     _classCallCheck(this, Vector4);
     Vector4.prototype.isVector4 = true;
     this.x = x;
@@ -2385,8 +2569,7 @@ var Vector4 = exports.Vector4 = /*#__PURE__*/function (_Symbol$iterator2) {
     }
   }, {
     key: "fromArray",
-    value: function fromArray(array) {
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function fromArray(array, offset = 0) {
       this.x = array[offset];
       this.y = array[offset + 1];
       this.z = array[offset + 2];
@@ -2395,9 +2578,7 @@ var Vector4 = exports.Vector4 = /*#__PURE__*/function (_Symbol$iterator2) {
     }
   }, {
     key: "toArray",
-    value: function toArray() {
-      var array = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function toArray(array = [], offset = 0) {
       array[offset] = this.x;
       array[offset + 1] = this.y;
       array[offset + 2] = this.z;
@@ -2453,14 +2634,12 @@ var Vector4 = exports.Vector4 = /*#__PURE__*/function (_Symbol$iterator2) {
  * Texture parameters for an auto-generated target texture
  * depthBuffer/stencilBuffer: Booleans to indicate if we should generate these buffers
 */
-var RenderTarget = exports.RenderTarget = /*#__PURE__*/function (_EventDispatcher2) {
+exports.Vector4 = Vector4;
+var RenderTarget = /*#__PURE__*/function (_EventDispatcher2) {
   _inherits(RenderTarget, _EventDispatcher2);
   var _super2 = _createSuper(RenderTarget);
-  function RenderTarget() {
+  function RenderTarget(width = 1, height = 1, options = {}) {
     var _this3;
-    var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
     _classCallCheck(this, RenderTarget);
     _this3 = _super2.call(this);
     _this3.isRenderTarget = true;
@@ -2502,8 +2681,7 @@ var RenderTarget = exports.RenderTarget = /*#__PURE__*/function (_EventDispatche
   }
   _createClass(RenderTarget, [{
     key: "setSize",
-    value: function setSize(width, height) {
-      var depth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+    value: function setSize(width, height, depth = 1) {
       if (this.width !== width || this.height !== height || this.depth !== depth) {
         this.width = width;
         this.height = height;
@@ -2553,14 +2731,12 @@ var RenderTarget = exports.RenderTarget = /*#__PURE__*/function (_EventDispatche
   }]);
   return RenderTarget;
 }(EventDispatcher);
-var WebGLRenderTarget = exports.WebGLRenderTarget = /*#__PURE__*/function (_RenderTarget) {
+exports.RenderTarget = RenderTarget;
+var WebGLRenderTarget = /*#__PURE__*/function (_RenderTarget) {
   _inherits(WebGLRenderTarget, _RenderTarget);
   var _super3 = _createSuper(WebGLRenderTarget);
-  function WebGLRenderTarget() {
+  function WebGLRenderTarget(width = 1, height = 1, options = {}) {
     var _this4;
-    var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
     _classCallCheck(this, WebGLRenderTarget);
     _this4 = _super3.call(this, width, height, options);
     _this4.isWebGLRenderTarget = true;
@@ -2568,15 +2744,12 @@ var WebGLRenderTarget = exports.WebGLRenderTarget = /*#__PURE__*/function (_Rend
   }
   return _createClass(WebGLRenderTarget);
 }(RenderTarget);
-var DataArrayTexture = exports.DataArrayTexture = /*#__PURE__*/function (_Texture) {
+exports.WebGLRenderTarget = WebGLRenderTarget;
+var DataArrayTexture = /*#__PURE__*/function (_Texture) {
   _inherits(DataArrayTexture, _Texture);
   var _super4 = _createSuper(DataArrayTexture);
-  function DataArrayTexture() {
+  function DataArrayTexture(data = null, width = 1, height = 1, depth = 1) {
     var _this5;
-    var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var height = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var depth = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
     _classCallCheck(this, DataArrayTexture);
     _this5 = _super4.call(this, null);
     _this5.isDataArrayTexture = true;
@@ -2596,15 +2769,12 @@ var DataArrayTexture = exports.DataArrayTexture = /*#__PURE__*/function (_Textur
   }
   return _createClass(DataArrayTexture);
 }(Texture);
-var WebGLArrayRenderTarget = exports.WebGLArrayRenderTarget = /*#__PURE__*/function (_WebGLRenderTarget) {
+exports.DataArrayTexture = DataArrayTexture;
+var WebGLArrayRenderTarget = /*#__PURE__*/function (_WebGLRenderTarget) {
   _inherits(WebGLArrayRenderTarget, _WebGLRenderTarget);
   var _super5 = _createSuper(WebGLArrayRenderTarget);
-  function WebGLArrayRenderTarget() {
+  function WebGLArrayRenderTarget(width = 1, height = 1, depth = 1, options = {}) {
     var _this6;
-    var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var depth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
     _classCallCheck(this, WebGLArrayRenderTarget);
     _this6 = _super5.call(this, width, height, options);
     _this6.isWebGLArrayRenderTarget = true;
@@ -2615,15 +2785,12 @@ var WebGLArrayRenderTarget = exports.WebGLArrayRenderTarget = /*#__PURE__*/funct
   }
   return _createClass(WebGLArrayRenderTarget);
 }(WebGLRenderTarget);
-var Data3DTexture = exports.Data3DTexture = /*#__PURE__*/function (_Texture2) {
+exports.WebGLArrayRenderTarget = WebGLArrayRenderTarget;
+var Data3DTexture = /*#__PURE__*/function (_Texture2) {
   _inherits(Data3DTexture, _Texture2);
   var _super6 = _createSuper(Data3DTexture);
-  function Data3DTexture() {
+  function Data3DTexture(data = null, width = 1, height = 1, depth = 1) {
     var _this7;
-    var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var height = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var depth = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
     _classCallCheck(this, Data3DTexture);
     // We're going to add .setXXX() methods for setting properties later.
     // Users can still set in DataTexture3D directly.
@@ -2651,15 +2818,12 @@ var Data3DTexture = exports.Data3DTexture = /*#__PURE__*/function (_Texture2) {
   }
   return _createClass(Data3DTexture);
 }(Texture);
-var WebGL3DRenderTarget = exports.WebGL3DRenderTarget = /*#__PURE__*/function (_WebGLRenderTarget2) {
+exports.Data3DTexture = Data3DTexture;
+var WebGL3DRenderTarget = /*#__PURE__*/function (_WebGLRenderTarget2) {
   _inherits(WebGL3DRenderTarget, _WebGLRenderTarget2);
   var _super7 = _createSuper(WebGL3DRenderTarget);
-  function WebGL3DRenderTarget() {
+  function WebGL3DRenderTarget(width = 1, height = 1, depth = 1, options = {}) {
     var _this8;
-    var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var depth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
     _classCallCheck(this, WebGL3DRenderTarget);
     _this8 = _super7.call(this, width, height, options);
     _this8.isWebGL3DRenderTarget = true;
@@ -2670,15 +2834,12 @@ var WebGL3DRenderTarget = exports.WebGL3DRenderTarget = /*#__PURE__*/function (_
   }
   return _createClass(WebGL3DRenderTarget);
 }(WebGLRenderTarget);
-var WebGLMultipleRenderTargets = exports.WebGLMultipleRenderTargets = /*#__PURE__*/function (_WebGLRenderTarget3) {
+exports.WebGL3DRenderTarget = WebGL3DRenderTarget;
+var WebGLMultipleRenderTargets = /*#__PURE__*/function (_WebGLRenderTarget3) {
   _inherits(WebGLMultipleRenderTargets, _WebGLRenderTarget3);
   var _super8 = _createSuper(WebGLMultipleRenderTargets);
-  function WebGLMultipleRenderTargets() {
+  function WebGLMultipleRenderTargets(width = 1, height = 1, count = 1, options = {}) {
     var _this9;
-    var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var count = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
     _classCallCheck(this, WebGLMultipleRenderTargets);
     _this9 = _super8.call(this, width, height, options);
     _this9.isWebGLMultipleRenderTargets = true;
@@ -2692,8 +2853,7 @@ var WebGLMultipleRenderTargets = exports.WebGLMultipleRenderTargets = /*#__PURE_
   }
   _createClass(WebGLMultipleRenderTargets, [{
     key: "setSize",
-    value: function setSize(width, height) {
-      var depth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+    value: function setSize(width, height, depth = 1) {
       if (this.width !== width || this.height !== height || this.depth !== depth) {
         this.width = width;
         this.height = height;
@@ -2731,12 +2891,9 @@ var WebGLMultipleRenderTargets = exports.WebGLMultipleRenderTargets = /*#__PURE_
   }]);
   return WebGLMultipleRenderTargets;
 }(WebGLRenderTarget);
-var Quaternion = exports.Quaternion = /*#__PURE__*/function (_Symbol$iterator3) {
-  function Quaternion() {
-    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    var z = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-    var w = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+exports.WebGLMultipleRenderTargets = WebGLMultipleRenderTargets;
+var Quaternion = /*#__PURE__*/function (_Symbol$iterator3) {
+  function Quaternion(x = 0, y = 0, z = 0, w = 1) {
     _classCallCheck(this, Quaternion);
     this.isQuaternion = true;
     this._x = x;
@@ -3137,8 +3294,7 @@ var Quaternion = exports.Quaternion = /*#__PURE__*/function (_Symbol$iterator3) 
     }
   }, {
     key: "fromArray",
-    value: function fromArray(array) {
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function fromArray(array, offset = 0) {
       this._x = array[offset];
       this._y = array[offset + 1];
       this._z = array[offset + 2];
@@ -3148,9 +3304,7 @@ var Quaternion = exports.Quaternion = /*#__PURE__*/function (_Symbol$iterator3) 
     }
   }, {
     key: "toArray",
-    value: function toArray() {
-      var array = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function toArray(array = [], offset = 0) {
       array[offset] = this._x;
       array[offset + 1] = this._y;
       array[offset + 2] = this._z;
@@ -3283,11 +3437,9 @@ var Quaternion = exports.Quaternion = /*#__PURE__*/function (_Symbol$iterator3) 
   }]);
   return Quaternion;
 }(Symbol.iterator);
-var Vector3 = exports.Vector3 = /*#__PURE__*/function (_Symbol$iterator4) {
-  function Vector3() {
-    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    var z = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+exports.Quaternion = Quaternion;
+var Vector3 = /*#__PURE__*/function (_Symbol$iterator4) {
+  function Vector3(x = 0, y = 0, z = 0) {
     _classCallCheck(this, Vector3);
     Vector3.prototype.isVector3 = true;
     this.x = x;
@@ -3835,8 +3987,7 @@ var Vector3 = exports.Vector3 = /*#__PURE__*/function (_Symbol$iterator4) {
     }
   }, {
     key: "fromArray",
-    value: function fromArray(array) {
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function fromArray(array, offset = 0) {
       this.x = array[offset];
       this.y = array[offset + 1];
       this.z = array[offset + 2];
@@ -3844,9 +3995,7 @@ var Vector3 = exports.Vector3 = /*#__PURE__*/function (_Symbol$iterator4) {
     }
   }, {
     key: "toArray",
-    value: function toArray() {
-      var array = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function toArray(array = [], offset = 0) {
       array[offset] = this.x;
       array[offset + 1] = this.y;
       array[offset + 2] = this.z;
@@ -3904,12 +4053,11 @@ var Vector3 = exports.Vector3 = /*#__PURE__*/function (_Symbol$iterator4) {
   }]);
   return Vector3;
 }(Symbol.iterator);
+exports.Vector3 = Vector3;
 var _vector$c = /*@__PURE__*/new Vector3();
 var _quaternion$4 = /*@__PURE__*/new Quaternion();
-var Box3 = exports.Box3 = /*#__PURE__*/function () {
-  function Box3() {
-    var min = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector3(+Infinity, +Infinity, +Infinity);
-    var max = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3(-Infinity, -Infinity, -Infinity);
+var Box3 = /*#__PURE__*/function () {
+  function Box3(min = new Vector3(+Infinity, +Infinity, +Infinity), max = new Vector3(-Infinity, -Infinity, -Infinity)) {
     _classCallCheck(this, Box3);
     this.isBox3 = true;
     this.min = min;
@@ -3959,8 +4107,7 @@ var Box3 = exports.Box3 = /*#__PURE__*/function () {
     }
   }, {
     key: "setFromObject",
-    value: function setFromObject(object) {
-      var precise = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    value: function setFromObject(object, precise = false) {
       this.makeEmpty();
       return this.expandByObject(object, precise);
     }
@@ -4023,8 +4170,7 @@ var Box3 = exports.Box3 = /*#__PURE__*/function () {
     }
   }, {
     key: "expandByObject",
-    value: function expandByObject(object) {
-      var precise = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    value: function expandByObject(object, precise = false) {
       // Computes the world-axis-aligned bounding box of an object (including its children),
       // accounting for both the object's, and children's, world transforms
 
@@ -4248,6 +4394,7 @@ var Box3 = exports.Box3 = /*#__PURE__*/function () {
   }]);
   return Box3;
 }();
+exports.Box3 = Box3;
 var _points = [/*@__PURE__*/new Vector3(), /*@__PURE__*/new Vector3(), /*@__PURE__*/new Vector3(), /*@__PURE__*/new Vector3(), /*@__PURE__*/new Vector3(), /*@__PURE__*/new Vector3(), /*@__PURE__*/new Vector3(), /*@__PURE__*/new Vector3()];
 var _vector$b = /*@__PURE__*/new Vector3();
 var _box$4 = /*@__PURE__*/new Box3();
@@ -4288,10 +4435,8 @@ function satForAxes(axes, v0, v1, v2, extents) {
 var _box$3 = /*@__PURE__*/new Box3();
 var _v1$6 = /*@__PURE__*/new Vector3();
 var _v2$3 = /*@__PURE__*/new Vector3();
-var Sphere = exports.Sphere = /*#__PURE__*/function () {
-  function Sphere() {
-    var center = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector3();
-    var radius = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
+var Sphere = /*#__PURE__*/function () {
+  function Sphere(center = new Vector3(), radius = -1) {
     _classCallCheck(this, Sphere);
     this.center = center;
     this.radius = radius;
@@ -4452,6 +4597,7 @@ var Sphere = exports.Sphere = /*#__PURE__*/function () {
   }]);
   return Sphere;
 }();
+exports.Sphere = Sphere;
 var _vector$a = /*@__PURE__*/new Vector3();
 var _segCenter = /*@__PURE__*/new Vector3();
 var _segDir = /*@__PURE__*/new Vector3();
@@ -4459,10 +4605,8 @@ var _diff = /*@__PURE__*/new Vector3();
 var _edge1 = /*@__PURE__*/new Vector3();
 var _edge2 = /*@__PURE__*/new Vector3();
 var _normal$1 = /*@__PURE__*/new Vector3();
-var Ray = exports.Ray = /*#__PURE__*/function () {
-  function Ray() {
-    var origin = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector3();
-    var direction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3(0, 0, -1);
+var Ray = /*#__PURE__*/function () {
+  function Ray(origin = new Vector3(), direction = new Vector3(0, 0, -1)) {
     _classCallCheck(this, Ray);
     this.origin = origin;
     this.direction = direction;
@@ -4814,7 +4958,8 @@ var Ray = exports.Ray = /*#__PURE__*/function () {
   }]);
   return Ray;
 }();
-var Matrix4 = exports.Matrix4 = /*#__PURE__*/function () {
+exports.Ray = Ray;
+var Matrix4 = /*#__PURE__*/function () {
   function Matrix4(n11, n12, n13, n14, n21, n22, n23, n24, n31, n32, n33, n34, n41, n42, n43, n44) {
     _classCallCheck(this, Matrix4);
     Matrix4.prototype.isMatrix4 = true;
@@ -5460,8 +5605,7 @@ var Matrix4 = exports.Matrix4 = /*#__PURE__*/function () {
     }
   }, {
     key: "makePerspective",
-    value: function makePerspective(left, right, top, bottom, near, far) {
-      var coordinateSystem = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : WebGLCoordinateSystem;
+    value: function makePerspective(left, right, top, bottom, near, far, coordinateSystem = WebGLCoordinateSystem) {
       var te = this.elements;
       var x = 2 * near / (right - left);
       var y = 2 * near / (top - bottom);
@@ -5497,8 +5641,7 @@ var Matrix4 = exports.Matrix4 = /*#__PURE__*/function () {
     }
   }, {
     key: "makeOrthographic",
-    value: function makeOrthographic(left, right, top, bottom, near, far) {
-      var coordinateSystem = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : WebGLCoordinateSystem;
+    value: function makeOrthographic(left, right, top, bottom, near, far, coordinateSystem = WebGLCoordinateSystem) {
       var te = this.elements;
       var w = 1.0 / (right - left);
       var h = 1.0 / (top - bottom);
@@ -5545,8 +5688,7 @@ var Matrix4 = exports.Matrix4 = /*#__PURE__*/function () {
     }
   }, {
     key: "fromArray",
-    value: function fromArray(array) {
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function fromArray(array, offset = 0) {
       for (var i = 0; i < 16; i++) {
         this.elements[i] = array[i + offset];
       }
@@ -5554,9 +5696,7 @@ var Matrix4 = exports.Matrix4 = /*#__PURE__*/function () {
     }
   }, {
     key: "toArray",
-    value: function toArray() {
-      var array = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function toArray(array = [], offset = 0) {
       var te = this.elements;
       array[offset] = te[0];
       array[offset + 1] = te[1];
@@ -5579,6 +5719,7 @@ var Matrix4 = exports.Matrix4 = /*#__PURE__*/function () {
   }]);
   return Matrix4;
 }();
+exports.Matrix4 = Matrix4;
 var _v1$5 = /*@__PURE__*/new Vector3();
 var _m1$2 = /*@__PURE__*/new Matrix4();
 var _zero = /*@__PURE__*/new Vector3(0, 0, 0);
@@ -5588,12 +5729,8 @@ var _y = /*@__PURE__*/new Vector3();
 var _z = /*@__PURE__*/new Vector3();
 var _matrix$1 = /*@__PURE__*/new Matrix4();
 var _quaternion$3 = /*@__PURE__*/new Quaternion();
-var Euler = exports.Euler = /*#__PURE__*/function (_Symbol$iterator5) {
-  function Euler() {
-    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    var z = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-    var order = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : Euler.DEFAULT_ORDER;
+var Euler = /*#__PURE__*/function (_Symbol$iterator5) {
+  function Euler(x = 0, y = 0, z = 0, order = Euler.DEFAULT_ORDER) {
     _classCallCheck(this, Euler);
     this.isEuler = true;
     this._x = x;
@@ -5639,8 +5776,7 @@ var Euler = exports.Euler = /*#__PURE__*/function (_Symbol$iterator5) {
     }
   }, {
     key: "set",
-    value: function set(x, y, z) {
-      var order = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : this._order;
+    value: function set(x, y, z, order = this._order) {
       this._x = x;
       this._y = y;
       this._z = z;
@@ -5665,9 +5801,7 @@ var Euler = exports.Euler = /*#__PURE__*/function (_Symbol$iterator5) {
     }
   }, {
     key: "setFromRotationMatrix",
-    value: function setFromRotationMatrix(m) {
-      var order = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this._order;
-      var update = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    value: function setFromRotationMatrix(m, order = this._order, update = true) {
       // assumes the upper 3x3 of m is a pure rotation matrix (i.e, unscaled)
 
       var te = m.elements;
@@ -5756,8 +5890,7 @@ var Euler = exports.Euler = /*#__PURE__*/function (_Symbol$iterator5) {
     }
   }, {
     key: "setFromVector3",
-    value: function setFromVector3(v) {
-      var order = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this._order;
+    value: function setFromVector3(v, order = this._order) {
       return this.set(v.x, v.y, v.z, order);
     }
   }, {
@@ -5785,9 +5918,7 @@ var Euler = exports.Euler = /*#__PURE__*/function (_Symbol$iterator5) {
     }
   }, {
     key: "toArray",
-    value: function toArray() {
-      var array = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function toArray(array = [], offset = 0) {
       array[offset] = this._x;
       array[offset + 1] = this._y;
       array[offset + 2] = this._z;
@@ -5829,8 +5960,9 @@ var Euler = exports.Euler = /*#__PURE__*/function (_Symbol$iterator5) {
   }]);
   return Euler;
 }(Symbol.iterator);
+exports.Euler = Euler;
 Euler.DEFAULT_ORDER = 'XYZ';
-var Layers = exports.Layers = /*#__PURE__*/function () {
+var Layers = /*#__PURE__*/function () {
   function Layers() {
     _classCallCheck(this, Layers);
     this.mask = 1 | 0;
@@ -5878,6 +6010,7 @@ var Layers = exports.Layers = /*#__PURE__*/function () {
   }]);
   return Layers;
 }();
+exports.Layers = Layers;
 var _object3DId = 0;
 var _v1$4 = /*@__PURE__*/new Vector3();
 var _q1 = /*@__PURE__*/new Quaternion();
@@ -5895,7 +6028,7 @@ var _addedEvent = {
 var _removedEvent = {
   type: 'removed'
 };
-var Object3D = exports.Object3D = /*#__PURE__*/function (_EventDispatcher3) {
+var Object3D = /*#__PURE__*/function (_EventDispatcher3) {
   _inherits(Object3D, _EventDispatcher3);
   var _super9 = _createSuper(Object3D);
   function Object3D() {
@@ -6215,8 +6348,7 @@ var Object3D = exports.Object3D = /*#__PURE__*/function (_EventDispatcher3) {
     }
   }, {
     key: "getObjectsByProperty",
-    value: function getObjectsByProperty(name, value) {
-      var result = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    value: function getObjectsByProperty(name, value, result = []) {
       if (this[name] === value) result.push(this);
       var children = this.children;
       for (var i = 0, l = children.length; i < l; i++) {
@@ -6543,8 +6675,7 @@ var Object3D = exports.Object3D = /*#__PURE__*/function (_EventDispatcher3) {
     }
   }, {
     key: "copy",
-    value: function copy(source) {
-      var recursive = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+    value: function copy(source, recursive = true) {
       this.name = source.name;
       this.up.copy(source.up);
       this.position.copy(source.position);
@@ -6575,6 +6706,7 @@ var Object3D = exports.Object3D = /*#__PURE__*/function (_EventDispatcher3) {
   }]);
   return Object3D;
 }(EventDispatcher);
+exports.Object3D = Object3D;
 Object3D.DEFAULT_UP = /*@__PURE__*/new Vector3(0, 1, 0);
 Object3D.DEFAULT_MATRIX_AUTO_UPDATE = true;
 Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE = true;
@@ -6589,11 +6721,8 @@ var _vap = /*@__PURE__*/new Vector3();
 var _vbp = /*@__PURE__*/new Vector3();
 var _vcp = /*@__PURE__*/new Vector3();
 var warnedGetUV = false;
-var Triangle = exports.Triangle = /*#__PURE__*/function () {
-  function Triangle() {
-    var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector3();
-    var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3();
-    var c = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : new Vector3();
+var Triangle = /*#__PURE__*/function () {
+  function Triangle(a = new Vector3(), b = new Vector3(), c = new Vector3()) {
     _classCallCheck(this, Triangle);
     this.a = a;
     this.b = b;
@@ -6843,6 +6972,7 @@ var Triangle = exports.Triangle = /*#__PURE__*/function () {
   }]);
   return Triangle;
 }();
+exports.Triangle = Triangle;
 var _colorKeywords = {
   'aliceblue': 0xF0F8FF,
   'antiquewhite': 0xFAEBD7,
@@ -7011,7 +7141,7 @@ function hue2rgb(p, q, t) {
   if (t < 2 / 3) return p + (q - p) * 6 * (2 / 3 - t);
   return p;
 }
-var Color = exports.Color = /*#__PURE__*/function (_Symbol$iterator6) {
+var Color = /*#__PURE__*/function (_Symbol$iterator6) {
   function Color(r, g, b) {
     _classCallCheck(this, Color);
     this.isColor = true;
@@ -7049,8 +7179,7 @@ var Color = exports.Color = /*#__PURE__*/function (_Symbol$iterator6) {
     }
   }, {
     key: "setHex",
-    value: function setHex(hex) {
-      var colorSpace = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : SRGBColorSpace;
+    value: function setHex(hex, colorSpace = SRGBColorSpace) {
       hex = Math.floor(hex);
       this.r = (hex >> 16 & 255) / 255;
       this.g = (hex >> 8 & 255) / 255;
@@ -7060,8 +7189,7 @@ var Color = exports.Color = /*#__PURE__*/function (_Symbol$iterator6) {
     }
   }, {
     key: "setRGB",
-    value: function setRGB(r, g, b) {
-      var colorSpace = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : ColorManagement.workingColorSpace;
+    value: function setRGB(r, g, b, colorSpace = ColorManagement.workingColorSpace) {
       this.r = r;
       this.g = g;
       this.b = b;
@@ -7070,8 +7198,7 @@ var Color = exports.Color = /*#__PURE__*/function (_Symbol$iterator6) {
     }
   }, {
     key: "setHSL",
-    value: function setHSL(h, s, l) {
-      var colorSpace = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : ColorManagement.workingColorSpace;
+    value: function setHSL(h, s, l, colorSpace = ColorManagement.workingColorSpace) {
       // h,s,l ranges are in 0.0 - 1.0
       h = euclideanModulo(h, 1);
       s = clamp(s, 0, 1);
@@ -7090,8 +7217,7 @@ var Color = exports.Color = /*#__PURE__*/function (_Symbol$iterator6) {
     }
   }, {
     key: "setStyle",
-    value: function setStyle(style) {
-      var colorSpace = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : SRGBColorSpace;
+    value: function setStyle(style, colorSpace = SRGBColorSpace) {
       function handleAlpha(string) {
         if (string === undefined) return;
         if (parseFloat(string) < 1) {
@@ -7154,8 +7280,7 @@ var Color = exports.Color = /*#__PURE__*/function (_Symbol$iterator6) {
     }
   }, {
     key: "setColorName",
-    value: function setColorName(style) {
-      var colorSpace = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : SRGBColorSpace;
+    value: function setColorName(style, colorSpace = SRGBColorSpace) {
       // color keywords
       var hex = _colorKeywords[style.toLowerCase()];
       if (hex !== undefined) {
@@ -7210,21 +7335,18 @@ var Color = exports.Color = /*#__PURE__*/function (_Symbol$iterator6) {
     }
   }, {
     key: "getHex",
-    value: function getHex() {
-      var colorSpace = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : SRGBColorSpace;
+    value: function getHex(colorSpace = SRGBColorSpace) {
       ColorManagement.fromWorkingColorSpace(_color.copy(this), colorSpace);
       return Math.round(clamp(_color.r * 255, 0, 255)) * 65536 + Math.round(clamp(_color.g * 255, 0, 255)) * 256 + Math.round(clamp(_color.b * 255, 0, 255));
     }
   }, {
     key: "getHexString",
-    value: function getHexString() {
-      var colorSpace = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : SRGBColorSpace;
+    value: function getHexString(colorSpace = SRGBColorSpace) {
       return ('000000' + this.getHex(colorSpace).toString(16)).slice(-6);
     }
   }, {
     key: "getHSL",
-    value: function getHSL(target) {
-      var colorSpace = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ColorManagement.workingColorSpace;
+    value: function getHSL(target, colorSpace = ColorManagement.workingColorSpace) {
       // h,s,l ranges are in 0.0 - 1.0
 
       ColorManagement.fromWorkingColorSpace(_color.copy(this), colorSpace);
@@ -7261,8 +7383,7 @@ var Color = exports.Color = /*#__PURE__*/function (_Symbol$iterator6) {
     }
   }, {
     key: "getRGB",
-    value: function getRGB(target) {
-      var colorSpace = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ColorManagement.workingColorSpace;
+    value: function getRGB(target, colorSpace = ColorManagement.workingColorSpace) {
       ColorManagement.fromWorkingColorSpace(_color.copy(this), colorSpace);
       target.r = _color.r;
       target.g = _color.g;
@@ -7271,8 +7392,7 @@ var Color = exports.Color = /*#__PURE__*/function (_Symbol$iterator6) {
     }
   }, {
     key: "getStyle",
-    value: function getStyle() {
-      var colorSpace = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : SRGBColorSpace;
+    value: function getStyle(colorSpace = SRGBColorSpace) {
       ColorManagement.fromWorkingColorSpace(_color.copy(this), colorSpace);
       var r = _color.r,
         g = _color.g,
@@ -7391,8 +7511,7 @@ var Color = exports.Color = /*#__PURE__*/function (_Symbol$iterator6) {
     }
   }, {
     key: "fromArray",
-    value: function fromArray(array) {
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function fromArray(array, offset = 0) {
       this.r = array[offset];
       this.g = array[offset + 1];
       this.b = array[offset + 2];
@@ -7400,9 +7519,7 @@ var Color = exports.Color = /*#__PURE__*/function (_Symbol$iterator6) {
     }
   }, {
     key: "toArray",
-    value: function toArray() {
-      var array = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function toArray(array = [], offset = 0) {
       array[offset] = this.r;
       array[offset + 1] = this.g;
       array[offset + 2] = this.b;
@@ -7444,10 +7561,11 @@ var Color = exports.Color = /*#__PURE__*/function (_Symbol$iterator6) {
   }]);
   return Color;
 }(Symbol.iterator);
+exports.Color = Color;
 var _color = /*@__PURE__*/new Color();
 Color.NAMES = _colorKeywords;
 var _materialId = 0;
-var Material = exports.Material = /*#__PURE__*/function (_EventDispatcher4) {
+var Material = /*#__PURE__*/function (_EventDispatcher4) {
   _inherits(Material, _EventDispatcher4);
   var _super10 = _createSuper(Material);
   function Material() {
@@ -7813,7 +7931,8 @@ var Material = exports.Material = /*#__PURE__*/function (_EventDispatcher4) {
   }]);
   return Material;
 }(EventDispatcher);
-var MeshBasicMaterial = exports.MeshBasicMaterial = /*#__PURE__*/function (_Material) {
+exports.Material = Material;
+var MeshBasicMaterial = /*#__PURE__*/function (_Material) {
   _inherits(MeshBasicMaterial, _Material);
   var _super11 = _createSuper(MeshBasicMaterial);
   function MeshBasicMaterial(parameters) {
@@ -7869,6 +7988,7 @@ var MeshBasicMaterial = exports.MeshBasicMaterial = /*#__PURE__*/function (_Mate
   }]);
   return MeshBasicMaterial;
 }(Material); // Fast Half Float Conversions, http://www.fox-toolkit.org/ftp/fasthalffloatconversion.pdf
+exports.MeshBasicMaterial = MeshBasicMaterial;
 var _tables = /*@__PURE__*/_generateTables();
 function _generateTables() {
   // float32 to float16 helpers
@@ -7933,6 +8053,7 @@ function _generateTables() {
       m <<= 1;
       _e -= 0x00800000; // decrement exponent
     }
+
     m &= ~0x00800000; // clear leading 1 bit
     _e += 0x38800000; // adjust bias
 
@@ -7984,15 +8105,15 @@ function fromHalfFloat(val) {
   _tables.uint32View[0] = _tables.mantissaTable[_tables.offsetTable[m] + (val & 0x3ff)] + _tables.exponentTable[m];
   return _tables.floatView[0];
 }
-var DataUtils = exports.DataUtils = {
+var DataUtils = {
   toHalfFloat: toHalfFloat,
   fromHalfFloat: fromHalfFloat
 };
+exports.DataUtils = DataUtils;
 var _vector$9 = /*@__PURE__*/new Vector3();
 var _vector2$1 = /*@__PURE__*/new Vector2();
-var BufferAttribute = exports.BufferAttribute = /*#__PURE__*/function () {
-  function BufferAttribute(array, itemSize) {
-    var normalized = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+var BufferAttribute = /*#__PURE__*/function () {
+  function BufferAttribute(array, itemSize, normalized = false) {
     _classCallCheck(this, BufferAttribute);
     if (Array.isArray(array)) {
       throw new TypeError('THREE.BufferAttribute: array should be a Typed Array.');
@@ -8123,8 +8244,7 @@ var BufferAttribute = exports.BufferAttribute = /*#__PURE__*/function () {
     }
   }, {
     key: "set",
-    value: function set(value) {
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function set(value, offset = 0) {
       // Matching BufferAttribute constructor, do not normalize the array.
       this.array.set(value, offset);
       return this;
@@ -8268,7 +8388,8 @@ var BufferAttribute = exports.BufferAttribute = /*#__PURE__*/function () {
   }]);
   return BufferAttribute;
 }(); //
-var Int8BufferAttribute = exports.Int8BufferAttribute = /*#__PURE__*/function (_BufferAttribute) {
+exports.BufferAttribute = BufferAttribute;
+var Int8BufferAttribute = /*#__PURE__*/function (_BufferAttribute) {
   _inherits(Int8BufferAttribute, _BufferAttribute);
   var _super12 = _createSuper(Int8BufferAttribute);
   function Int8BufferAttribute(array, itemSize, normalized) {
@@ -8277,7 +8398,8 @@ var Int8BufferAttribute = exports.Int8BufferAttribute = /*#__PURE__*/function (_
   }
   return _createClass(Int8BufferAttribute);
 }(BufferAttribute);
-var Uint8BufferAttribute = exports.Uint8BufferAttribute = /*#__PURE__*/function (_BufferAttribute2) {
+exports.Int8BufferAttribute = Int8BufferAttribute;
+var Uint8BufferAttribute = /*#__PURE__*/function (_BufferAttribute2) {
   _inherits(Uint8BufferAttribute, _BufferAttribute2);
   var _super13 = _createSuper(Uint8BufferAttribute);
   function Uint8BufferAttribute(array, itemSize, normalized) {
@@ -8286,7 +8408,8 @@ var Uint8BufferAttribute = exports.Uint8BufferAttribute = /*#__PURE__*/function 
   }
   return _createClass(Uint8BufferAttribute);
 }(BufferAttribute);
-var Uint8ClampedBufferAttribute = exports.Uint8ClampedBufferAttribute = /*#__PURE__*/function (_BufferAttribute3) {
+exports.Uint8BufferAttribute = Uint8BufferAttribute;
+var Uint8ClampedBufferAttribute = /*#__PURE__*/function (_BufferAttribute3) {
   _inherits(Uint8ClampedBufferAttribute, _BufferAttribute3);
   var _super14 = _createSuper(Uint8ClampedBufferAttribute);
   function Uint8ClampedBufferAttribute(array, itemSize, normalized) {
@@ -8295,7 +8418,8 @@ var Uint8ClampedBufferAttribute = exports.Uint8ClampedBufferAttribute = /*#__PUR
   }
   return _createClass(Uint8ClampedBufferAttribute);
 }(BufferAttribute);
-var Int16BufferAttribute = exports.Int16BufferAttribute = /*#__PURE__*/function (_BufferAttribute4) {
+exports.Uint8ClampedBufferAttribute = Uint8ClampedBufferAttribute;
+var Int16BufferAttribute = /*#__PURE__*/function (_BufferAttribute4) {
   _inherits(Int16BufferAttribute, _BufferAttribute4);
   var _super15 = _createSuper(Int16BufferAttribute);
   function Int16BufferAttribute(array, itemSize, normalized) {
@@ -8304,7 +8428,8 @@ var Int16BufferAttribute = exports.Int16BufferAttribute = /*#__PURE__*/function 
   }
   return _createClass(Int16BufferAttribute);
 }(BufferAttribute);
-var Uint16BufferAttribute = exports.Uint16BufferAttribute = /*#__PURE__*/function (_BufferAttribute5) {
+exports.Int16BufferAttribute = Int16BufferAttribute;
+var Uint16BufferAttribute = /*#__PURE__*/function (_BufferAttribute5) {
   _inherits(Uint16BufferAttribute, _BufferAttribute5);
   var _super16 = _createSuper(Uint16BufferAttribute);
   function Uint16BufferAttribute(array, itemSize, normalized) {
@@ -8313,7 +8438,8 @@ var Uint16BufferAttribute = exports.Uint16BufferAttribute = /*#__PURE__*/functio
   }
   return _createClass(Uint16BufferAttribute);
 }(BufferAttribute);
-var Int32BufferAttribute = exports.Int32BufferAttribute = /*#__PURE__*/function (_BufferAttribute6) {
+exports.Uint16BufferAttribute = Uint16BufferAttribute;
+var Int32BufferAttribute = /*#__PURE__*/function (_BufferAttribute6) {
   _inherits(Int32BufferAttribute, _BufferAttribute6);
   var _super17 = _createSuper(Int32BufferAttribute);
   function Int32BufferAttribute(array, itemSize, normalized) {
@@ -8322,7 +8448,8 @@ var Int32BufferAttribute = exports.Int32BufferAttribute = /*#__PURE__*/function 
   }
   return _createClass(Int32BufferAttribute);
 }(BufferAttribute);
-var Uint32BufferAttribute = exports.Uint32BufferAttribute = /*#__PURE__*/function (_BufferAttribute7) {
+exports.Int32BufferAttribute = Int32BufferAttribute;
+var Uint32BufferAttribute = /*#__PURE__*/function (_BufferAttribute7) {
   _inherits(Uint32BufferAttribute, _BufferAttribute7);
   var _super18 = _createSuper(Uint32BufferAttribute);
   function Uint32BufferAttribute(array, itemSize, normalized) {
@@ -8331,7 +8458,8 @@ var Uint32BufferAttribute = exports.Uint32BufferAttribute = /*#__PURE__*/functio
   }
   return _createClass(Uint32BufferAttribute);
 }(BufferAttribute);
-var Float16BufferAttribute = exports.Float16BufferAttribute = /*#__PURE__*/function (_BufferAttribute8) {
+exports.Uint32BufferAttribute = Uint32BufferAttribute;
+var Float16BufferAttribute = /*#__PURE__*/function (_BufferAttribute8) {
   _inherits(Float16BufferAttribute, _BufferAttribute8);
   var _super19 = _createSuper(Float16BufferAttribute);
   function Float16BufferAttribute(array, itemSize, normalized) {
@@ -8442,7 +8570,8 @@ var Float16BufferAttribute = exports.Float16BufferAttribute = /*#__PURE__*/funct
   }]);
   return Float16BufferAttribute;
 }(BufferAttribute);
-var Float32BufferAttribute = exports.Float32BufferAttribute = /*#__PURE__*/function (_BufferAttribute9) {
+exports.Float16BufferAttribute = Float16BufferAttribute;
+var Float32BufferAttribute = /*#__PURE__*/function (_BufferAttribute9) {
   _inherits(Float32BufferAttribute, _BufferAttribute9);
   var _super20 = _createSuper(Float32BufferAttribute);
   function Float32BufferAttribute(array, itemSize, normalized) {
@@ -8451,7 +8580,8 @@ var Float32BufferAttribute = exports.Float32BufferAttribute = /*#__PURE__*/funct
   }
   return _createClass(Float32BufferAttribute);
 }(BufferAttribute);
-var Float64BufferAttribute = exports.Float64BufferAttribute = /*#__PURE__*/function (_BufferAttribute10) {
+exports.Float32BufferAttribute = Float32BufferAttribute;
+var Float64BufferAttribute = /*#__PURE__*/function (_BufferAttribute10) {
   _inherits(Float64BufferAttribute, _BufferAttribute10);
   var _super21 = _createSuper(Float64BufferAttribute);
   function Float64BufferAttribute(array, itemSize, normalized) {
@@ -8460,6 +8590,7 @@ var Float64BufferAttribute = exports.Float64BufferAttribute = /*#__PURE__*/funct
   }
   return _createClass(Float64BufferAttribute);
 }(BufferAttribute);
+exports.Float64BufferAttribute = Float64BufferAttribute;
 var _id$2 = 0;
 var _m1 = /*@__PURE__*/new Matrix4();
 var _obj = /*@__PURE__*/new Object3D();
@@ -8467,7 +8598,7 @@ var _offset = /*@__PURE__*/new Vector3();
 var _box$2 = /*@__PURE__*/new Box3();
 var _boxMorphTargets = /*@__PURE__*/new Box3();
 var _vector$8 = /*@__PURE__*/new Vector3();
-var BufferGeometry = exports.BufferGeometry = /*#__PURE__*/function (_EventDispatcher5) {
+var BufferGeometry = /*#__PURE__*/function (_EventDispatcher5) {
   _inherits(BufferGeometry, _EventDispatcher5);
   var _super22 = _createSuper(BufferGeometry);
   function BufferGeometry() {
@@ -8534,8 +8665,7 @@ var BufferGeometry = exports.BufferGeometry = /*#__PURE__*/function (_EventDispa
     }
   }, {
     key: "addGroup",
-    value: function addGroup(start, count) {
-      var materialIndex = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    value: function addGroup(start, count, materialIndex = 0) {
       this.groups.push({
         start: start,
         count: count,
@@ -9192,6 +9322,7 @@ var BufferGeometry = exports.BufferGeometry = /*#__PURE__*/function (_EventDispa
   }]);
   return BufferGeometry;
 }(EventDispatcher);
+exports.BufferGeometry = BufferGeometry;
 var _inverseMatrix$3 = /*@__PURE__*/new Matrix4();
 var _ray$3 = /*@__PURE__*/new Ray();
 var _sphere$6 = /*@__PURE__*/new Sphere();
@@ -9209,13 +9340,11 @@ var _normalB = /*@__PURE__*/new Vector3();
 var _normalC = /*@__PURE__*/new Vector3();
 var _intersectionPoint = /*@__PURE__*/new Vector3();
 var _intersectionPointWorld = /*@__PURE__*/new Vector3();
-var Mesh = exports.Mesh = /*#__PURE__*/function (_Object3D) {
+var Mesh = /*#__PURE__*/function (_Object3D) {
   _inherits(Mesh, _Object3D);
   var _super23 = _createSuper(Mesh);
-  function Mesh() {
+  function Mesh(geometry = new BufferGeometry(), material = new MeshBasicMaterial()) {
     var _this15;
-    var geometry = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new BufferGeometry();
-    var material = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new MeshBasicMaterial();
     _classCallCheck(this, Mesh);
     _this15 = _super23.call(this);
     _this15.isMesh = true;
@@ -9409,6 +9538,7 @@ var Mesh = exports.Mesh = /*#__PURE__*/function (_Object3D) {
   }]);
   return Mesh;
 }(Object3D);
+exports.Mesh = Mesh;
 function checkIntersection(object, material, raycaster, ray, pA, pB, pC, point) {
   var intersect;
   if (material.side === BackSide) {
@@ -9446,6 +9576,7 @@ function checkGeometryIntersection(object, material, raycaster, ray, uv, uv1, no
       intersection.uv1 = Triangle.getInterpolation(_intersectionPoint, _vA$1, _vB$1, _vC$1, _uvA$1, _uvB$1, _uvC$1, new Vector2());
       intersection.uv2 = intersection.uv1; // @deprecated, r152
     }
+
     if (normal) {
       _normalA.fromBufferAttribute(normal, a);
       _normalB.fromBufferAttribute(normal, b);
@@ -9467,17 +9598,11 @@ function checkGeometryIntersection(object, material, raycaster, ray, uv, uv1, no
   }
   return intersection;
 }
-var BoxGeometry = exports.BoxGeometry = /*#__PURE__*/function (_BufferGeometry) {
+var BoxGeometry = /*#__PURE__*/function (_BufferGeometry) {
   _inherits(BoxGeometry, _BufferGeometry);
   var _super24 = _createSuper(BoxGeometry);
-  function BoxGeometry() {
+  function BoxGeometry(width = 1, height = 1, depth = 1, widthSegments = 1, heightSegments = 1, depthSegments = 1) {
     var _this16;
-    var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var depth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var widthSegments = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
-    var heightSegments = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
-    var depthSegments = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 1;
     _classCallCheck(this, BoxGeometry);
     _this16 = _super24.call(this);
     _this16.type = 'BoxGeometry';
@@ -9630,6 +9755,7 @@ var BoxGeometry = exports.BoxGeometry = /*#__PURE__*/function (_BufferGeometry) 
 /**
  * Uniform Utilities
  */
+exports.BoxGeometry = BoxGeometry;
 function cloneUniforms(src) {
   var dst = {};
   for (var u in src) {
@@ -9679,13 +9805,14 @@ function getUnlitUniformColorSpace(renderer) {
 
 // Legacy
 
-var UniformsUtils = exports.UniformsUtils = {
+var UniformsUtils = {
   clone: cloneUniforms,
   merge: mergeUniforms
 };
+exports.UniformsUtils = UniformsUtils;
 var default_vertex = "void main() {\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n}";
 var default_fragment = "void main() {\n\tgl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 );\n}";
-var ShaderMaterial = exports.ShaderMaterial = /*#__PURE__*/function (_Material2) {
+var ShaderMaterial = /*#__PURE__*/function (_Material2) {
   _inherits(ShaderMaterial, _Material2);
   var _super25 = _createSuper(ShaderMaterial);
   function ShaderMaterial(parameters) {
@@ -9802,6 +9929,7 @@ var ShaderMaterial = exports.ShaderMaterial = /*#__PURE__*/function (_Material2)
           // note: the array variants v2v, v3v, v4v, m4v and tv are not supported so far
         }
       }
+
       if (Object.keys(this.defines).length > 0) data.defines = this.defines;
       data.vertexShader = this.vertexShader;
       data.fragmentShader = this.fragmentShader;
@@ -9817,7 +9945,8 @@ var ShaderMaterial = exports.ShaderMaterial = /*#__PURE__*/function (_Material2)
   }]);
   return ShaderMaterial;
 }(Material);
-var Camera = exports.Camera = /*#__PURE__*/function (_Object3D2) {
+exports.ShaderMaterial = ShaderMaterial;
+var Camera = /*#__PURE__*/function (_Object3D2) {
   _inherits(Camera, _Object3D2);
   var _super26 = _createSuper(Camera);
   function Camera() {
@@ -9867,15 +9996,12 @@ var Camera = exports.Camera = /*#__PURE__*/function (_Object3D2) {
   }]);
   return Camera;
 }(Object3D);
-var PerspectiveCamera = exports.PerspectiveCamera = /*#__PURE__*/function (_Camera) {
+exports.Camera = Camera;
+var PerspectiveCamera = /*#__PURE__*/function (_Camera) {
   _inherits(PerspectiveCamera, _Camera);
   var _super27 = _createSuper(PerspectiveCamera);
-  function PerspectiveCamera() {
+  function PerspectiveCamera(fov = 50, aspect = 1, near = 0.1, far = 2000) {
     var _this19;
-    var fov = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 50;
-    var aspect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var near = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.1;
-    var far = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 2000;
     _classCallCheck(this, PerspectiveCamera);
     _this19 = _super27.call(this);
     _this19.isPerspectiveCamera = true;
@@ -10060,9 +10186,10 @@ var PerspectiveCamera = exports.PerspectiveCamera = /*#__PURE__*/function (_Came
   }]);
   return PerspectiveCamera;
 }(Camera);
+exports.PerspectiveCamera = PerspectiveCamera;
 var fov = -90; // negative fov is not an error
 var aspect = 1;
-var CubeCamera = exports.CubeCamera = /*#__PURE__*/function (_Object3D3) {
+var CubeCamera = /*#__PURE__*/function (_Object3D3) {
   _inherits(CubeCamera, _Object3D3);
   var _super28 = _createSuper(CubeCamera);
   function CubeCamera(near, far, renderTarget) {
@@ -10208,7 +10335,8 @@ var CubeCamera = exports.CubeCamera = /*#__PURE__*/function (_Object3D3) {
   }]);
   return CubeCamera;
 }(Object3D);
-var CubeTexture = exports.CubeTexture = /*#__PURE__*/function (_Texture3) {
+exports.CubeCamera = CubeCamera;
+var CubeTexture = /*#__PURE__*/function (_Texture3) {
   _inherits(CubeTexture, _Texture3);
   var _super29 = _createSuper(CubeTexture);
   function CubeTexture(images, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, colorSpace) {
@@ -10232,13 +10360,12 @@ var CubeTexture = exports.CubeTexture = /*#__PURE__*/function (_Texture3) {
   }]);
   return CubeTexture;
 }(Texture);
-var WebGLCubeRenderTarget = exports.WebGLCubeRenderTarget = /*#__PURE__*/function (_WebGLRenderTarget4) {
+exports.CubeTexture = CubeTexture;
+var WebGLCubeRenderTarget = /*#__PURE__*/function (_WebGLRenderTarget4) {
   _inherits(WebGLCubeRenderTarget, _WebGLRenderTarget4);
   var _super30 = _createSuper(WebGLCubeRenderTarget);
-  function WebGLCubeRenderTarget() {
+  function WebGLCubeRenderTarget(size = 1, options = {}) {
     var _this22;
-    var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     _classCallCheck(this, WebGLCubeRenderTarget);
     _this22 = _super30.call(this, size, size, options);
     _this22.isWebGLCubeRenderTarget = true;
@@ -10320,13 +10447,12 @@ var WebGLCubeRenderTarget = exports.WebGLCubeRenderTarget = /*#__PURE__*/functio
   }]);
   return WebGLCubeRenderTarget;
 }(WebGLRenderTarget);
+exports.WebGLCubeRenderTarget = WebGLCubeRenderTarget;
 var _vector1 = /*@__PURE__*/new Vector3();
 var _vector2 = /*@__PURE__*/new Vector3();
 var _normalMatrix = /*@__PURE__*/new Matrix3();
-var Plane = exports.Plane = /*#__PURE__*/function () {
-  function Plane() {
-    var normal = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector3(1, 0, 0);
-    var constant = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+var Plane = /*#__PURE__*/function () {
+  function Plane(normal = new Vector3(1, 0, 0), constant = 0) {
     _classCallCheck(this, Plane);
     this.isPlane = true;
 
@@ -10477,16 +10603,11 @@ var Plane = exports.Plane = /*#__PURE__*/function () {
   }]);
   return Plane;
 }();
+exports.Plane = Plane;
 var _sphere$5 = /*@__PURE__*/new Sphere();
 var _vector$7 = /*@__PURE__*/new Vector3();
-var Frustum = exports.Frustum = /*#__PURE__*/function () {
-  function Frustum() {
-    var p0 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Plane();
-    var p1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Plane();
-    var p2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : new Plane();
-    var p3 = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : new Plane();
-    var p4 = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : new Plane();
-    var p5 = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : new Plane();
+var Frustum = /*#__PURE__*/function () {
+  function Frustum(p0 = new Plane(), p1 = new Plane(), p2 = new Plane(), p3 = new Plane(), p4 = new Plane(), p5 = new Plane()) {
     _classCallCheck(this, Frustum);
     this.planes = [p0, p1, p2, p3, p4, p5];
   }
@@ -10513,8 +10634,7 @@ var Frustum = exports.Frustum = /*#__PURE__*/function () {
     }
   }, {
     key: "setFromProjectionMatrix",
-    value: function setFromProjectionMatrix(m) {
-      var coordinateSystem = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : WebGLCoordinateSystem;
+    value: function setFromProjectionMatrix(m, coordinateSystem = WebGLCoordinateSystem) {
       var planes = this.planes;
       var me = m.elements;
       var me0 = me[0],
@@ -10619,6 +10739,7 @@ var Frustum = exports.Frustum = /*#__PURE__*/function () {
   }]);
   return Frustum;
 }();
+exports.Frustum = Frustum;
 function WebGLAnimation() {
   var context = null;
   var isAnimating = false;
@@ -10724,6 +10845,7 @@ function WebGLAttributes(gl, capabilities) {
       }
       updateRange.count = -1; // reset range
     }
+
     attribute.onUploadCallback();
   }
 
@@ -10772,15 +10894,11 @@ function WebGLAttributes(gl, capabilities) {
     update: update
   };
 }
-var PlaneGeometry = exports.PlaneGeometry = /*#__PURE__*/function (_BufferGeometry2) {
+var PlaneGeometry = /*#__PURE__*/function (_BufferGeometry2) {
   _inherits(PlaneGeometry, _BufferGeometry2);
   var _super31 = _createSuper(PlaneGeometry);
-  function PlaneGeometry() {
+  function PlaneGeometry(width = 1, height = 1, widthSegments = 1, heightSegments = 1) {
     var _this23;
-    var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var widthSegments = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var heightSegments = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
     _classCallCheck(this, PlaneGeometry);
     _this23 = _super31.call(this);
     _this23.type = 'PlaneGeometry';
@@ -10846,6 +10964,7 @@ var PlaneGeometry = exports.PlaneGeometry = /*#__PURE__*/function (_BufferGeomet
   }]);
   return PlaneGeometry;
 }(BufferGeometry);
+exports.PlaneGeometry = PlaneGeometry;
 var alphahash_fragment = "#ifdef USE_ALPHAHASH\n\tif ( diffuseColor.a < getAlphaHashThreshold( vPosition ) ) discard;\n#endif";
 var alphahash_pars_fragment = "#ifdef USE_ALPHAHASH\n\tconst float ALPHA_HASH_SCALE = 0.05;\n\tfloat hash2D( vec2 value ) {\n\t\treturn fract( 1.0e4 * sin( 17.0 * value.x + 0.1 * value.y ) * ( 0.1 + abs( sin( 13.0 * value.y + value.x ) ) ) );\n\t}\n\tfloat hash3D( vec3 value ) {\n\t\treturn hash2D( vec2( hash2D( value.xy ), value.z ) );\n\t}\n\tfloat getAlphaHashThreshold( vec3 position ) {\n\t\tfloat maxDeriv = max(\n\t\t\tlength( dFdx( position.xyz ) ),\n\t\t\tlength( dFdy( position.xyz ) )\n\t\t);\n\t\tfloat pixScale = 1.0 / ( ALPHA_HASH_SCALE * maxDeriv );\n\t\tvec2 pixScales = vec2(\n\t\t\texp2( floor( log2( pixScale ) ) ),\n\t\t\texp2( ceil( log2( pixScale ) ) )\n\t\t);\n\t\tvec2 alpha = vec2(\n\t\t\thash3D( floor( pixScales.x * position.xyz ) ),\n\t\t\thash3D( floor( pixScales.y * position.xyz ) )\n\t\t);\n\t\tfloat lerpFactor = fract( log2( pixScale ) );\n\t\tfloat x = ( 1.0 - lerpFactor ) * alpha.x + lerpFactor * alpha.y;\n\t\tfloat a = min( lerpFactor, 1.0 - lerpFactor );\n\t\tvec3 cases = vec3(\n\t\t\tx * x / ( 2.0 * a * ( 1.0 - a ) ),\n\t\t\t( x - 0.5 * a ) / ( 1.0 - a ),\n\t\t\t1.0 - ( ( 1.0 - x ) * ( 1.0 - x ) / ( 2.0 * a * ( 1.0 - a ) ) )\n\t\t);\n\t\tfloat threshold = ( x < ( 1.0 - a ) )\n\t\t\t? ( ( x < a ) ? cases.x : cases.y )\n\t\t\t: cases.z;\n\t\treturn clamp( threshold , 1.0e-6, 1.0 );\n\t}\n#endif";
 var alphamap_fragment = "#ifdef USE_ALPHAMAP\n\tdiffuseColor.a *= texture2D( alphaMap, vAlphaMapUv ).g;\n#endif";
@@ -10987,7 +11106,7 @@ var vertex$2 = "#include <common>\n#include <batching_pars_vertex>\n#include <fo
 var fragment$2 = "uniform vec3 color;\nuniform float opacity;\n#include <common>\n#include <packing>\n#include <fog_pars_fragment>\n#include <bsdfs>\n#include <lights_pars_begin>\n#include <logdepthbuf_pars_fragment>\n#include <shadowmap_pars_fragment>\n#include <shadowmask_pars_fragment>\nvoid main() {\n\t#include <logdepthbuf_fragment>\n\tgl_FragColor = vec4( color, opacity * ( 1.0 - getShadowMask() ) );\n\t#include <tonemapping_fragment>\n\t#include <colorspace_fragment>\n\t#include <fog_fragment>\n}";
 var vertex$1 = "uniform float rotation;\nuniform vec2 center;\n#include <common>\n#include <uv_pars_vertex>\n#include <fog_pars_vertex>\n#include <logdepthbuf_pars_vertex>\n#include <clipping_planes_pars_vertex>\nvoid main() {\n\t#include <uv_vertex>\n\tvec4 mvPosition = modelViewMatrix * vec4( 0.0, 0.0, 0.0, 1.0 );\n\tvec2 scale;\n\tscale.x = length( vec3( modelMatrix[ 0 ].x, modelMatrix[ 0 ].y, modelMatrix[ 0 ].z ) );\n\tscale.y = length( vec3( modelMatrix[ 1 ].x, modelMatrix[ 1 ].y, modelMatrix[ 1 ].z ) );\n\t#ifndef USE_SIZEATTENUATION\n\t\tbool isPerspective = isPerspectiveMatrix( projectionMatrix );\n\t\tif ( isPerspective ) scale *= - mvPosition.z;\n\t#endif\n\tvec2 alignedPosition = ( position.xy - ( center - vec2( 0.5 ) ) ) * scale;\n\tvec2 rotatedPosition;\n\trotatedPosition.x = cos( rotation ) * alignedPosition.x - sin( rotation ) * alignedPosition.y;\n\trotatedPosition.y = sin( rotation ) * alignedPosition.x + cos( rotation ) * alignedPosition.y;\n\tmvPosition.xy += rotatedPosition;\n\tgl_Position = projectionMatrix * mvPosition;\n\t#include <logdepthbuf_vertex>\n\t#include <clipping_planes_vertex>\n\t#include <fog_vertex>\n}";
 var fragment$1 = "uniform vec3 diffuse;\nuniform float opacity;\n#include <common>\n#include <uv_pars_fragment>\n#include <map_pars_fragment>\n#include <alphamap_pars_fragment>\n#include <alphatest_pars_fragment>\n#include <alphahash_pars_fragment>\n#include <fog_pars_fragment>\n#include <logdepthbuf_pars_fragment>\n#include <clipping_planes_pars_fragment>\nvoid main() {\n\t#include <clipping_planes_fragment>\n\tvec3 outgoingLight = vec3( 0.0 );\n\tvec4 diffuseColor = vec4( diffuse, opacity );\n\t#include <logdepthbuf_fragment>\n\t#include <map_fragment>\n\t#include <alphamap_fragment>\n\t#include <alphatest_fragment>\n\t#include <alphahash_fragment>\n\toutgoingLight = diffuseColor.rgb;\n\t#include <opaque_fragment>\n\t#include <tonemapping_fragment>\n\t#include <colorspace_fragment>\n\t#include <fog_fragment>\n}";
-var ShaderChunk = exports.ShaderChunk = {
+var ShaderChunk = {
   alphahash_fragment: alphahash_fragment,
   alphahash_pars_fragment: alphahash_pars_fragment,
   alphamap_fragment: alphamap_fragment,
@@ -11134,8 +11253,8 @@ var ShaderChunk = exports.ShaderChunk = {
 /**
  * Uniforms library for shared webgl shaders
  */
-
-var UniformsLib = exports.UniformsLib = {
+exports.ShaderChunk = ShaderChunk;
+var UniformsLib = {
   common: {
     diffuse: {
       value: /*@__PURE__*/new Color(0xffffff)
@@ -11186,6 +11305,7 @@ var UniformsLib = exports.UniformsLib = {
       value: 0.98
     } // basic, lambert, phong
   },
+
   aomap: {
     aoMap: {
       value: null
@@ -11456,7 +11576,8 @@ var UniformsLib = exports.UniformsLib = {
     }
   }
 };
-var ShaderLib = exports.ShaderLib = {
+exports.UniformsLib = UniformsLib;
+var ShaderLib = {
   basic: {
     uniforms: /*@__PURE__*/mergeUniforms([UniformsLib.common, UniformsLib.specularmap, UniformsLib.envmap, UniformsLib.aomap, UniformsLib.lightmap, UniformsLib.fog]),
     vertexShader: ShaderChunk.meshbasic_vert,
@@ -11501,6 +11622,7 @@ var ShaderLib = exports.ShaderLib = {
         value: 1
       } // temporary
     }]),
+
     vertexShader: ShaderChunk.meshphysical_vert,
     fragmentShader: ShaderChunk.meshphysical_frag
   },
@@ -11646,6 +11768,7 @@ var ShaderLib = exports.ShaderLib = {
     fragmentShader: ShaderChunk.shadow_frag
   }
 };
+exports.ShaderLib = ShaderLib;
 ShaderLib.physical = {
   uniforms: /*@__PURE__*/mergeUniforms([ShaderLib.standard.uniforms, {
     clearcoat: {
@@ -11906,8 +12029,7 @@ function WebGLBackground(renderer, cubemaps, cubeuvmaps, state, objects, alpha, 
     getClearColor: function getClearColor() {
       return clearColor;
     },
-    setClearColor: function setClearColor(color) {
-      var alpha = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    setClearColor: function setClearColor(color, alpha = 1) {
       clearColor.set(color);
       clearAlpha = alpha;
       setClear(clearColor, clearAlpha);
@@ -12531,17 +12653,11 @@ function WebGLCubeMaps(renderer) {
     dispose: dispose
   };
 }
-var OrthographicCamera = exports.OrthographicCamera = /*#__PURE__*/function (_Camera2) {
+var OrthographicCamera = /*#__PURE__*/function (_Camera2) {
   _inherits(OrthographicCamera, _Camera2);
   var _super32 = _createSuper(OrthographicCamera);
-  function OrthographicCamera() {
+  function OrthographicCamera(left = -1, right = 1, top = 1, bottom = -1, near = 0.1, far = 2000) {
     var _this24;
-    var left = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : -1;
-    var right = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var top = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var bottom = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : -1;
-    var near = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0.1;
-    var far = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 2000;
     _classCallCheck(this, OrthographicCamera);
     _this24 = _super32.call(this);
     _this24.isOrthographicCamera = true;
@@ -12641,6 +12757,7 @@ var OrthographicCamera = exports.OrthographicCamera = /*#__PURE__*/function (_Ca
   }]);
   return OrthographicCamera;
 }(Camera);
+exports.OrthographicCamera = OrthographicCamera;
 var LOD_MIN = 4;
 
 // The standard deviations (radians) associated with the extra mips. These are
@@ -12680,7 +12797,7 @@ var _axisDirections = [/*@__PURE__*/new Vector3(1, 1, 1), /*@__PURE__*/new Vecto
  * Paper: Fast, Accurate Image-Based Lighting
  * https://drive.google.com/file/d/15y8r_UpKlU9SvV4ILb0C3qCPecS8pvLz/view
 */
-var PMREMGenerator = exports.PMREMGenerator = /*#__PURE__*/function () {
+var PMREMGenerator = /*#__PURE__*/function () {
   function PMREMGenerator(renderer) {
     _classCallCheck(this, PMREMGenerator);
     this._renderer = renderer;
@@ -12705,10 +12822,7 @@ var PMREMGenerator = exports.PMREMGenerator = /*#__PURE__*/function () {
    */
   _createClass(PMREMGenerator, [{
     key: "fromScene",
-    value: function fromScene(scene) {
-      var sigma = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-      var near = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.1;
-      var far = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 100;
+    value: function fromScene(scene, sigma = 0, near = 0.1, far = 100) {
       _oldTarget = this._renderer.getRenderTarget();
       _oldActiveCubeFace = this._renderer.getActiveCubeFace();
       _oldActiveMipmapLevel = this._renderer.getActiveMipmapLevel();
@@ -12731,8 +12845,7 @@ var PMREMGenerator = exports.PMREMGenerator = /*#__PURE__*/function () {
      */
   }, {
     key: "fromEquirectangular",
-    value: function fromEquirectangular(equirectangular) {
-      var renderTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    value: function fromEquirectangular(equirectangular, renderTarget = null) {
       return this._fromTexture(equirectangular, renderTarget);
     }
 
@@ -12743,8 +12856,7 @@ var PMREMGenerator = exports.PMREMGenerator = /*#__PURE__*/function () {
      */
   }, {
     key: "fromCubemap",
-    value: function fromCubemap(cubemap) {
-      var renderTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    value: function fromCubemap(cubemap, renderTarget = null) {
       return this._fromTexture(cubemap, renderTarget);
     }
 
@@ -13030,6 +13142,7 @@ var PMREMGenerator = exports.PMREMGenerator = /*#__PURE__*/function () {
   }]);
   return PMREMGenerator;
 }();
+exports.PMREMGenerator = PMREMGenerator;
 function _createPlanes(lodMax) {
   var lodPlanes = [];
   var sizeLods = [];
@@ -13169,7 +13282,8 @@ function _getCubemapMaterial() {
   });
 }
 function _getCommonVertexShader() {
-  return /* glsl */"\n\n\t\tprecision mediump float;\n\t\tprecision mediump int;\n\n\t\tattribute float faceIndex;\n\n\t\tvarying vec3 vOutputDirection;\n\n\t\t// RH coordinate system; PMREM face-indexing convention\n\t\tvec3 getDirection( vec2 uv, float face ) {\n\n\t\t\tuv = 2.0 * uv - 1.0;\n\n\t\t\tvec3 direction = vec3( uv, 1.0 );\n\n\t\t\tif ( face == 0.0 ) {\n\n\t\t\t\tdirection = direction.zyx; // ( 1, v, u ) pos x\n\n\t\t\t} else if ( face == 1.0 ) {\n\n\t\t\t\tdirection = direction.xzy;\n\t\t\t\tdirection.xz *= -1.0; // ( -u, 1, -v ) pos y\n\n\t\t\t} else if ( face == 2.0 ) {\n\n\t\t\t\tdirection.x *= -1.0; // ( -u, v, 1 ) pos z\n\n\t\t\t} else if ( face == 3.0 ) {\n\n\t\t\t\tdirection = direction.zyx;\n\t\t\t\tdirection.xz *= -1.0; // ( -1, v, -u ) neg x\n\n\t\t\t} else if ( face == 4.0 ) {\n\n\t\t\t\tdirection = direction.xzy;\n\t\t\t\tdirection.xy *= -1.0; // ( -u, -1, v ) neg y\n\n\t\t\t} else if ( face == 5.0 ) {\n\n\t\t\t\tdirection.z *= -1.0; // ( u, v, -1 ) neg z\n\n\t\t\t}\n\n\t\t\treturn direction;\n\n\t\t}\n\n\t\tvoid main() {\n\n\t\t\tvOutputDirection = getDirection( uv, faceIndex );\n\t\t\tgl_Position = vec4( position, 1.0 );\n\n\t\t}\n\t";
+  return (/* glsl */"\n\n\t\tprecision mediump float;\n\t\tprecision mediump int;\n\n\t\tattribute float faceIndex;\n\n\t\tvarying vec3 vOutputDirection;\n\n\t\t// RH coordinate system; PMREM face-indexing convention\n\t\tvec3 getDirection( vec2 uv, float face ) {\n\n\t\t\tuv = 2.0 * uv - 1.0;\n\n\t\t\tvec3 direction = vec3( uv, 1.0 );\n\n\t\t\tif ( face == 0.0 ) {\n\n\t\t\t\tdirection = direction.zyx; // ( 1, v, u ) pos x\n\n\t\t\t} else if ( face == 1.0 ) {\n\n\t\t\t\tdirection = direction.xzy;\n\t\t\t\tdirection.xz *= -1.0; // ( -u, 1, -v ) pos y\n\n\t\t\t} else if ( face == 2.0 ) {\n\n\t\t\t\tdirection.x *= -1.0; // ( -u, v, 1 ) pos z\n\n\t\t\t} else if ( face == 3.0 ) {\n\n\t\t\t\tdirection = direction.zyx;\n\t\t\t\tdirection.xz *= -1.0; // ( -1, v, -u ) neg x\n\n\t\t\t} else if ( face == 4.0 ) {\n\n\t\t\t\tdirection = direction.xzy;\n\t\t\t\tdirection.xy *= -1.0; // ( -u, -1, v ) neg y\n\n\t\t\t} else if ( face == 5.0 ) {\n\n\t\t\t\tdirection.z *= -1.0; // ( u, v, -1 ) neg z\n\n\t\t\t}\n\n\t\t\treturn direction;\n\n\t\t}\n\n\t\tvoid main() {\n\n\t\t\tvOutputDirection = getDirection( uv, faceIndex );\n\t\t\tgl_Position = vec4( position, 1.0 );\n\n\t\t}\n\t"
+  );
 }
 function WebGLCubeUVMaps(renderer) {
   var cubeUVmaps = new WeakMap();
@@ -13550,6 +13664,11 @@ function WebGLMorphtargets(gl, capabilities, textures) {
       var morphTargetsCount = morphAttribute !== undefined ? morphAttribute.length : 0;
       var entry = morphTextures.get(geometry);
       if (entry === undefined || entry.count !== morphTargetsCount) {
+        var disposeTexture = function disposeTexture() {
+          texture.dispose();
+          morphTextures.delete(geometry);
+          geometry.removeEventListener('dispose', disposeTexture);
+        };
         if (entry !== undefined) entry.texture.dispose();
         var hasMorphPosition = geometry.morphAttributes.position !== undefined;
         var hasMorphNormals = geometry.morphAttributes.normal !== undefined;
@@ -13611,11 +13730,6 @@ function WebGLMorphtargets(gl, capabilities, textures) {
           size: new Vector2(width, height)
         };
         morphTextures.set(geometry, entry);
-        function disposeTexture() {
-          texture.dispose();
-          morphTextures.delete(geometry);
-          geometry.removeEventListener('dispose', disposeTexture);
-        }
         geometry.addEventListener('dispose', disposeTexture);
       }
 
@@ -13751,7 +13865,7 @@ function WebGLObjects(gl, geometries, attributes, info) {
     dispose: dispose
   };
 }
-var DepthTexture = exports.DepthTexture = /*#__PURE__*/function (_Texture4) {
+var DepthTexture = /*#__PURE__*/function (_Texture4) {
   _inherits(DepthTexture, _Texture4);
   var _super33 = _createSuper(DepthTexture);
   function DepthTexture(width, height, type, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy, format) {
@@ -13835,6 +13949,7 @@ var DepthTexture = exports.DepthTexture = /*#__PURE__*/function (_Texture4) {
  * 		like .set for an optional property of the object
  *
  */
+exports.DepthTexture = DepthTexture;
 var emptyTexture = /*@__PURE__*/new Texture();
 var emptyShadowTexture = /*@__PURE__*/new DepthTexture(1, 1);
 emptyShadowTexture.compareFunction = LessEqualCompare;
@@ -14748,6 +14863,7 @@ var shaderChunkMap = new Map([['encodings_fragment', 'colorspace_fragment'],
 // @deprecated, r154
 ['output_fragment', 'opaque_fragment'] // @deprecated, r154
 ]);
+
 function includeReplacer(match, include) {
   var string = ShaderChunk[include];
   if (string === undefined) {
@@ -15818,6 +15934,7 @@ function ShadowUniformsCache() {
 
         // TODO (abelnation): set RectAreaLight shadow uniforms
       }
+
       lights[light.id] = uniforms;
       return uniforms;
     }
@@ -16141,8 +16258,7 @@ function WebGLRenderState(extensions, capabilities) {
 }
 function WebGLRenderStates(extensions, capabilities) {
   var renderStates = new WeakMap();
-  function get(scene) {
-    var renderCallDepth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  function get(scene, renderCallDepth = 0) {
     var renderStateArray = renderStates.get(scene);
     var renderState;
     if (renderStateArray === undefined) {
@@ -16166,7 +16282,7 @@ function WebGLRenderStates(extensions, capabilities) {
     dispose: dispose
   };
 }
-var MeshDepthMaterial = exports.MeshDepthMaterial = /*#__PURE__*/function (_Material3) {
+var MeshDepthMaterial = /*#__PURE__*/function (_Material3) {
   _inherits(MeshDepthMaterial, _Material3);
   var _super34 = _createSuper(MeshDepthMaterial);
   function MeshDepthMaterial(parameters) {
@@ -16203,7 +16319,8 @@ var MeshDepthMaterial = exports.MeshDepthMaterial = /*#__PURE__*/function (_Mate
   }]);
   return MeshDepthMaterial;
 }(Material);
-var MeshDistanceMaterial = exports.MeshDistanceMaterial = /*#__PURE__*/function (_Material4) {
+exports.MeshDepthMaterial = MeshDepthMaterial;
+var MeshDistanceMaterial = /*#__PURE__*/function (_Material4) {
   _inherits(MeshDistanceMaterial, _Material4);
   var _super35 = _createSuper(MeshDistanceMaterial);
   function MeshDistanceMaterial(parameters) {
@@ -16234,9 +16351,11 @@ var MeshDistanceMaterial = exports.MeshDistanceMaterial = /*#__PURE__*/function 
   }]);
   return MeshDistanceMaterial;
 }(Material);
+exports.MeshDistanceMaterial = MeshDistanceMaterial;
 var vertex = "void main() {\n\tgl_Position = vec4( position, 1.0 );\n}";
 var fragment = "uniform sampler2D shadow_pass;\nuniform vec2 resolution;\nuniform float radius;\n#include <packing>\nvoid main() {\n\tconst float samples = float( VSM_SAMPLES );\n\tfloat mean = 0.0;\n\tfloat squared_mean = 0.0;\n\tfloat uvStride = samples <= 1.0 ? 0.0 : 2.0 / ( samples - 1.0 );\n\tfloat uvStart = samples <= 1.0 ? 0.0 : - 1.0;\n\tfor ( float i = 0.0; i < samples; i ++ ) {\n\t\tfloat uvOffset = uvStart + i * uvStride;\n\t\t#ifdef HORIZONTAL_PASS\n\t\t\tvec2 distribution = unpackRGBATo2Half( texture2D( shadow_pass, ( gl_FragCoord.xy + vec2( uvOffset, 0.0 ) * radius ) / resolution ) );\n\t\t\tmean += distribution.x;\n\t\t\tsquared_mean += distribution.y * distribution.y + distribution.x * distribution.x;\n\t\t#else\n\t\t\tfloat depth = unpackRGBAToDepth( texture2D( shadow_pass, ( gl_FragCoord.xy + vec2( 0.0, uvOffset ) * radius ) / resolution ) );\n\t\t\tmean += depth;\n\t\t\tsquared_mean += depth * depth;\n\t\t#endif\n\t}\n\tmean = mean / samples;\n\tsquared_mean = squared_mean / samples;\n\tfloat std_dev = sqrt( squared_mean - mean * mean );\n\tgl_FragColor = pack2HalfToRGBA( vec2( mean, std_dev ) );\n}";
 function WebGLShadowMap(_renderer, _objects, _capabilities) {
+  var _shadowSide;
   var _frustum = new Frustum();
   var _shadowMapSize = new Vector2(),
     _viewportSize = new Vector2(),
@@ -16247,7 +16366,7 @@ function WebGLShadowMap(_renderer, _objects, _capabilities) {
     _distanceMaterial = new MeshDistanceMaterial(),
     _materialCache = {},
     _maxTextureSize = _capabilities.maxTextureSize;
-  var shadowSide = _defineProperty(_defineProperty(_defineProperty({}, FrontSide, BackSide), BackSide, FrontSide), DoubleSide, DoubleSide);
+  var shadowSide = (_shadowSide = {}, _defineProperty(_shadowSide, FrontSide, BackSide), _defineProperty(_shadowSide, BackSide, FrontSide), _defineProperty(_shadowSide, DoubleSide, DoubleSide), _shadowSide);
   var shadowMaterialVertical = new ShaderMaterial({
     defines: {
       VSM_SAMPLES: 8
@@ -16473,7 +16592,7 @@ function WebGLShadowMap(_renderer, _objects, _capabilities) {
   }
 }
 function WebGLState(gl, extensions, capabilities) {
-  var _factorToGL;
+  var _equationToGL, _factorToGL;
   var isWebGL2 = capabilities.isWebGL2;
   function ColorBuffer() {
     var locked = false;
@@ -16509,6 +16628,7 @@ function WebGLState(gl, extensions, capabilities) {
       }
     };
   }
+
   function DepthBuffer() {
     var locked = false;
     var currentDepthMask = null;
@@ -16801,7 +16921,7 @@ function WebGLState(gl, extensions, capabilities) {
     }
     return false;
   }
-  var equationToGL = _defineProperty(_defineProperty(_defineProperty({}, AddEquation, gl.FUNC_ADD), SubtractEquation, gl.FUNC_SUBTRACT), ReverseSubtractEquation, gl.FUNC_REVERSE_SUBTRACT);
+  var equationToGL = (_equationToGL = {}, _defineProperty(_equationToGL, AddEquation, gl.FUNC_ADD), _defineProperty(_equationToGL, SubtractEquation, gl.FUNC_SUBTRACT), _defineProperty(_equationToGL, ReverseSubtractEquation, gl.FUNC_REVERSE_SUBTRACT), _equationToGL);
   if (isWebGL2) {
     equationToGL[MinEquation] = gl.MIN;
     equationToGL[MaxEquation] = gl.MAX;
@@ -16812,7 +16932,7 @@ function WebGLState(gl, extensions, capabilities) {
       equationToGL[MaxEquation] = extension.MAX_EXT;
     }
   }
-  var factorToGL = (_factorToGL = {}, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_factorToGL, ZeroFactor, gl.ZERO), OneFactor, gl.ONE), SrcColorFactor, gl.SRC_COLOR), SrcAlphaFactor, gl.SRC_ALPHA), SrcAlphaSaturateFactor, gl.SRC_ALPHA_SATURATE), DstColorFactor, gl.DST_COLOR), DstAlphaFactor, gl.DST_ALPHA), OneMinusSrcColorFactor, gl.ONE_MINUS_SRC_COLOR), OneMinusSrcAlphaFactor, gl.ONE_MINUS_SRC_ALPHA), OneMinusDstColorFactor, gl.ONE_MINUS_DST_COLOR), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_factorToGL, OneMinusDstAlphaFactor, gl.ONE_MINUS_DST_ALPHA), ConstantColorFactor, gl.CONSTANT_COLOR), OneMinusConstantColorFactor, gl.ONE_MINUS_CONSTANT_COLOR), ConstantAlphaFactor, gl.CONSTANT_ALPHA), OneMinusConstantAlphaFactor, gl.ONE_MINUS_CONSTANT_ALPHA));
+  var factorToGL = (_factorToGL = {}, _defineProperty(_factorToGL, ZeroFactor, gl.ZERO), _defineProperty(_factorToGL, OneFactor, gl.ONE), _defineProperty(_factorToGL, SrcColorFactor, gl.SRC_COLOR), _defineProperty(_factorToGL, SrcAlphaFactor, gl.SRC_ALPHA), _defineProperty(_factorToGL, SrcAlphaSaturateFactor, gl.SRC_ALPHA_SATURATE), _defineProperty(_factorToGL, DstColorFactor, gl.DST_COLOR), _defineProperty(_factorToGL, DstAlphaFactor, gl.DST_ALPHA), _defineProperty(_factorToGL, OneMinusSrcColorFactor, gl.ONE_MINUS_SRC_COLOR), _defineProperty(_factorToGL, OneMinusSrcAlphaFactor, gl.ONE_MINUS_SRC_ALPHA), _defineProperty(_factorToGL, OneMinusDstColorFactor, gl.ONE_MINUS_DST_COLOR), _defineProperty(_factorToGL, OneMinusDstAlphaFactor, gl.ONE_MINUS_DST_ALPHA), _defineProperty(_factorToGL, ConstantColorFactor, gl.CONSTANT_COLOR), _defineProperty(_factorToGL, OneMinusConstantColorFactor, gl.ONE_MINUS_CONSTANT_COLOR), _defineProperty(_factorToGL, ConstantAlphaFactor, gl.CONSTANT_ALPHA), _defineProperty(_factorToGL, OneMinusConstantAlphaFactor, gl.ONE_MINUS_CONSTANT_ALPHA), _factorToGL);
   function setBlending(blending, blendEquation, blendSrc, blendDst, blendEquationAlpha, blendSrcAlpha, blendDstAlpha, blendColor, blendAlpha, premultipliedAlpha) {
     if (blending === NoBlending) {
       if (currentBlendingEnabled === true) {
@@ -17241,6 +17361,7 @@ function WebGLState(gl, extensions, capabilities) {
   };
 }
 function WebGLTextures(_gl, extensions, state, properties, capabilities, utils, info) {
+  var _wrappingToGL, _filterToGL, _compareToGL;
   var isWebGL2 = capabilities.isWebGL2;
   var maxTextures = capabilities.maxTextures;
   var maxCubemapSize = capabilities.maxCubemapSize;
@@ -17323,8 +17444,7 @@ function WebGLTextures(_gl, extensions, state, properties, capabilities, utils, 
   function generateMipmap(target) {
     _gl.generateMipmap(target);
   }
-  function getInternalFormat(internalFormatName, glFormat, glType, colorSpace) {
-    var forceLinearTransfer = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+  function getInternalFormat(internalFormatName, glFormat, glType, colorSpace, forceLinearTransfer = false) {
     if (isWebGL2 === false) return glFormat;
     if (internalFormatName !== null) {
       if (_gl[internalFormatName] !== undefined) return _gl[internalFormatName];
@@ -17563,9 +17683,9 @@ function WebGLTextures(_gl, extensions, state, properties, capabilities, utils, 
     }
     state.bindTexture(_gl.TEXTURE_CUBE_MAP, textureProperties.__webglTexture, _gl.TEXTURE0 + slot);
   }
-  var wrappingToGL = _defineProperty(_defineProperty(_defineProperty({}, RepeatWrapping, _gl.REPEAT), ClampToEdgeWrapping, _gl.CLAMP_TO_EDGE), MirroredRepeatWrapping, _gl.MIRRORED_REPEAT);
-  var filterToGL = _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({}, NearestFilter, _gl.NEAREST), NearestMipmapNearestFilter, _gl.NEAREST_MIPMAP_NEAREST), NearestMipmapLinearFilter, _gl.NEAREST_MIPMAP_LINEAR), LinearFilter, _gl.LINEAR), LinearMipmapNearestFilter, _gl.LINEAR_MIPMAP_NEAREST), LinearMipmapLinearFilter, _gl.LINEAR_MIPMAP_LINEAR);
-  var compareToGL = _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({}, NeverCompare, _gl.NEVER), AlwaysCompare, _gl.ALWAYS), LessCompare, _gl.LESS), LessEqualCompare, _gl.LEQUAL), EqualCompare, _gl.EQUAL), GreaterEqualCompare, _gl.GEQUAL), GreaterCompare, _gl.GREATER), NotEqualCompare, _gl.NOTEQUAL);
+  var wrappingToGL = (_wrappingToGL = {}, _defineProperty(_wrappingToGL, RepeatWrapping, _gl.REPEAT), _defineProperty(_wrappingToGL, ClampToEdgeWrapping, _gl.CLAMP_TO_EDGE), _defineProperty(_wrappingToGL, MirroredRepeatWrapping, _gl.MIRRORED_REPEAT), _wrappingToGL);
+  var filterToGL = (_filterToGL = {}, _defineProperty(_filterToGL, NearestFilter, _gl.NEAREST), _defineProperty(_filterToGL, NearestMipmapNearestFilter, _gl.NEAREST_MIPMAP_NEAREST), _defineProperty(_filterToGL, NearestMipmapLinearFilter, _gl.NEAREST_MIPMAP_LINEAR), _defineProperty(_filterToGL, LinearFilter, _gl.LINEAR), _defineProperty(_filterToGL, LinearMipmapNearestFilter, _gl.LINEAR_MIPMAP_NEAREST), _defineProperty(_filterToGL, LinearMipmapLinearFilter, _gl.LINEAR_MIPMAP_LINEAR), _filterToGL);
+  var compareToGL = (_compareToGL = {}, _defineProperty(_compareToGL, NeverCompare, _gl.NEVER), _defineProperty(_compareToGL, AlwaysCompare, _gl.ALWAYS), _defineProperty(_compareToGL, LessCompare, _gl.LESS), _defineProperty(_compareToGL, LessEqualCompare, _gl.LEQUAL), _defineProperty(_compareToGL, EqualCompare, _gl.EQUAL), _defineProperty(_compareToGL, GreaterEqualCompare, _gl.GEQUAL), _defineProperty(_compareToGL, GreaterCompare, _gl.GREATER), _defineProperty(_compareToGL, NotEqualCompare, _gl.NOTEQUAL), _compareToGL);
   function setTextureParameters(textureType, texture, supportsMips) {
     if (supportsMips) {
       _gl.texParameteri(textureType, _gl.TEXTURE_WRAP_S, wrappingToGL[texture.wrapS]);
@@ -18457,8 +18577,7 @@ function WebGLTextures(_gl, extensions, state, properties, capabilities, utils, 
 }
 function WebGLUtils(gl, extensions, capabilities) {
   var isWebGL2 = capabilities.isWebGL2;
-  function convert(p) {
-    var colorSpace = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : NoColorSpace;
+  function convert(p, colorSpace = NoColorSpace) {
     var extension;
     var transfer = ColorManagement.getTransfer(colorSpace);
     if (p === UnsignedByteType) return gl.UNSIGNED_BYTE;
@@ -18639,12 +18758,11 @@ function WebGLUtils(gl, extensions, capabilities) {
     convert: convert
   };
 }
-var ArrayCamera = exports.ArrayCamera = /*#__PURE__*/function (_PerspectiveCamera) {
+var ArrayCamera = /*#__PURE__*/function (_PerspectiveCamera) {
   _inherits(ArrayCamera, _PerspectiveCamera);
   var _super36 = _createSuper(ArrayCamera);
-  function ArrayCamera() {
+  function ArrayCamera(array = []) {
     var _this28;
-    var array = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     _classCallCheck(this, ArrayCamera);
     _this28 = _super36.call(this);
     _this28.isArrayCamera = true;
@@ -18653,7 +18771,8 @@ var ArrayCamera = exports.ArrayCamera = /*#__PURE__*/function (_PerspectiveCamer
   }
   return _createClass(ArrayCamera);
 }(PerspectiveCamera);
-var Group = exports.Group = /*#__PURE__*/function (_Object3D4) {
+exports.ArrayCamera = ArrayCamera;
+var Group = /*#__PURE__*/function (_Object3D4) {
   _inherits(Group, _Object3D4);
   var _super37 = _createSuper(Group);
   function Group() {
@@ -18666,6 +18785,7 @@ var Group = exports.Group = /*#__PURE__*/function (_Object3D4) {
   }
   return _createClass(Group);
 }(Object3D);
+exports.Group = Group;
 var _moveEvent = {
   type: 'move'
 };
@@ -19502,6 +19622,7 @@ function WebGLMaterials(renderer, properties) {
       material.uniformsNeedUpdate = false; // #15581
     }
   }
+
   function refreshUniformsCommon(uniforms, material) {
     uniforms.opacity.value = material.opacity;
     if (material.color) {
@@ -19623,6 +19744,7 @@ function WebGLMaterials(renderer, properties) {
     uniforms.specular.value.copy(material.specular);
     uniforms.shininess.value = Math.max(material.shininess, 1e-4); // to prevent pow( 0.0, 0.0 )
   }
+
   function refreshUniformsToon(uniforms, material) {
     if (material.gradientMap) {
       uniforms.gradientMap.value = material.gradientMap;
@@ -19899,6 +20021,7 @@ function WebGLUniformsGroups(gl, info, capabilities, state) {
         // bytes
         storage: 0 // bytes
       };
+
       var values = Array.isArray(uniform.value) ? uniform.value : [uniform.value];
       for (var j = 0, jl = values.length; j < jl; j++) {
         var _value7 = values[j];
@@ -20010,9 +20133,8 @@ function WebGLUniformsGroups(gl, info, capabilities, state) {
     dispose: dispose
   };
 }
-var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
-  function WebGLRenderer() {
-    var parameters = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+var WebGLRenderer = /*#__PURE__*/function () {
+  function WebGLRenderer(parameters = {}) {
     _classCallCheck(this, WebGLRenderer);
     var _parameters$canvas = parameters.canvas,
       canvas = _parameters$canvas === void 0 ? createCanvasElement() : _parameters$canvas,
@@ -20296,8 +20418,7 @@ var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
     this.getSize = function (target) {
       return target.set(_width, _height);
     };
-    this.setSize = function (width, height) {
-      var updateStyle = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    this.setSize = function (width, height, updateStyle = true) {
       if (xr.isPresenting) {
         console.warn('THREE.WebGLRenderer: Can\'t change size while VR device is presenting.');
         return;
@@ -20375,10 +20496,7 @@ var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
     this.setClearAlpha = function () {
       background.setClearAlpha.apply(background, arguments);
     };
-    this.clear = function () {
-      var color = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-      var depth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-      var stencil = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    this.clear = function (color = true, depth = true, stencil = true) {
       var bits = 0;
       if (color) {
         // check if we're trying to clear an integer target
@@ -20611,8 +20729,7 @@ var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
         getProgram(material, scene, object);
       }
     }
-    this.compile = function (scene, camera) {
-      var targetScene = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    this.compile = function (scene, camera, targetScene = null) {
       if (targetScene === null) targetScene = scene;
       currentRenderState = renderStates.get(targetScene);
       currentRenderState.init();
@@ -20665,8 +20782,7 @@ var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
 
     // compileAsync
 
-    this.compileAsync = function (scene, camera) {
-      var targetScene = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    this.compileAsync = function (scene, camera, targetScene = null) {
       var materials = this.compile(scene, camera, targetScene);
 
       // Wait for all the materials in the new object to indicate that they're
@@ -20933,6 +21049,7 @@ var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
         scene.add( mesh );
         */
       }
+
       _this.getDrawingBufferSize(_vector2);
       if (isWebGL2) {
         _transmissionRenderTarget.setSize(_vector2.x, _vector2.y);
@@ -21085,6 +21202,7 @@ var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
         uniforms.pointShadowMatrix.value = lights.state.pointShadowMatrix;
         // TODO (abelnation): add area lights shadow info to uniforms
       }
+
       materialProperties.currentProgram = program;
       materialProperties.uniformsList = null;
       return program;
@@ -21385,9 +21503,7 @@ var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
       renderTargetProperties.__webglFramebuffer = defaultFramebuffer;
       renderTargetProperties.__useDefaultFramebuffer = defaultFramebuffer === undefined;
     };
-    this.setRenderTarget = function (renderTarget) {
-      var activeCubeFace = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-      var activeMipmapLevel = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    this.setRenderTarget = function (renderTarget, activeCubeFace = 0, activeMipmapLevel = 0) {
       _currentRenderTarget = renderTarget;
       _currentActiveCubeFace = activeCubeFace;
       _currentActiveMipmapLevel = activeMipmapLevel;
@@ -21453,6 +21569,7 @@ var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
       }
       _currentMaterialId = -1; // reset current material to ensure correct uniform bindings
     };
+
     this.readRenderTargetPixels = function (renderTarget, x, y, width, height, buffer, activeCubeFaceIndex) {
       if (!(renderTarget && renderTarget.isWebGLRenderTarget)) {
         console.error('THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not THREE.WebGLRenderTarget.');
@@ -21495,8 +21612,7 @@ var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
         }
       }
     };
-    this.copyFramebufferToTexture = function (position, texture) {
-      var level = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    this.copyFramebufferToTexture = function (position, texture, level = 0) {
       var levelScale = Math.pow(2, -level);
       var width = Math.floor(texture.image.width * levelScale);
       var height = Math.floor(texture.image.height * levelScale);
@@ -21504,8 +21620,7 @@ var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
       _gl.copyTexSubImage2D(_gl.TEXTURE_2D, level, 0, 0, position.x, position.y, width, height);
       state.unbindTexture();
     };
-    this.copyTextureToTexture = function (position, srcTexture, dstTexture) {
-      var level = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+    this.copyTextureToTexture = function (position, srcTexture, dstTexture, level = 0) {
       var width = srcTexture.image.width;
       var height = srcTexture.image.height;
       var glFormat = utils.convert(dstTexture.format);
@@ -21531,8 +21646,7 @@ var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
       if (level === 0 && dstTexture.generateMipmaps) _gl.generateMipmap(_gl.TEXTURE_2D);
       state.unbindTexture();
     };
-    this.copyTextureToTexture3D = function (sourceBox, position, srcTexture, dstTexture) {
-      var level = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+    this.copyTextureToTexture3D = function (sourceBox, position, srcTexture, dstTexture, level = 0) {
       if (_this.isWebGL1Renderer) {
         console.warn('THREE.WebGLRenderer.copyTextureToTexture3D: can only be used with WebGL2.');
         return;
@@ -21673,7 +21787,8 @@ var WebGLRenderer = exports.WebGLRenderer = /*#__PURE__*/function () {
   }]);
   return WebGLRenderer;
 }();
-var WebGL1Renderer = exports.WebGL1Renderer = /*#__PURE__*/function (_WebGLRenderer) {
+exports.WebGLRenderer = WebGLRenderer;
+var WebGL1Renderer = /*#__PURE__*/function (_WebGLRenderer) {
   _inherits(WebGL1Renderer, _WebGLRenderer);
   var _super39 = _createSuper(WebGL1Renderer);
   function WebGL1Renderer() {
@@ -21682,10 +21797,10 @@ var WebGL1Renderer = exports.WebGL1Renderer = /*#__PURE__*/function (_WebGLRende
   }
   return _createClass(WebGL1Renderer);
 }(WebGLRenderer);
+exports.WebGL1Renderer = WebGL1Renderer;
 WebGL1Renderer.prototype.isWebGL1Renderer = true;
-var FogExp2 = exports.FogExp2 = /*#__PURE__*/function () {
-  function FogExp2(color) {
-    var density = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.00025;
+var FogExp2 = /*#__PURE__*/function () {
+  function FogExp2(color, density = 0.00025) {
     _classCallCheck(this, FogExp2);
     this.isFogExp2 = true;
     this.name = '';
@@ -21711,10 +21826,9 @@ var FogExp2 = exports.FogExp2 = /*#__PURE__*/function () {
   }]);
   return FogExp2;
 }();
-var Fog = exports.Fog = /*#__PURE__*/function () {
-  function Fog(color) {
-    var near = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var far = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1000;
+exports.FogExp2 = FogExp2;
+var Fog = /*#__PURE__*/function () {
+  function Fog(color, near = 1, far = 1000) {
     _classCallCheck(this, Fog);
     this.isFog = true;
     this.name = '';
@@ -21742,7 +21856,8 @@ var Fog = exports.Fog = /*#__PURE__*/function () {
   }]);
   return Fog;
 }();
-var Scene = exports.Scene = /*#__PURE__*/function (_Object3D5) {
+exports.Fog = Fog;
+var Scene = /*#__PURE__*/function (_Object3D5) {
   _inherits(Scene, _Object3D5);
   var _super40 = _createSuper(Scene);
   function Scene() {
@@ -21789,7 +21904,8 @@ var Scene = exports.Scene = /*#__PURE__*/function (_Object3D5) {
   }]);
   return Scene;
 }(Object3D);
-var InterleavedBuffer = exports.InterleavedBuffer = /*#__PURE__*/function () {
+exports.Scene = Scene;
+var InterleavedBuffer = /*#__PURE__*/function () {
   function InterleavedBuffer(array, stride) {
     _classCallCheck(this, InterleavedBuffer);
     this.isInterleavedBuffer = true;
@@ -21859,8 +21975,7 @@ var InterleavedBuffer = exports.InterleavedBuffer = /*#__PURE__*/function () {
     }
   }, {
     key: "set",
-    value: function set(value) {
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function set(value, offset = 0) {
       this.array.set(value, offset);
       return this;
     }
@@ -21915,10 +22030,10 @@ var InterleavedBuffer = exports.InterleavedBuffer = /*#__PURE__*/function () {
   }]);
   return InterleavedBuffer;
 }();
+exports.InterleavedBuffer = InterleavedBuffer;
 var _vector$6 = /*@__PURE__*/new Vector3();
-var InterleavedBufferAttribute = exports.InterleavedBufferAttribute = /*#__PURE__*/function () {
-  function InterleavedBufferAttribute(interleavedBuffer, itemSize, offset) {
-    var normalized = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+var InterleavedBufferAttribute = /*#__PURE__*/function () {
+  function InterleavedBufferAttribute(interleavedBuffer, itemSize, offset, normalized = false) {
     _classCallCheck(this, InterleavedBufferAttribute);
     this.isInterleavedBufferAttribute = true;
     this.name = '';
@@ -22135,7 +22250,8 @@ var InterleavedBufferAttribute = exports.InterleavedBufferAttribute = /*#__PURE_
   }]);
   return InterleavedBufferAttribute;
 }();
-var SpriteMaterial = exports.SpriteMaterial = /*#__PURE__*/function (_Material5) {
+exports.InterleavedBufferAttribute = InterleavedBufferAttribute;
+var SpriteMaterial = /*#__PURE__*/function (_Material5) {
   _inherits(SpriteMaterial, _Material5);
   var _super41 = _createSuper(SpriteMaterial);
   function SpriteMaterial(parameters) {
@@ -22169,6 +22285,7 @@ var SpriteMaterial = exports.SpriteMaterial = /*#__PURE__*/function (_Material5)
   }]);
   return SpriteMaterial;
 }(Material);
+exports.SpriteMaterial = SpriteMaterial;
 var _geometry;
 var _intersectPoint = /*@__PURE__*/new Vector3();
 var _worldScale = /*@__PURE__*/new Vector3();
@@ -22182,12 +22299,11 @@ var _vC = /*@__PURE__*/new Vector3();
 var _uvA = /*@__PURE__*/new Vector2();
 var _uvB = /*@__PURE__*/new Vector2();
 var _uvC = /*@__PURE__*/new Vector2();
-var Sprite = exports.Sprite = /*#__PURE__*/function (_Object3D6) {
+var Sprite = /*#__PURE__*/function (_Object3D6) {
   _inherits(Sprite, _Object3D6);
   var _super42 = _createSuper(Sprite);
-  function Sprite() {
+  function Sprite(material = new SpriteMaterial()) {
     var _this33;
-    var material = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new SpriteMaterial();
     _classCallCheck(this, Sprite);
     _this33 = _super42.call(this);
     _this33.isSprite = true;
@@ -22264,6 +22380,7 @@ var Sprite = exports.Sprite = /*#__PURE__*/function (_Object3D6) {
   }]);
   return Sprite;
 }(Object3D);
+exports.Sprite = Sprite;
 function transformVertex(vertexPosition, mvPosition, center, scale, sin, cos) {
   // compute position in camera space
   _alignedPosition.subVectors(vertexPosition, center).addScalar(0.5).multiply(scale);
@@ -22284,7 +22401,7 @@ function transformVertex(vertexPosition, mvPosition, center, scale, sin, cos) {
 }
 var _v1$2 = /*@__PURE__*/new Vector3();
 var _v2$1 = /*@__PURE__*/new Vector3();
-var LOD = exports.LOD = /*#__PURE__*/function (_Object3D7) {
+var LOD = /*#__PURE__*/function (_Object3D7) {
   _inherits(LOD, _Object3D7);
   var _super43 = _createSuper(LOD);
   function LOD() {
@@ -22319,9 +22436,7 @@ var LOD = exports.LOD = /*#__PURE__*/function (_Object3D7) {
     }
   }, {
     key: "addLevel",
-    value: function addLevel(object) {
-      var distance = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-      var hysteresis = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    value: function addLevel(object, distance = 0, hysteresis = 0) {
       distance = Math.abs(distance);
       var levels = this.levels;
       var l;
@@ -22420,6 +22535,7 @@ var LOD = exports.LOD = /*#__PURE__*/function (_Object3D7) {
   }]);
   return LOD;
 }(Object3D);
+exports.LOD = LOD;
 var _basePosition = /*@__PURE__*/new Vector3();
 var _skinIndex = /*@__PURE__*/new Vector4();
 var _skinWeight = /*@__PURE__*/new Vector4();
@@ -22429,7 +22545,7 @@ var _vertex = /*@__PURE__*/new Vector3();
 var _sphere$4 = /*@__PURE__*/new Sphere();
 var _inverseMatrix$2 = /*@__PURE__*/new Matrix4();
 var _ray$2 = /*@__PURE__*/new Ray();
-var SkinnedMesh = exports.SkinnedMesh = /*#__PURE__*/function (_Mesh) {
+var SkinnedMesh = /*#__PURE__*/function (_Mesh) {
   _inherits(SkinnedMesh, _Mesh);
   var _super44 = _createSuper(SkinnedMesh);
   function SkinnedMesh(geometry, material) {
@@ -22551,6 +22667,7 @@ var SkinnedMesh = exports.SkinnedMesh = /*#__PURE__*/function (_Mesh) {
         } else {
           vector.set(1, 0, 0, 0); // do something reasonable
         }
+
         skinWeight.setXYZW(i, vector.x, vector.y, vector.z, vector.w);
       }
     }
@@ -22596,7 +22713,8 @@ var SkinnedMesh = exports.SkinnedMesh = /*#__PURE__*/function (_Mesh) {
   }]);
   return SkinnedMesh;
 }(Mesh);
-var Bone = exports.Bone = /*#__PURE__*/function (_Object3D8) {
+exports.SkinnedMesh = SkinnedMesh;
+var Bone = /*#__PURE__*/function (_Object3D8) {
   _inherits(Bone, _Object3D8);
   var _super45 = _createSuper(Bone);
   function Bone() {
@@ -22609,23 +22727,12 @@ var Bone = exports.Bone = /*#__PURE__*/function (_Object3D8) {
   }
   return _createClass(Bone);
 }(Object3D);
-var DataTexture = exports.DataTexture = /*#__PURE__*/function (_Texture5) {
+exports.Bone = Bone;
+var DataTexture = /*#__PURE__*/function (_Texture5) {
   _inherits(DataTexture, _Texture5);
   var _super46 = _createSuper(DataTexture);
-  function DataTexture() {
+  function DataTexture(data = null, width = 1, height = 1, format, type, mapping, wrapS, wrapT, magFilter = NearestFilter, minFilter = NearestFilter, anisotropy, colorSpace) {
     var _this37;
-    var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var height = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var format = arguments.length > 3 ? arguments[3] : undefined;
-    var type = arguments.length > 4 ? arguments[4] : undefined;
-    var mapping = arguments.length > 5 ? arguments[5] : undefined;
-    var wrapS = arguments.length > 6 ? arguments[6] : undefined;
-    var wrapT = arguments.length > 7 ? arguments[7] : undefined;
-    var magFilter = arguments.length > 8 && arguments[8] !== undefined ? arguments[8] : NearestFilter;
-    var minFilter = arguments.length > 9 && arguments[9] !== undefined ? arguments[9] : NearestFilter;
-    var anisotropy = arguments.length > 10 ? arguments[10] : undefined;
-    var colorSpace = arguments.length > 11 ? arguments[11] : undefined;
     _classCallCheck(this, DataTexture);
     _this37 = _super46.call(this, null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, colorSpace);
     _this37.isDataTexture = true;
@@ -22641,12 +22748,11 @@ var DataTexture = exports.DataTexture = /*#__PURE__*/function (_Texture5) {
   }
   return _createClass(DataTexture);
 }(Texture);
+exports.DataTexture = DataTexture;
 var _offsetMatrix = /*@__PURE__*/new Matrix4();
 var _identityMatrix$1 = /*@__PURE__*/new Matrix4();
-var Skeleton = exports.Skeleton = /*#__PURE__*/function () {
-  function Skeleton() {
-    var bones = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var boneInverses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+var Skeleton = /*#__PURE__*/function () {
+  function Skeleton(bones = [], boneInverses = []) {
     _classCallCheck(this, Skeleton);
     this.uuid = generateUUID();
     this.bones = bones.slice(0);
@@ -22827,12 +22933,12 @@ var Skeleton = exports.Skeleton = /*#__PURE__*/function () {
   }]);
   return Skeleton;
 }();
-var InstancedBufferAttribute = exports.InstancedBufferAttribute = /*#__PURE__*/function (_BufferAttribute11) {
+exports.Skeleton = Skeleton;
+var InstancedBufferAttribute = /*#__PURE__*/function (_BufferAttribute11) {
   _inherits(InstancedBufferAttribute, _BufferAttribute11);
   var _super47 = _createSuper(InstancedBufferAttribute);
-  function InstancedBufferAttribute(array, itemSize, normalized) {
+  function InstancedBufferAttribute(array, itemSize, normalized, meshPerAttribute = 1) {
     var _this38;
-    var meshPerAttribute = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
     _classCallCheck(this, InstancedBufferAttribute);
     _this38 = _super47.call(this, array, itemSize, normalized);
     _this38.isInstancedBufferAttribute = true;
@@ -22857,6 +22963,7 @@ var InstancedBufferAttribute = exports.InstancedBufferAttribute = /*#__PURE__*/f
   }]);
   return InstancedBufferAttribute;
 }(BufferAttribute);
+exports.InstancedBufferAttribute = InstancedBufferAttribute;
 var _instanceLocalMatrix = /*@__PURE__*/new Matrix4();
 var _instanceWorldMatrix = /*@__PURE__*/new Matrix4();
 var _instanceIntersects = [];
@@ -22864,7 +22971,7 @@ var _box3 = /*@__PURE__*/new Box3();
 var _identity = /*@__PURE__*/new Matrix4();
 var _mesh$1 = /*@__PURE__*/new Mesh();
 var _sphere$3 = /*@__PURE__*/new Sphere();
-var InstancedMesh = exports.InstancedMesh = /*#__PURE__*/function (_Mesh2) {
+var InstancedMesh = /*#__PURE__*/function (_Mesh2) {
   _inherits(InstancedMesh, _Mesh2);
   var _super48 = _createSuper(InstancedMesh);
   function InstancedMesh(geometry, material, count) {
@@ -23005,6 +23112,7 @@ var InstancedMesh = exports.InstancedMesh = /*#__PURE__*/function (_Mesh2) {
   }]);
   return InstancedMesh;
 }(Mesh);
+exports.InstancedMesh = InstancedMesh;
 function sortOpaque(a, b) {
   return a.z - b.z;
 }
@@ -23067,8 +23175,7 @@ var _batchIntersects = [];
 // @TODO: Add an "optimize" function to pack geometry and remove data gaps
 
 // copies data from attribute "src" into "target" starting at "targetOffset"
-function copyAttributeData(src, target) {
-  var targetOffset = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+function copyAttributeData(src, target, targetOffset = 0) {
   var itemSize = target.itemSize;
   if (src.isInterleavedBufferAttribute || src.array.constructor !== target.array.constructor) {
     // use the component getters and setters if the array data cannot
@@ -23085,13 +23192,11 @@ function copyAttributeData(src, target) {
   }
   target.needsUpdate = true;
 }
-var BatchedMesh = exports.BatchedMesh = /*#__PURE__*/function (_Mesh3) {
+var BatchedMesh = /*#__PURE__*/function (_Mesh3) {
   _inherits(BatchedMesh, _Mesh3);
   var _super49 = _createSuper(BatchedMesh);
-  function BatchedMesh(maxGeometryCount, maxVertexCount) {
+  function BatchedMesh(maxGeometryCount, maxVertexCount, maxIndexCount = maxVertexCount * 2, material) {
     var _this40;
-    var maxIndexCount = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : maxVertexCount * 2;
-    var material = arguments.length > 3 ? arguments[3] : undefined;
     _classCallCheck(this, BatchedMesh);
     _this40 = _super49.call(this, new BufferGeometry(), material);
     _this40.isBatchedMesh = true;
@@ -23240,9 +23345,7 @@ var BatchedMesh = exports.BatchedMesh = /*#__PURE__*/function (_Mesh3) {
     }
   }, {
     key: "addGeometry",
-    value: function addGeometry(geometry) {
-      var vertexCount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
-      var indexCount = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
+    value: function addGeometry(geometry, vertexCount = -1, indexCount = -1) {
       this._initializeGeometry(geometry);
       this._validateGeometry(geometry);
 
@@ -23734,7 +23837,8 @@ var BatchedMesh = exports.BatchedMesh = /*#__PURE__*/function (_Mesh3) {
   }]);
   return BatchedMesh;
 }(Mesh);
-var LineBasicMaterial = exports.LineBasicMaterial = /*#__PURE__*/function (_Material6) {
+exports.BatchedMesh = BatchedMesh;
+var LineBasicMaterial = /*#__PURE__*/function (_Material6) {
   _inherits(LineBasicMaterial, _Material6);
   var _super50 = _createSuper(LineBasicMaterial);
   function LineBasicMaterial(parameters) {
@@ -23767,18 +23871,17 @@ var LineBasicMaterial = exports.LineBasicMaterial = /*#__PURE__*/function (_Mate
   }]);
   return LineBasicMaterial;
 }(Material);
+exports.LineBasicMaterial = LineBasicMaterial;
 var _start$1 = /*@__PURE__*/new Vector3();
 var _end$1 = /*@__PURE__*/new Vector3();
 var _inverseMatrix$1 = /*@__PURE__*/new Matrix4();
 var _ray$1 = /*@__PURE__*/new Ray();
 var _sphere$1 = /*@__PURE__*/new Sphere();
-var Line = exports.Line = /*#__PURE__*/function (_Object3D9) {
+var Line = /*#__PURE__*/function (_Object3D9) {
   _inherits(Line, _Object3D9);
   var _super51 = _createSuper(Line);
-  function Line() {
+  function Line(geometry = new BufferGeometry(), material = new LineBasicMaterial()) {
     var _this42;
-    var geometry = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new BufferGeometry();
-    var material = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new LineBasicMaterial();
     _classCallCheck(this, Line);
     _this42 = _super51.call(this);
     _this42.isLine = true;
@@ -23920,9 +24023,10 @@ var Line = exports.Line = /*#__PURE__*/function (_Object3D9) {
   }]);
   return Line;
 }(Object3D);
+exports.Line = Line;
 var _start = /*@__PURE__*/new Vector3();
 var _end = /*@__PURE__*/new Vector3();
-var LineSegments = exports.LineSegments = /*#__PURE__*/function (_Line) {
+var LineSegments = /*#__PURE__*/function (_Line) {
   _inherits(LineSegments, _Line);
   var _super52 = _createSuper(LineSegments);
   function LineSegments(geometry, material) {
@@ -23958,7 +24062,8 @@ var LineSegments = exports.LineSegments = /*#__PURE__*/function (_Line) {
   }]);
   return LineSegments;
 }(Line);
-var LineLoop = exports.LineLoop = /*#__PURE__*/function (_Line2) {
+exports.LineSegments = LineSegments;
+var LineLoop = /*#__PURE__*/function (_Line2) {
   _inherits(LineLoop, _Line2);
   var _super53 = _createSuper(LineLoop);
   function LineLoop(geometry, material) {
@@ -23971,7 +24076,8 @@ var LineLoop = exports.LineLoop = /*#__PURE__*/function (_Line2) {
   }
   return _createClass(LineLoop);
 }(Line);
-var PointsMaterial = exports.PointsMaterial = /*#__PURE__*/function (_Material7) {
+exports.LineLoop = LineLoop;
+var PointsMaterial = /*#__PURE__*/function (_Material7) {
   _inherits(PointsMaterial, _Material7);
   var _super54 = _createSuper(PointsMaterial);
   function PointsMaterial(parameters) {
@@ -24004,17 +24110,16 @@ var PointsMaterial = exports.PointsMaterial = /*#__PURE__*/function (_Material7)
   }]);
   return PointsMaterial;
 }(Material);
+exports.PointsMaterial = PointsMaterial;
 var _inverseMatrix = /*@__PURE__*/new Matrix4();
 var _ray = /*@__PURE__*/new Ray();
 var _sphere = /*@__PURE__*/new Sphere();
 var _position$2 = /*@__PURE__*/new Vector3();
-var Points = exports.Points = /*#__PURE__*/function (_Object3D10) {
+var Points = /*#__PURE__*/function (_Object3D10) {
   _inherits(Points, _Object3D10);
   var _super55 = _createSuper(Points);
-  function Points() {
+  function Points(geometry = new BufferGeometry(), material = new PointsMaterial()) {
     var _this46;
-    var geometry = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new BufferGeometry();
-    var material = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new PointsMaterial();
     _classCallCheck(this, Points);
     _this46 = _super55.call(this);
     _this46.isPoints = true;
@@ -24096,6 +24201,7 @@ var Points = exports.Points = /*#__PURE__*/function (_Object3D10) {
   }]);
   return Points;
 }(Object3D);
+exports.Points = Points;
 function testPoint(point, index, localThresholdSq, matrixWorld, raycaster, intersects, object) {
   var rayPointDistanceSq = _ray.distanceSqToPoint(point);
   if (rayPointDistanceSq < localThresholdSq) {
@@ -24114,7 +24220,7 @@ function testPoint(point, index, localThresholdSq, matrixWorld, raycaster, inter
     });
   }
 }
-var VideoTexture = exports.VideoTexture = /*#__PURE__*/function (_Texture6) {
+var VideoTexture = /*#__PURE__*/function (_Texture6) {
   _inherits(VideoTexture, _Texture6);
   var _super56 = _createSuper(VideoTexture);
   function VideoTexture(video, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy) {
@@ -24152,7 +24258,8 @@ var VideoTexture = exports.VideoTexture = /*#__PURE__*/function (_Texture6) {
   }]);
   return VideoTexture;
 }(Texture);
-var FramebufferTexture = exports.FramebufferTexture = /*#__PURE__*/function (_Texture7) {
+exports.VideoTexture = VideoTexture;
+var FramebufferTexture = /*#__PURE__*/function (_Texture7) {
   _inherits(FramebufferTexture, _Texture7);
   var _super57 = _createSuper(FramebufferTexture);
   function FramebufferTexture(width, height) {
@@ -24171,7 +24278,8 @@ var FramebufferTexture = exports.FramebufferTexture = /*#__PURE__*/function (_Te
   }
   return _createClass(FramebufferTexture);
 }(Texture);
-var CompressedTexture = exports.CompressedTexture = /*#__PURE__*/function (_Texture8) {
+exports.FramebufferTexture = FramebufferTexture;
+var CompressedTexture = /*#__PURE__*/function (_Texture8) {
   _inherits(CompressedTexture, _Texture8);
   var _super58 = _createSuper(CompressedTexture);
   function CompressedTexture(mipmaps, width, height, format, type, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy, colorSpace) {
@@ -24198,7 +24306,8 @@ var CompressedTexture = exports.CompressedTexture = /*#__PURE__*/function (_Text
   }
   return _createClass(CompressedTexture);
 }(Texture);
-var CompressedArrayTexture = exports.CompressedArrayTexture = /*#__PURE__*/function (_CompressedTexture) {
+exports.CompressedTexture = CompressedTexture;
+var CompressedArrayTexture = /*#__PURE__*/function (_CompressedTexture) {
   _inherits(CompressedArrayTexture, _CompressedTexture);
   var _super59 = _createSuper(CompressedArrayTexture);
   function CompressedArrayTexture(mipmaps, width, height, depth, format, type) {
@@ -24212,7 +24321,8 @@ var CompressedArrayTexture = exports.CompressedArrayTexture = /*#__PURE__*/funct
   }
   return _createClass(CompressedArrayTexture);
 }(CompressedTexture);
-var CompressedCubeTexture = exports.CompressedCubeTexture = /*#__PURE__*/function (_CompressedTexture2) {
+exports.CompressedArrayTexture = CompressedArrayTexture;
+var CompressedCubeTexture = /*#__PURE__*/function (_CompressedTexture2) {
   _inherits(CompressedCubeTexture, _CompressedTexture2);
   var _super60 = _createSuper(CompressedCubeTexture);
   function CompressedCubeTexture(images, format, type) {
@@ -24226,7 +24336,8 @@ var CompressedCubeTexture = exports.CompressedCubeTexture = /*#__PURE__*/functio
   }
   return _createClass(CompressedCubeTexture);
 }(CompressedTexture);
-var CanvasTexture = exports.CanvasTexture = /*#__PURE__*/function (_Texture9) {
+exports.CompressedCubeTexture = CompressedCubeTexture;
+var CanvasTexture = /*#__PURE__*/function (_Texture9) {
   _inherits(CanvasTexture, _Texture9);
   var _super61 = _createSuper(CanvasTexture);
   function CanvasTexture(canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy) {
@@ -24268,7 +24379,8 @@ var CanvasTexture = exports.CanvasTexture = /*#__PURE__*/function (_Texture9) {
  * A series of curves can be represented as a THREE.CurvePath.
  *
  **/
-var Curve = exports.Curve = /*#__PURE__*/function () {
+exports.CanvasTexture = CanvasTexture;
+var Curve = /*#__PURE__*/function () {
   function Curve() {
     _classCallCheck(this, Curve);
     this.type = 'Curve';
@@ -24297,8 +24409,7 @@ var Curve = exports.Curve = /*#__PURE__*/function () {
     // Get sequence of points using getPoint( t )
   }, {
     key: "getPoints",
-    value: function getPoints() {
-      var divisions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
+    value: function getPoints(divisions = 5) {
       var points = [];
       for (var d = 0; d <= divisions; d++) {
         points.push(this.getPoint(d / divisions));
@@ -24309,8 +24420,7 @@ var Curve = exports.Curve = /*#__PURE__*/function () {
     // Get sequence of points using getPointAt( u )
   }, {
     key: "getSpacedPoints",
-    value: function getSpacedPoints() {
-      var divisions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
+    value: function getSpacedPoints(divisions = 5) {
       var points = [];
       for (var d = 0; d <= divisions; d++) {
         points.push(this.getPointAt(d / divisions));
@@ -24329,8 +24439,7 @@ var Curve = exports.Curve = /*#__PURE__*/function () {
     // Get list of cumulative segment lengths
   }, {
     key: "getLengths",
-    value: function getLengths() {
-      var divisions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.arcLengthDivisions;
+    value: function getLengths(divisions = this.arcLengthDivisions) {
       if (this.cacheArcLengths && this.cacheArcLengths.length === divisions + 1 && !this.needsUpdate) {
         return this.cacheArcLengths;
       }
@@ -24391,6 +24500,7 @@ var Curve = exports.Curve = /*#__PURE__*/function () {
           // DONE
         }
       }
+
       i = high;
       if (arcLengths[i] === targetArcLength) {
         return i / (il - 1);
@@ -24551,19 +24661,12 @@ var Curve = exports.Curve = /*#__PURE__*/function () {
   }]);
   return Curve;
 }();
-var EllipseCurve = exports.EllipseCurve = /*#__PURE__*/function (_Curve) {
+exports.Curve = Curve;
+var EllipseCurve = /*#__PURE__*/function (_Curve) {
   _inherits(EllipseCurve, _Curve);
   var _super62 = _createSuper(EllipseCurve);
-  function EllipseCurve() {
+  function EllipseCurve(aX = 0, aY = 0, xRadius = 1, yRadius = 1, aStartAngle = 0, aEndAngle = Math.PI * 2, aClockwise = false, aRotation = 0) {
     var _this53;
-    var aX = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    var aY = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    var xRadius = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var yRadius = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
-    var aStartAngle = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
-    var aEndAngle = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : Math.PI * 2;
-    var aClockwise = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : false;
-    var aRotation = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 0;
     _classCallCheck(this, EllipseCurve);
     _this53 = _super62.call(this);
     _this53.isEllipseCurve = true;
@@ -24663,7 +24766,8 @@ var EllipseCurve = exports.EllipseCurve = /*#__PURE__*/function (_Curve) {
   }]);
   return EllipseCurve;
 }(Curve);
-var ArcCurve = exports.ArcCurve = /*#__PURE__*/function (_EllipseCurve) {
+exports.EllipseCurve = EllipseCurve;
+var ArcCurve = /*#__PURE__*/function (_EllipseCurve) {
   _inherits(ArcCurve, _EllipseCurve);
   var _super63 = _createSuper(ArcCurve);
   function ArcCurve(aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise) {
@@ -24693,6 +24797,7 @@ This CubicPoly class could be used for reusing some variables and calculations,
 but for three.js curve use, it could be possible inlined and flatten into a single function call
 which can be placed in CurveUtils.
 */
+exports.ArcCurve = ArcCurve;
 function CubicPoly() {
   var c0 = 0,
     c1 = 0,
@@ -24741,15 +24846,11 @@ var tmp = /*@__PURE__*/new Vector3();
 var px = /*@__PURE__*/new CubicPoly();
 var py = /*@__PURE__*/new CubicPoly();
 var pz = /*@__PURE__*/new CubicPoly();
-var CatmullRomCurve3 = exports.CatmullRomCurve3 = /*#__PURE__*/function (_Curve2) {
+var CatmullRomCurve3 = /*#__PURE__*/function (_Curve2) {
   _inherits(CatmullRomCurve3, _Curve2);
   var _super64 = _createSuper(CatmullRomCurve3);
-  function CatmullRomCurve3() {
+  function CatmullRomCurve3(points = [], closed = false, curveType = 'centripetal', tension = 0.5) {
     var _this55;
-    var points = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var closed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-    var curveType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'centripetal';
-    var tension = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0.5;
     _classCallCheck(this, CatmullRomCurve3);
     _this55 = _super64.call(this);
     _this55.isCatmullRomCurve3 = true;
@@ -24762,8 +24863,7 @@ var CatmullRomCurve3 = exports.CatmullRomCurve3 = /*#__PURE__*/function (_Curve2
   }
   _createClass(CatmullRomCurve3, [{
     key: "getPoint",
-    value: function getPoint(t) {
-      var optionalTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3();
+    value: function getPoint(t, optionalTarget = new Vector3()) {
       var point = optionalTarget;
       var points = this.points;
       var l = points.length;
@@ -24865,6 +24965,7 @@ var CatmullRomCurve3 = exports.CatmullRomCurve3 = /*#__PURE__*/function (_Curve2
  * Bezier Curves formulas obtained from
  * https://en.wikipedia.org/wiki/B%C3%A9zier_curve
  */
+exports.CatmullRomCurve3 = CatmullRomCurve3;
 function CatmullRom(t, p0, p1, p2, p3) {
   var v0 = (p2 - p0) * 0.5;
   var v1 = (p3 - p1) * 0.5;
@@ -24908,15 +25009,11 @@ function CubicBezierP3(t, p) {
 function CubicBezier(t, p0, p1, p2, p3) {
   return CubicBezierP0(t, p0) + CubicBezierP1(t, p1) + CubicBezierP2(t, p2) + CubicBezierP3(t, p3);
 }
-var CubicBezierCurve = exports.CubicBezierCurve = /*#__PURE__*/function (_Curve3) {
+var CubicBezierCurve = /*#__PURE__*/function (_Curve3) {
   _inherits(CubicBezierCurve, _Curve3);
   var _super65 = _createSuper(CubicBezierCurve);
-  function CubicBezierCurve() {
+  function CubicBezierCurve(v0 = new Vector2(), v1 = new Vector2(), v2 = new Vector2(), v3 = new Vector2()) {
     var _this56;
-    var v0 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector2();
-    var v1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector2();
-    var v2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : new Vector2();
-    var v3 = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : new Vector2();
     _classCallCheck(this, CubicBezierCurve);
     _this56 = _super65.call(this);
     _this56.isCubicBezierCurve = true;
@@ -24929,8 +25026,7 @@ var CubicBezierCurve = exports.CubicBezierCurve = /*#__PURE__*/function (_Curve3
   }
   _createClass(CubicBezierCurve, [{
     key: "getPoint",
-    value: function getPoint(t) {
-      var optionalTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector2();
+    value: function getPoint(t, optionalTarget = new Vector2()) {
       var point = optionalTarget;
       var v0 = this.v0,
         v1 = this.v1,
@@ -24972,15 +25068,12 @@ var CubicBezierCurve = exports.CubicBezierCurve = /*#__PURE__*/function (_Curve3
   }]);
   return CubicBezierCurve;
 }(Curve);
-var CubicBezierCurve3 = exports.CubicBezierCurve3 = /*#__PURE__*/function (_Curve4) {
+exports.CubicBezierCurve = CubicBezierCurve;
+var CubicBezierCurve3 = /*#__PURE__*/function (_Curve4) {
   _inherits(CubicBezierCurve3, _Curve4);
   var _super66 = _createSuper(CubicBezierCurve3);
-  function CubicBezierCurve3() {
+  function CubicBezierCurve3(v0 = new Vector3(), v1 = new Vector3(), v2 = new Vector3(), v3 = new Vector3()) {
     var _this57;
-    var v0 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector3();
-    var v1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3();
-    var v2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : new Vector3();
-    var v3 = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : new Vector3();
     _classCallCheck(this, CubicBezierCurve3);
     _this57 = _super66.call(this);
     _this57.isCubicBezierCurve3 = true;
@@ -24993,8 +25086,7 @@ var CubicBezierCurve3 = exports.CubicBezierCurve3 = /*#__PURE__*/function (_Curv
   }
   _createClass(CubicBezierCurve3, [{
     key: "getPoint",
-    value: function getPoint(t) {
-      var optionalTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3();
+    value: function getPoint(t, optionalTarget = new Vector3()) {
       var point = optionalTarget;
       var v0 = this.v0,
         v1 = this.v1,
@@ -25036,13 +25128,12 @@ var CubicBezierCurve3 = exports.CubicBezierCurve3 = /*#__PURE__*/function (_Curv
   }]);
   return CubicBezierCurve3;
 }(Curve);
-var LineCurve = exports.LineCurve = /*#__PURE__*/function (_Curve5) {
+exports.CubicBezierCurve3 = CubicBezierCurve3;
+var LineCurve = /*#__PURE__*/function (_Curve5) {
   _inherits(LineCurve, _Curve5);
   var _super67 = _createSuper(LineCurve);
-  function LineCurve() {
+  function LineCurve(v1 = new Vector2(), v2 = new Vector2()) {
     var _this58;
-    var v1 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector2();
-    var v2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector2();
     _classCallCheck(this, LineCurve);
     _this58 = _super67.call(this);
     _this58.isLineCurve = true;
@@ -25053,8 +25144,7 @@ var LineCurve = exports.LineCurve = /*#__PURE__*/function (_Curve5) {
   }
   _createClass(LineCurve, [{
     key: "getPoint",
-    value: function getPoint(t) {
-      var optionalTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector2();
+    value: function getPoint(t, optionalTarget = new Vector2()) {
       var point = optionalTarget;
       if (t === 1) {
         point.copy(this.v2);
@@ -25073,8 +25163,7 @@ var LineCurve = exports.LineCurve = /*#__PURE__*/function (_Curve5) {
     }
   }, {
     key: "getTangent",
-    value: function getTangent(t) {
-      var optionalTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector2();
+    value: function getTangent(t, optionalTarget = new Vector2()) {
       return optionalTarget.subVectors(this.v2, this.v1).normalize();
     }
   }, {
@@ -25109,13 +25198,12 @@ var LineCurve = exports.LineCurve = /*#__PURE__*/function (_Curve5) {
   }]);
   return LineCurve;
 }(Curve);
-var LineCurve3 = exports.LineCurve3 = /*#__PURE__*/function (_Curve6) {
+exports.LineCurve = LineCurve;
+var LineCurve3 = /*#__PURE__*/function (_Curve6) {
   _inherits(LineCurve3, _Curve6);
   var _super68 = _createSuper(LineCurve3);
-  function LineCurve3() {
+  function LineCurve3(v1 = new Vector3(), v2 = new Vector3()) {
     var _this59;
-    var v1 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector3();
-    var v2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3();
     _classCallCheck(this, LineCurve3);
     _this59 = _super68.call(this);
     _this59.isLineCurve3 = true;
@@ -25126,8 +25214,7 @@ var LineCurve3 = exports.LineCurve3 = /*#__PURE__*/function (_Curve6) {
   }
   _createClass(LineCurve3, [{
     key: "getPoint",
-    value: function getPoint(t) {
-      var optionalTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3();
+    value: function getPoint(t, optionalTarget = new Vector3()) {
       var point = optionalTarget;
       if (t === 1) {
         point.copy(this.v2);
@@ -25146,8 +25233,7 @@ var LineCurve3 = exports.LineCurve3 = /*#__PURE__*/function (_Curve6) {
     }
   }, {
     key: "getTangent",
-    value: function getTangent(t) {
-      var optionalTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3();
+    value: function getTangent(t, optionalTarget = new Vector3()) {
       return optionalTarget.subVectors(this.v2, this.v1).normalize();
     }
   }, {
@@ -25182,14 +25268,12 @@ var LineCurve3 = exports.LineCurve3 = /*#__PURE__*/function (_Curve6) {
   }]);
   return LineCurve3;
 }(Curve);
-var QuadraticBezierCurve = exports.QuadraticBezierCurve = /*#__PURE__*/function (_Curve7) {
+exports.LineCurve3 = LineCurve3;
+var QuadraticBezierCurve = /*#__PURE__*/function (_Curve7) {
   _inherits(QuadraticBezierCurve, _Curve7);
   var _super69 = _createSuper(QuadraticBezierCurve);
-  function QuadraticBezierCurve() {
+  function QuadraticBezierCurve(v0 = new Vector2(), v1 = new Vector2(), v2 = new Vector2()) {
     var _this60;
-    var v0 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector2();
-    var v1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector2();
-    var v2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : new Vector2();
     _classCallCheck(this, QuadraticBezierCurve);
     _this60 = _super69.call(this);
     _this60.isQuadraticBezierCurve = true;
@@ -25201,8 +25285,7 @@ var QuadraticBezierCurve = exports.QuadraticBezierCurve = /*#__PURE__*/function 
   }
   _createClass(QuadraticBezierCurve, [{
     key: "getPoint",
-    value: function getPoint(t) {
-      var optionalTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector2();
+    value: function getPoint(t, optionalTarget = new Vector2()) {
       var point = optionalTarget;
       var v0 = this.v0,
         v1 = this.v1,
@@ -25240,14 +25323,12 @@ var QuadraticBezierCurve = exports.QuadraticBezierCurve = /*#__PURE__*/function 
   }]);
   return QuadraticBezierCurve;
 }(Curve);
-var QuadraticBezierCurve3 = exports.QuadraticBezierCurve3 = /*#__PURE__*/function (_Curve8) {
+exports.QuadraticBezierCurve = QuadraticBezierCurve;
+var QuadraticBezierCurve3 = /*#__PURE__*/function (_Curve8) {
   _inherits(QuadraticBezierCurve3, _Curve8);
   var _super70 = _createSuper(QuadraticBezierCurve3);
-  function QuadraticBezierCurve3() {
+  function QuadraticBezierCurve3(v0 = new Vector3(), v1 = new Vector3(), v2 = new Vector3()) {
     var _this61;
-    var v0 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector3();
-    var v1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3();
-    var v2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : new Vector3();
     _classCallCheck(this, QuadraticBezierCurve3);
     _this61 = _super70.call(this);
     _this61.isQuadraticBezierCurve3 = true;
@@ -25259,8 +25340,7 @@ var QuadraticBezierCurve3 = exports.QuadraticBezierCurve3 = /*#__PURE__*/functio
   }
   _createClass(QuadraticBezierCurve3, [{
     key: "getPoint",
-    value: function getPoint(t) {
-      var optionalTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3();
+    value: function getPoint(t, optionalTarget = new Vector3()) {
       var point = optionalTarget;
       var v0 = this.v0,
         v1 = this.v1,
@@ -25298,12 +25378,12 @@ var QuadraticBezierCurve3 = exports.QuadraticBezierCurve3 = /*#__PURE__*/functio
   }]);
   return QuadraticBezierCurve3;
 }(Curve);
-var SplineCurve = exports.SplineCurve = /*#__PURE__*/function (_Curve9) {
+exports.QuadraticBezierCurve3 = QuadraticBezierCurve3;
+var SplineCurve = /*#__PURE__*/function (_Curve9) {
   _inherits(SplineCurve, _Curve9);
   var _super71 = _createSuper(SplineCurve);
-  function SplineCurve() {
+  function SplineCurve(points = []) {
     var _this62;
-    var points = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     _classCallCheck(this, SplineCurve);
     _this62 = _super71.call(this);
     _this62.isSplineCurve = true;
@@ -25313,8 +25393,7 @@ var SplineCurve = exports.SplineCurve = /*#__PURE__*/function (_Curve9) {
   }
   _createClass(SplineCurve, [{
     key: "getPoint",
-    value: function getPoint(t) {
-      var optionalTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector2();
+    value: function getPoint(t, optionalTarget = new Vector2()) {
       var point = optionalTarget;
       var points = this.points;
       var p = (points.length - 1) * t;
@@ -25363,6 +25442,7 @@ var SplineCurve = exports.SplineCurve = /*#__PURE__*/function (_Curve9) {
   }]);
   return SplineCurve;
 }(Curve);
+exports.SplineCurve = SplineCurve;
 var Curves = /*#__PURE__*/Object.freeze({
   __proto__: null,
   ArcCurve: ArcCurve,
@@ -25381,7 +25461,7 @@ var Curves = /*#__PURE__*/Object.freeze({
  *	Curved Path - a curve path is simply a array of connected
  *  curves, but retains the api of a curve
  **************************************************************/
-var CurvePath = exports.CurvePath = /*#__PURE__*/function (_Curve10) {
+var CurvePath = /*#__PURE__*/function (_Curve10) {
   _inherits(CurvePath, _Curve10);
   var _super72 = _createSuper(CurvePath);
   function CurvePath() {
@@ -25487,8 +25567,7 @@ var CurvePath = exports.CurvePath = /*#__PURE__*/function (_Curve10) {
     }
   }, {
     key: "getSpacedPoints",
-    value: function getSpacedPoints() {
-      var divisions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 40;
+    value: function getSpacedPoints(divisions = 40) {
       var points = [];
       for (var i = 0; i <= divisions; i++) {
         points.push(this.getPoint(i / divisions));
@@ -25500,8 +25579,7 @@ var CurvePath = exports.CurvePath = /*#__PURE__*/function (_Curve10) {
     }
   }, {
     key: "getPoints",
-    value: function getPoints() {
-      var divisions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 12;
+    value: function getPoints(divisions = 12) {
       var points = [];
       var last;
       for (var i = 0, curves = this.curves; i < curves.length; i++) {
@@ -25560,7 +25638,8 @@ var CurvePath = exports.CurvePath = /*#__PURE__*/function (_Curve10) {
   }]);
   return CurvePath;
 }(Curve);
-var Path = exports.Path = /*#__PURE__*/function (_CurvePath) {
+exports.CurvePath = CurvePath;
+var Path = /*#__PURE__*/function (_CurvePath) {
   _inherits(Path, _CurvePath);
   var _super73 = _createSuper(Path);
   function Path(points) {
@@ -25685,15 +25764,12 @@ var Path = exports.Path = /*#__PURE__*/function (_CurvePath) {
   }]);
   return Path;
 }(CurvePath);
-var LatheGeometry = exports.LatheGeometry = /*#__PURE__*/function (_BufferGeometry3) {
+exports.Path = Path;
+var LatheGeometry = /*#__PURE__*/function (_BufferGeometry3) {
   _inherits(LatheGeometry, _BufferGeometry3);
   var _super74 = _createSuper(LatheGeometry);
-  function LatheGeometry() {
+  function LatheGeometry(points = [new Vector2(0, -0.5), new Vector2(0.5, 0), new Vector2(0, 0.5)], segments = 12, phiStart = 0, phiLength = Math.PI * 2) {
     var _this65;
-    var points = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [new Vector2(0, -0.5), new Vector2(0.5, 0), new Vector2(0, 0.5)];
-    var segments = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 12;
-    var phiStart = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-    var phiLength = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : Math.PI * 2;
     _classCallCheck(this, LatheGeometry);
     _this65 = _super74.call(this);
     _this65.type = 'LatheGeometry';
@@ -25836,15 +25912,12 @@ var LatheGeometry = exports.LatheGeometry = /*#__PURE__*/function (_BufferGeomet
   }]);
   return LatheGeometry;
 }(BufferGeometry);
-var CapsuleGeometry = exports.CapsuleGeometry = /*#__PURE__*/function (_LatheGeometry) {
+exports.LatheGeometry = LatheGeometry;
+var CapsuleGeometry = /*#__PURE__*/function (_LatheGeometry) {
   _inherits(CapsuleGeometry, _LatheGeometry);
   var _super75 = _createSuper(CapsuleGeometry);
-  function CapsuleGeometry() {
+  function CapsuleGeometry(radius = 1, length = 1, capSegments = 4, radialSegments = 8) {
     var _this66;
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var capSegments = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 4;
-    var radialSegments = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 8;
     _classCallCheck(this, CapsuleGeometry);
     var path = new Path();
     path.absarc(0, -length / 2, radius, Math.PI * 1.5, 0);
@@ -25867,15 +25940,12 @@ var CapsuleGeometry = exports.CapsuleGeometry = /*#__PURE__*/function (_LatheGeo
   }]);
   return CapsuleGeometry;
 }(LatheGeometry);
-var CircleGeometry = exports.CircleGeometry = /*#__PURE__*/function (_BufferGeometry4) {
+exports.CapsuleGeometry = CapsuleGeometry;
+var CircleGeometry = /*#__PURE__*/function (_BufferGeometry4) {
   _inherits(CircleGeometry, _BufferGeometry4);
   var _super76 = _createSuper(CircleGeometry);
-  function CircleGeometry() {
+  function CircleGeometry(radius = 1, segments = 32, thetaStart = 0, thetaLength = Math.PI * 2) {
     var _this67;
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var segments = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 32;
-    var thetaStart = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-    var thetaLength = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : Math.PI * 2;
     _classCallCheck(this, CircleGeometry);
     _this67 = _super76.call(this);
     _this67.type = 'CircleGeometry';
@@ -25953,19 +26023,12 @@ var CircleGeometry = exports.CircleGeometry = /*#__PURE__*/function (_BufferGeom
   }]);
   return CircleGeometry;
 }(BufferGeometry);
-var CylinderGeometry = exports.CylinderGeometry = /*#__PURE__*/function (_BufferGeometry5) {
+exports.CircleGeometry = CircleGeometry;
+var CylinderGeometry = /*#__PURE__*/function (_BufferGeometry5) {
   _inherits(CylinderGeometry, _BufferGeometry5);
   var _super77 = _createSuper(CylinderGeometry);
-  function CylinderGeometry() {
+  function CylinderGeometry(radiusTop = 1, radiusBottom = 1, height = 1, radialSegments = 32, heightSegments = 1, openEnded = false, thetaStart = 0, thetaLength = Math.PI * 2) {
     var _this68;
-    var radiusTop = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var radiusBottom = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var height = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var radialSegments = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 32;
-    var heightSegments = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
-    var openEnded = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
-    var thetaStart = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : 0;
-    var thetaLength = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : Math.PI * 2;
     _classCallCheck(this, CylinderGeometry);
     _this68 = _super77.call(this);
     _this68.type = 'CylinderGeometry';
@@ -26196,18 +26259,12 @@ var CylinderGeometry = exports.CylinderGeometry = /*#__PURE__*/function (_Buffer
   }]);
   return CylinderGeometry;
 }(BufferGeometry);
-var ConeGeometry = exports.ConeGeometry = /*#__PURE__*/function (_CylinderGeometry) {
+exports.CylinderGeometry = CylinderGeometry;
+var ConeGeometry = /*#__PURE__*/function (_CylinderGeometry) {
   _inherits(ConeGeometry, _CylinderGeometry);
   var _super78 = _createSuper(ConeGeometry);
-  function ConeGeometry() {
+  function ConeGeometry(radius = 1, height = 1, radialSegments = 32, heightSegments = 1, openEnded = false, thetaStart = 0, thetaLength = Math.PI * 2) {
     var _this69;
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var radialSegments = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 32;
-    var heightSegments = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
-    var openEnded = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
-    var thetaStart = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0;
-    var thetaLength = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : Math.PI * 2;
     _classCallCheck(this, ConeGeometry);
     _this69 = _super78.call(this, 0, radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength);
     _this69.type = 'ConeGeometry';
@@ -26230,15 +26287,12 @@ var ConeGeometry = exports.ConeGeometry = /*#__PURE__*/function (_CylinderGeomet
   }]);
   return ConeGeometry;
 }(CylinderGeometry);
-var PolyhedronGeometry = exports.PolyhedronGeometry = /*#__PURE__*/function (_BufferGeometry6) {
+exports.ConeGeometry = ConeGeometry;
+var PolyhedronGeometry = /*#__PURE__*/function (_BufferGeometry6) {
   _inherits(PolyhedronGeometry, _BufferGeometry6);
   var _super79 = _createSuper(PolyhedronGeometry);
-  function PolyhedronGeometry() {
+  function PolyhedronGeometry(vertices = [], indices = [], radius = 1, detail = 0) {
     var _this70;
-    var vertices = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var indices = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-    var radius = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var detail = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
     _classCallCheck(this, PolyhedronGeometry);
     _this70 = _super79.call(this);
     _this70.type = 'PolyhedronGeometry';
@@ -26455,13 +26509,12 @@ var PolyhedronGeometry = exports.PolyhedronGeometry = /*#__PURE__*/function (_Bu
   }]);
   return PolyhedronGeometry;
 }(BufferGeometry);
-var DodecahedronGeometry = exports.DodecahedronGeometry = /*#__PURE__*/function (_PolyhedronGeometry) {
+exports.PolyhedronGeometry = PolyhedronGeometry;
+var DodecahedronGeometry = /*#__PURE__*/function (_PolyhedronGeometry) {
   _inherits(DodecahedronGeometry, _PolyhedronGeometry);
   var _super80 = _createSuper(DodecahedronGeometry);
-  function DodecahedronGeometry() {
+  function DodecahedronGeometry(radius = 1, detail = 0) {
     var _this71;
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var detail = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     _classCallCheck(this, DodecahedronGeometry);
     var t = (1 + Math.sqrt(5)) / 2;
     var r = 1 / t;
@@ -26491,17 +26544,16 @@ var DodecahedronGeometry = exports.DodecahedronGeometry = /*#__PURE__*/function 
   }]);
   return DodecahedronGeometry;
 }(PolyhedronGeometry);
+exports.DodecahedronGeometry = DodecahedronGeometry;
 var _v0 = /*@__PURE__*/new Vector3();
 var _v1$1 = /*@__PURE__*/new Vector3();
 var _normal = /*@__PURE__*/new Vector3();
 var _triangle = /*@__PURE__*/new Triangle();
-var EdgesGeometry = exports.EdgesGeometry = /*#__PURE__*/function (_BufferGeometry7) {
+var EdgesGeometry = /*#__PURE__*/function (_BufferGeometry7) {
   _inherits(EdgesGeometry, _BufferGeometry7);
   var _super81 = _createSuper(EdgesGeometry);
-  function EdgesGeometry() {
+  function EdgesGeometry(geometry = null, thresholdAngle = 1) {
     var _this72;
-    var geometry = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var thresholdAngle = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
     _classCallCheck(this, EdgesGeometry);
     _this72 = _super81.call(this);
     _this72.type = 'EdgesGeometry';
@@ -26604,7 +26656,8 @@ var EdgesGeometry = exports.EdgesGeometry = /*#__PURE__*/function (_BufferGeomet
   }]);
   return EdgesGeometry;
 }(BufferGeometry);
-var Shape = exports.Shape = /*#__PURE__*/function (_Path) {
+exports.EdgesGeometry = EdgesGeometry;
+var Shape = /*#__PURE__*/function (_Path) {
   _inherits(Shape, _Path);
   var _super82 = _createSuper(Shape);
   function Shape(points) {
@@ -26676,9 +26729,9 @@ var Shape = exports.Shape = /*#__PURE__*/function (_Path) {
 /**
  * Port from https://github.com/mapbox/earcut (v2.2.4)
  */
+exports.Shape = Shape;
 var Earcut = {
-  triangulate: function triangulate(data, holeIndices) {
-    var dim = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 2;
+  triangulate: function triangulate(data, holeIndices, dim = 2) {
     var hasHoles = holeIndices && holeIndices.length;
     var outerLen = hasHoles ? holeIndices[0] * dim : data.length;
     var outerNode = linkedList(data, 0, outerLen, dim, true);
@@ -26968,6 +27021,7 @@ function findHoleBridge(hole, outerNode) {
         if (x === hx) return m; // hole touches outer segment; pick leftmost endpoint
       }
     }
+
     p = p.next;
   } while (p !== outerNode);
   if (!m) return null;
@@ -27237,7 +27291,7 @@ function signedArea(data, start, end, dim) {
   }
   return sum;
 }
-var ShapeUtils = exports.ShapeUtils = /*#__PURE__*/function () {
+var ShapeUtils = /*#__PURE__*/function () {
   function ShapeUtils() {
     _classCallCheck(this, ShapeUtils);
   }
@@ -27293,6 +27347,7 @@ var ShapeUtils = exports.ShapeUtils = /*#__PURE__*/function () {
   }]);
   return ShapeUtils;
 }();
+exports.ShapeUtils = ShapeUtils;
 function removeDupEndPts(points) {
   var l = points.length;
   if (l > 2 && points[l - 1].equals(points[0])) {
@@ -27327,13 +27382,11 @@ function addContour(vertices, contour) {
  *
  * }
  */
-var ExtrudeGeometry = exports.ExtrudeGeometry = /*#__PURE__*/function (_BufferGeometry8) {
+var ExtrudeGeometry = /*#__PURE__*/function (_BufferGeometry8) {
   _inherits(ExtrudeGeometry, _BufferGeometry8);
   var _super83 = _createSuper(ExtrudeGeometry);
-  function ExtrudeGeometry() {
+  function ExtrudeGeometry(shapes = new Shape([new Vector2(0.5, 0.5), new Vector2(-0.5, 0.5), new Vector2(-0.5, -0.5), new Vector2(0.5, -0.5)]), options = {}) {
     var _this74;
-    var shapes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Shape([new Vector2(0.5, 0.5), new Vector2(-0.5, 0.5), new Vector2(-0.5, -0.5), new Vector2(0.5, -0.5)]);
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     _classCallCheck(this, ExtrudeGeometry);
     _this74 = _super83.call(this);
     _this74.type = 'ExtrudeGeometry';
@@ -27814,6 +27867,7 @@ var ExtrudeGeometry = exports.ExtrudeGeometry = /*#__PURE__*/function (_BufferGe
   }]);
   return ExtrudeGeometry;
 }(BufferGeometry);
+exports.ExtrudeGeometry = ExtrudeGeometry;
 var WorldUVGenerator = {
   generateTopUV: function generateTopUV(geometry, vertices, indexA, indexB, indexC) {
     var a_x = vertices[indexA * 3];
@@ -27858,13 +27912,11 @@ function toJSON$1(shapes, options, data) {
   if (options.extrudePath !== undefined) data.options.extrudePath = options.extrudePath.toJSON();
   return data;
 }
-var IcosahedronGeometry = exports.IcosahedronGeometry = /*#__PURE__*/function (_PolyhedronGeometry2) {
+var IcosahedronGeometry = /*#__PURE__*/function (_PolyhedronGeometry2) {
   _inherits(IcosahedronGeometry, _PolyhedronGeometry2);
   var _super84 = _createSuper(IcosahedronGeometry);
-  function IcosahedronGeometry() {
+  function IcosahedronGeometry(radius = 1, detail = 0) {
     var _this75;
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var detail = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     _classCallCheck(this, IcosahedronGeometry);
     var t = (1 + Math.sqrt(5)) / 2;
     var vertices = [-1, t, 0, 1, t, 0, -1, -t, 0, 1, -t, 0, 0, -1, t, 0, 1, t, 0, -1, -t, 0, 1, -t, t, 0, -1, t, 0, 1, -t, 0, -1, -t, 0, 1];
@@ -27885,13 +27937,12 @@ var IcosahedronGeometry = exports.IcosahedronGeometry = /*#__PURE__*/function (_
   }]);
   return IcosahedronGeometry;
 }(PolyhedronGeometry);
-var OctahedronGeometry = exports.OctahedronGeometry = /*#__PURE__*/function (_PolyhedronGeometry3) {
+exports.IcosahedronGeometry = IcosahedronGeometry;
+var OctahedronGeometry = /*#__PURE__*/function (_PolyhedronGeometry3) {
   _inherits(OctahedronGeometry, _PolyhedronGeometry3);
   var _super85 = _createSuper(OctahedronGeometry);
-  function OctahedronGeometry() {
+  function OctahedronGeometry(radius = 1, detail = 0) {
     var _this76;
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var detail = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     _classCallCheck(this, OctahedronGeometry);
     var vertices = [1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1];
     var indices = [0, 2, 4, 0, 4, 3, 0, 3, 5, 0, 5, 2, 1, 2, 5, 1, 5, 3, 1, 3, 4, 1, 4, 2];
@@ -27911,17 +27962,12 @@ var OctahedronGeometry = exports.OctahedronGeometry = /*#__PURE__*/function (_Po
   }]);
   return OctahedronGeometry;
 }(PolyhedronGeometry);
-var RingGeometry = exports.RingGeometry = /*#__PURE__*/function (_BufferGeometry9) {
+exports.OctahedronGeometry = OctahedronGeometry;
+var RingGeometry = /*#__PURE__*/function (_BufferGeometry9) {
   _inherits(RingGeometry, _BufferGeometry9);
   var _super86 = _createSuper(RingGeometry);
-  function RingGeometry() {
+  function RingGeometry(innerRadius = 0.5, outerRadius = 1, thetaSegments = 32, phiSegments = 1, thetaStart = 0, thetaLength = Math.PI * 2) {
     var _this77;
-    var innerRadius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.5;
-    var outerRadius = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var thetaSegments = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 32;
-    var phiSegments = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
-    var thetaStart = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
-    var thetaLength = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : Math.PI * 2;
     _classCallCheck(this, RingGeometry);
     _this77 = _super86.call(this);
     _this77.type = 'RingGeometry';
@@ -28021,13 +28067,12 @@ var RingGeometry = exports.RingGeometry = /*#__PURE__*/function (_BufferGeometry
   }]);
   return RingGeometry;
 }(BufferGeometry);
-var ShapeGeometry = exports.ShapeGeometry = /*#__PURE__*/function (_BufferGeometry10) {
+exports.RingGeometry = RingGeometry;
+var ShapeGeometry = /*#__PURE__*/function (_BufferGeometry10) {
   _inherits(ShapeGeometry, _BufferGeometry10);
   var _super87 = _createSuper(ShapeGeometry);
-  function ShapeGeometry() {
+  function ShapeGeometry(shapes = new Shape([new Vector2(0, 0.5), new Vector2(-0.5, -0.5), new Vector2(0.5, -0.5)]), curveSegments = 12) {
     var _this78;
-    var shapes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Shape([new Vector2(0, 0.5), new Vector2(-0.5, -0.5), new Vector2(0.5, -0.5)]);
-    var curveSegments = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 12;
     _classCallCheck(this, ShapeGeometry);
     _this78 = _super87.call(this);
     _this78.type = 'ShapeGeometry';
@@ -28146,6 +28191,7 @@ var ShapeGeometry = exports.ShapeGeometry = /*#__PURE__*/function (_BufferGeomet
   }]);
   return ShapeGeometry;
 }(BufferGeometry);
+exports.ShapeGeometry = ShapeGeometry;
 function _toJSON(shapes, data) {
   data.shapes = [];
   if (Array.isArray(shapes)) {
@@ -28158,18 +28204,11 @@ function _toJSON(shapes, data) {
   }
   return data;
 }
-var SphereGeometry = exports.SphereGeometry = /*#__PURE__*/function (_BufferGeometry11) {
+var SphereGeometry = /*#__PURE__*/function (_BufferGeometry11) {
   _inherits(SphereGeometry, _BufferGeometry11);
   var _super88 = _createSuper(SphereGeometry);
-  function SphereGeometry() {
+  function SphereGeometry(radius = 1, widthSegments = 32, heightSegments = 16, phiStart = 0, phiLength = Math.PI * 2, thetaStart = 0, thetaLength = Math.PI) {
     var _this79;
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var widthSegments = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 32;
-    var heightSegments = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 16;
-    var phiStart = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
-    var phiLength = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : Math.PI * 2;
-    var thetaStart = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0;
-    var thetaLength = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : Math.PI;
     _classCallCheck(this, SphereGeometry);
     _this79 = _super88.call(this);
     _this79.type = 'SphereGeometry';
@@ -28270,13 +28309,12 @@ var SphereGeometry = exports.SphereGeometry = /*#__PURE__*/function (_BufferGeom
   }]);
   return SphereGeometry;
 }(BufferGeometry);
-var TetrahedronGeometry = exports.TetrahedronGeometry = /*#__PURE__*/function (_PolyhedronGeometry4) {
+exports.SphereGeometry = SphereGeometry;
+var TetrahedronGeometry = /*#__PURE__*/function (_PolyhedronGeometry4) {
   _inherits(TetrahedronGeometry, _PolyhedronGeometry4);
   var _super89 = _createSuper(TetrahedronGeometry);
-  function TetrahedronGeometry() {
+  function TetrahedronGeometry(radius = 1, detail = 0) {
     var _this80;
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var detail = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     _classCallCheck(this, TetrahedronGeometry);
     var vertices = [1, 1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1];
     var indices = [2, 1, 0, 0, 3, 2, 1, 3, 0, 2, 3, 1];
@@ -28296,16 +28334,12 @@ var TetrahedronGeometry = exports.TetrahedronGeometry = /*#__PURE__*/function (_
   }]);
   return TetrahedronGeometry;
 }(PolyhedronGeometry);
-var TorusGeometry = exports.TorusGeometry = /*#__PURE__*/function (_BufferGeometry12) {
+exports.TetrahedronGeometry = TetrahedronGeometry;
+var TorusGeometry = /*#__PURE__*/function (_BufferGeometry12) {
   _inherits(TorusGeometry, _BufferGeometry12);
   var _super90 = _createSuper(TorusGeometry);
-  function TorusGeometry() {
+  function TorusGeometry(radius = 1, tube = 0.4, radialSegments = 12, tubularSegments = 48, arc = Math.PI * 2) {
     var _this81;
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var tube = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.4;
-    var radialSegments = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 12;
-    var tubularSegments = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 48;
-    var arc = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : Math.PI * 2;
     _classCallCheck(this, TorusGeometry);
     _this81 = _super90.call(this);
     _this81.type = 'TorusGeometry';
@@ -28401,17 +28435,12 @@ var TorusGeometry = exports.TorusGeometry = /*#__PURE__*/function (_BufferGeomet
   }]);
   return TorusGeometry;
 }(BufferGeometry);
-var TorusKnotGeometry = exports.TorusKnotGeometry = /*#__PURE__*/function (_BufferGeometry13) {
+exports.TorusGeometry = TorusGeometry;
+var TorusKnotGeometry = /*#__PURE__*/function (_BufferGeometry13) {
   _inherits(TorusKnotGeometry, _BufferGeometry13);
   var _super91 = _createSuper(TorusKnotGeometry);
-  function TorusKnotGeometry() {
+  function TorusKnotGeometry(radius = 1, tube = 0.4, tubularSegments = 64, radialSegments = 8, p = 2, q = 3) {
     var _this82;
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var tube = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.4;
-    var tubularSegments = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 64;
-    var radialSegments = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 8;
-    var p = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 2;
-    var q = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 3;
     _classCallCheck(this, TorusKnotGeometry);
     _this82 = _super91.call(this);
     _this82.type = 'TorusKnotGeometry';
@@ -28548,16 +28577,12 @@ var TorusKnotGeometry = exports.TorusKnotGeometry = /*#__PURE__*/function (_Buff
   }]);
   return TorusKnotGeometry;
 }(BufferGeometry);
-var TubeGeometry = exports.TubeGeometry = /*#__PURE__*/function (_BufferGeometry14) {
+exports.TorusKnotGeometry = TorusKnotGeometry;
+var TubeGeometry = /*#__PURE__*/function (_BufferGeometry14) {
   _inherits(TubeGeometry, _BufferGeometry14);
   var _super92 = _createSuper(TubeGeometry);
-  function TubeGeometry() {
+  function TubeGeometry(path = new QuadraticBezierCurve3(new Vector3(-1, -1, 0), new Vector3(-1, 1, 0), new Vector3(1, 1, 0)), tubularSegments = 64, radius = 1, radialSegments = 8, closed = false) {
     var _this83;
-    var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new QuadraticBezierCurve3(new Vector3(-1, -1, 0), new Vector3(-1, 1, 0), new Vector3(1, 1, 0));
-    var tubularSegments = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 64;
-    var radius = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var radialSegments = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 8;
-    var closed = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
     _classCallCheck(this, TubeGeometry);
     _this83 = _super92.call(this);
     _this83.type = 'TubeGeometry';
@@ -28707,12 +28732,12 @@ var TubeGeometry = exports.TubeGeometry = /*#__PURE__*/function (_BufferGeometry
   }]);
   return TubeGeometry;
 }(BufferGeometry);
-var WireframeGeometry = exports.WireframeGeometry = /*#__PURE__*/function (_BufferGeometry15) {
+exports.TubeGeometry = TubeGeometry;
+var WireframeGeometry = /*#__PURE__*/function (_BufferGeometry15) {
   _inherits(WireframeGeometry, _BufferGeometry15);
   var _super93 = _createSuper(WireframeGeometry);
-  function WireframeGeometry() {
+  function WireframeGeometry(geometry = null) {
     var _this84;
-    var geometry = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
     _classCallCheck(this, WireframeGeometry);
     _this84 = _super93.call(this);
     _this84.type = 'WireframeGeometry';
@@ -28799,6 +28824,7 @@ var WireframeGeometry = exports.WireframeGeometry = /*#__PURE__*/function (_Buff
   }]);
   return WireframeGeometry;
 }(BufferGeometry);
+exports.WireframeGeometry = WireframeGeometry;
 function isUniqueEdge(start, end, edges) {
   var hash1 = "".concat(start.x, ",").concat(start.y, ",").concat(start.z, "-").concat(end.x, ",").concat(end.y, ",").concat(end.z);
   var hash2 = "".concat(end.x, ",").concat(end.y, ",").concat(end.z, "-").concat(start.x, ",").concat(start.y, ",").concat(start.z); // coincident edge
@@ -28835,7 +28861,7 @@ var Geometries = /*#__PURE__*/Object.freeze({
   TubeGeometry: TubeGeometry,
   WireframeGeometry: WireframeGeometry
 });
-var ShadowMaterial = exports.ShadowMaterial = /*#__PURE__*/function (_Material8) {
+var ShadowMaterial = /*#__PURE__*/function (_Material8) {
   _inherits(ShadowMaterial, _Material8);
   var _super94 = _createSuper(ShadowMaterial);
   function ShadowMaterial(parameters) {
@@ -28861,7 +28887,8 @@ var ShadowMaterial = exports.ShadowMaterial = /*#__PURE__*/function (_Material8)
   }]);
   return ShadowMaterial;
 }(Material);
-var RawShaderMaterial = exports.RawShaderMaterial = /*#__PURE__*/function (_ShaderMaterial) {
+exports.ShadowMaterial = ShadowMaterial;
+var RawShaderMaterial = /*#__PURE__*/function (_ShaderMaterial) {
   _inherits(RawShaderMaterial, _ShaderMaterial);
   var _super95 = _createSuper(RawShaderMaterial);
   function RawShaderMaterial(parameters) {
@@ -28874,7 +28901,8 @@ var RawShaderMaterial = exports.RawShaderMaterial = /*#__PURE__*/function (_Shad
   }
   return _createClass(RawShaderMaterial);
 }(ShaderMaterial);
-var MeshStandardMaterial = exports.MeshStandardMaterial = /*#__PURE__*/function (_Material9) {
+exports.RawShaderMaterial = RawShaderMaterial;
+var MeshStandardMaterial = /*#__PURE__*/function (_Material9) {
   _inherits(MeshStandardMaterial, _Material9);
   var _super96 = _createSuper(MeshStandardMaterial);
   function MeshStandardMaterial(parameters) {
@@ -28961,7 +28989,8 @@ var MeshStandardMaterial = exports.MeshStandardMaterial = /*#__PURE__*/function 
   }]);
   return MeshStandardMaterial;
 }(Material);
-var MeshPhysicalMaterial = exports.MeshPhysicalMaterial = /*#__PURE__*/function (_MeshStandardMaterial) {
+exports.MeshStandardMaterial = MeshStandardMaterial;
+var MeshPhysicalMaterial = /*#__PURE__*/function (_MeshStandardMaterial) {
   _inherits(MeshPhysicalMaterial, _MeshStandardMaterial);
   var _super97 = _createSuper(MeshPhysicalMaterial);
   function MeshPhysicalMaterial(parameters) {
@@ -29113,7 +29142,8 @@ var MeshPhysicalMaterial = exports.MeshPhysicalMaterial = /*#__PURE__*/function 
   }]);
   return MeshPhysicalMaterial;
 }(MeshStandardMaterial);
-var MeshPhongMaterial = exports.MeshPhongMaterial = /*#__PURE__*/function (_Material10) {
+exports.MeshPhysicalMaterial = MeshPhysicalMaterial;
+var MeshPhongMaterial = /*#__PURE__*/function (_Material10) {
   _inherits(MeshPhongMaterial, _Material10);
   var _super98 = _createSuper(MeshPhongMaterial);
   function MeshPhongMaterial(parameters) {
@@ -29196,7 +29226,8 @@ var MeshPhongMaterial = exports.MeshPhongMaterial = /*#__PURE__*/function (_Mate
   }]);
   return MeshPhongMaterial;
 }(Material);
-var MeshToonMaterial = exports.MeshToonMaterial = /*#__PURE__*/function (_Material11) {
+exports.MeshPhongMaterial = MeshPhongMaterial;
+var MeshToonMaterial = /*#__PURE__*/function (_Material11) {
   _inherits(MeshToonMaterial, _Material11);
   var _super99 = _createSuper(MeshToonMaterial);
   function MeshToonMaterial(parameters) {
@@ -29268,7 +29299,8 @@ var MeshToonMaterial = exports.MeshToonMaterial = /*#__PURE__*/function (_Materi
   }]);
   return MeshToonMaterial;
 }(Material);
-var MeshNormalMaterial = exports.MeshNormalMaterial = /*#__PURE__*/function (_Material12) {
+exports.MeshToonMaterial = MeshToonMaterial;
+var MeshNormalMaterial = /*#__PURE__*/function (_Material12) {
   _inherits(MeshNormalMaterial, _Material12);
   var _super100 = _createSuper(MeshNormalMaterial);
   function MeshNormalMaterial(parameters) {
@@ -29311,7 +29343,8 @@ var MeshNormalMaterial = exports.MeshNormalMaterial = /*#__PURE__*/function (_Ma
   }]);
   return MeshNormalMaterial;
 }(Material);
-var MeshLambertMaterial = exports.MeshLambertMaterial = /*#__PURE__*/function (_Material13) {
+exports.MeshNormalMaterial = MeshNormalMaterial;
+var MeshLambertMaterial = /*#__PURE__*/function (_Material13) {
   _inherits(MeshLambertMaterial, _Material13);
   var _super101 = _createSuper(MeshLambertMaterial);
   function MeshLambertMaterial(parameters) {
@@ -29391,7 +29424,8 @@ var MeshLambertMaterial = exports.MeshLambertMaterial = /*#__PURE__*/function (_
   }]);
   return MeshLambertMaterial;
 }(Material);
-var MeshMatcapMaterial = exports.MeshMatcapMaterial = /*#__PURE__*/function (_Material14) {
+exports.MeshLambertMaterial = MeshLambertMaterial;
+var MeshMatcapMaterial = /*#__PURE__*/function (_Material14) {
   _inherits(MeshMatcapMaterial, _Material14);
   var _super102 = _createSuper(MeshMatcapMaterial);
   function MeshMatcapMaterial(parameters) {
@@ -29447,7 +29481,8 @@ var MeshMatcapMaterial = exports.MeshMatcapMaterial = /*#__PURE__*/function (_Ma
   }]);
   return MeshMatcapMaterial;
 }(Material);
-var LineDashedMaterial = exports.LineDashedMaterial = /*#__PURE__*/function (_LineBasicMaterial) {
+exports.MeshMatcapMaterial = MeshMatcapMaterial;
+var LineDashedMaterial = /*#__PURE__*/function (_LineBasicMaterial) {
   _inherits(LineDashedMaterial, _LineBasicMaterial);
   var _super103 = _createSuper(LineDashedMaterial);
   function LineDashedMaterial(parameters) {
@@ -29474,6 +29509,7 @@ var LineDashedMaterial = exports.LineDashedMaterial = /*#__PURE__*/function (_Li
   }]);
   return LineDashedMaterial;
 }(LineBasicMaterial); // converts an array to a specific type
+exports.LineDashedMaterial = LineDashedMaterial;
 function convertArray(array, type, forceClone) {
   if (!array ||
   // let 'undefined' and 'null' pass
@@ -29481,8 +29517,10 @@ function convertArray(array, type, forceClone) {
   if (typeof type.BYTES_PER_ELEMENT === 'number') {
     return new type(array); // create typed array
   }
+
   return Array.prototype.slice.call(array); // create Array
 }
+
 function isTypedArray(object) {
   return ArrayBuffer.isView(object) && !(object instanceof DataView);
 }
@@ -29531,6 +29569,7 @@ function flattenJSON(jsonKeys, times, values, valuePropertyName) {
         times.push(key.time);
         values.push.apply(values, value); // push all elements
       }
+
       key = jsonKeys[i++];
     } while (key !== undefined);
   } else if (value.toArray !== undefined) {
@@ -29557,8 +29596,7 @@ function flattenJSON(jsonKeys, times, values, valuePropertyName) {
     } while (key !== undefined);
   }
 }
-function subclip(sourceClip, name, startFrame, endFrame) {
-  var fps = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 30;
+function subclip(sourceClip, name, startFrame, endFrame, fps = 30) {
   var clip = sourceClip.clone();
   clip.name = name;
   var tracks = [];
@@ -29599,93 +29637,89 @@ function subclip(sourceClip, name, startFrame, endFrame) {
   clip.resetDuration();
   return clip;
 }
-function makeClipAdditive(targetClip) {
-  var referenceFrame = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  var referenceClip = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : targetClip;
-  var fps = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 30;
+function makeClipAdditive(targetClip, referenceFrame = 0, referenceClip = targetClip, fps = 30) {
   if (fps <= 0) fps = 30;
   var numTracks = referenceClip.tracks.length;
   var referenceTime = referenceFrame / fps;
 
   // Make each track's values relative to the values at the reference frame
   var _loop = function _loop() {
-      var referenceTrack = referenceClip.tracks[i];
-      var referenceTrackType = referenceTrack.ValueTypeName;
+    var referenceTrack = referenceClip.tracks[i];
+    var referenceTrackType = referenceTrack.ValueTypeName;
 
-      // Skip this track if it's non-numeric
-      if (referenceTrackType === 'bool' || referenceTrackType === 'string') return 0; // continue
+    // Skip this track if it's non-numeric
+    if (referenceTrackType === 'bool' || referenceTrackType === 'string') return "continue";
 
-      // Find the track in the target clip whose name and type matches the reference track
-      var targetTrack = targetClip.tracks.find(function (track) {
-        return track.name === referenceTrack.name && track.ValueTypeName === referenceTrackType;
-      });
-      if (targetTrack === undefined) return 0; // continue
-      var referenceOffset = 0;
-      var referenceValueSize = referenceTrack.getValueSize();
-      if (referenceTrack.createInterpolant.isInterpolantFactoryMethodGLTFCubicSpline) {
-        referenceOffset = referenceValueSize / 3;
-      }
-      var targetOffset = 0;
-      var targetValueSize = targetTrack.getValueSize();
-      if (targetTrack.createInterpolant.isInterpolantFactoryMethodGLTFCubicSpline) {
-        targetOffset = targetValueSize / 3;
-      }
-      var lastIndex = referenceTrack.times.length - 1;
-      var referenceValue;
+    // Find the track in the target clip whose name and type matches the reference track
+    var targetTrack = targetClip.tracks.find(function (track) {
+      return track.name === referenceTrack.name && track.ValueTypeName === referenceTrackType;
+    });
+    if (targetTrack === undefined) return "continue";
+    var referenceOffset = 0;
+    var referenceValueSize = referenceTrack.getValueSize();
+    if (referenceTrack.createInterpolant.isInterpolantFactoryMethodGLTFCubicSpline) {
+      referenceOffset = referenceValueSize / 3;
+    }
+    var targetOffset = 0;
+    var targetValueSize = targetTrack.getValueSize();
+    if (targetTrack.createInterpolant.isInterpolantFactoryMethodGLTFCubicSpline) {
+      targetOffset = targetValueSize / 3;
+    }
+    var lastIndex = referenceTrack.times.length - 1;
+    var referenceValue;
 
-      // Find the value to subtract out of the track
-      if (referenceTime <= referenceTrack.times[0]) {
-        // Reference frame is earlier than the first keyframe, so just use the first keyframe
-        var startIndex = referenceOffset;
-        var endIndex = referenceValueSize - referenceOffset;
-        referenceValue = referenceTrack.values.slice(startIndex, endIndex);
-      } else if (referenceTime >= referenceTrack.times[lastIndex]) {
-        // Reference frame is after the last keyframe, so just use the last keyframe
-        var _startIndex = lastIndex * referenceValueSize + referenceOffset;
-        var _endIndex = _startIndex + referenceValueSize - referenceOffset;
-        referenceValue = referenceTrack.values.slice(_startIndex, _endIndex);
-      } else {
-        // Interpolate to the reference value
-        var interpolant = referenceTrack.createInterpolant();
-        var _startIndex2 = referenceOffset;
-        var _endIndex2 = referenceValueSize - referenceOffset;
-        interpolant.evaluate(referenceTime);
-        referenceValue = interpolant.resultBuffer.slice(_startIndex2, _endIndex2);
-      }
+    // Find the value to subtract out of the track
+    if (referenceTime <= referenceTrack.times[0]) {
+      // Reference frame is earlier than the first keyframe, so just use the first keyframe
+      var startIndex = referenceOffset;
+      var endIndex = referenceValueSize - referenceOffset;
+      referenceValue = referenceTrack.values.slice(startIndex, endIndex);
+    } else if (referenceTime >= referenceTrack.times[lastIndex]) {
+      // Reference frame is after the last keyframe, so just use the last keyframe
+      var _startIndex = lastIndex * referenceValueSize + referenceOffset;
+      var _endIndex = _startIndex + referenceValueSize - referenceOffset;
+      referenceValue = referenceTrack.values.slice(_startIndex, _endIndex);
+    } else {
+      // Interpolate to the reference value
+      var interpolant = referenceTrack.createInterpolant();
+      var _startIndex2 = referenceOffset;
+      var _endIndex2 = referenceValueSize - referenceOffset;
+      interpolant.evaluate(referenceTime);
+      referenceValue = interpolant.resultBuffer.slice(_startIndex2, _endIndex2);
+    }
 
-      // Conjugate the quaternion
+    // Conjugate the quaternion
+    if (referenceTrackType === 'quaternion') {
+      var referenceQuat = new Quaternion().fromArray(referenceValue).normalize().conjugate();
+      referenceQuat.toArray(referenceValue);
+    }
+
+    // Subtract the reference value from all of the track values
+
+    var numTimes = targetTrack.times.length;
+    for (var j = 0; j < numTimes; ++j) {
+      var valueStart = j * targetValueSize + targetOffset;
       if (referenceTrackType === 'quaternion') {
-        var referenceQuat = new Quaternion().fromArray(referenceValue).normalize().conjugate();
-        referenceQuat.toArray(referenceValue);
-      }
+        // Multiply the conjugate for quaternion track types
+        Quaternion.multiplyQuaternionsFlat(targetTrack.values, valueStart, referenceValue, 0, targetTrack.values, valueStart);
+      } else {
+        var valueEnd = targetValueSize - targetOffset * 2;
 
-      // Subtract the reference value from all of the track values
-
-      var numTimes = targetTrack.times.length;
-      for (var j = 0; j < numTimes; ++j) {
-        var valueStart = j * targetValueSize + targetOffset;
-        if (referenceTrackType === 'quaternion') {
-          // Multiply the conjugate for quaternion track types
-          Quaternion.multiplyQuaternionsFlat(targetTrack.values, valueStart, referenceValue, 0, targetTrack.values, valueStart);
-        } else {
-          var valueEnd = targetValueSize - targetOffset * 2;
-
-          // Subtract each value for all other numeric track types
-          for (var k = 0; k < valueEnd; ++k) {
-            targetTrack.values[valueStart + k] -= referenceValue[k];
-          }
+        // Subtract each value for all other numeric track types
+        for (var k = 0; k < valueEnd; ++k) {
+          targetTrack.values[valueStart + k] -= referenceValue[k];
         }
       }
-    },
-    _ret;
+    }
+  };
   for (var i = 0; i < numTracks; ++i) {
-    _ret = _loop();
-    if (_ret === 0) continue;
+    var _ret = _loop();
+    if (_ret === "continue") continue;
   }
   targetClip.blendMode = AdditiveAnimationBlendMode;
   return targetClip;
 }
-var AnimationUtils = exports.AnimationUtils = {
+var AnimationUtils = {
   convertArray: convertArray,
   isTypedArray: isTypedArray,
   getKeyframeOrder: getKeyframeOrder,
@@ -29715,7 +29749,8 @@ var AnimationUtils = exports.AnimationUtils = {
  * 		http://www.oodesign.com/template-method-pattern.html
  *
  */
-var Interpolant = exports.Interpolant = /*#__PURE__*/function () {
+exports.AnimationUtils = AnimationUtils;
+var Interpolant = /*#__PURE__*/function () {
   function Interpolant(parameterPositions, sampleValues, sampleSize, resultBuffer) {
     _classCallCheck(this, Interpolant);
     this.parameterPositions = parameterPositions;
@@ -29885,7 +29920,8 @@ var Interpolant = exports.Interpolant = /*#__PURE__*/function () {
  * at each sample position to the linear slope between neighboring positions
  * over their parameter interval.
  */
-var CubicInterpolant = exports.CubicInterpolant = /*#__PURE__*/function (_Interpolant) {
+exports.Interpolant = Interpolant;
+var CubicInterpolant = /*#__PURE__*/function (_Interpolant) {
   _inherits(CubicInterpolant, _Interpolant);
   var _super104 = _createSuper(CubicInterpolant);
   function CubicInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer) {
@@ -29990,7 +30026,8 @@ var CubicInterpolant = exports.CubicInterpolant = /*#__PURE__*/function (_Interp
   }]);
   return CubicInterpolant;
 }(Interpolant);
-var LinearInterpolant = exports.LinearInterpolant = /*#__PURE__*/function (_Interpolant2) {
+exports.CubicInterpolant = CubicInterpolant;
+var LinearInterpolant = /*#__PURE__*/function (_Interpolant2) {
   _inherits(LinearInterpolant, _Interpolant2);
   var _super105 = _createSuper(LinearInterpolant);
   function LinearInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer) {
@@ -30020,7 +30057,8 @@ var LinearInterpolant = exports.LinearInterpolant = /*#__PURE__*/function (_Inte
  * Interpolant that evaluates to the sample value at the position preceding
  * the parameter.
  */
-var DiscreteInterpolant = exports.DiscreteInterpolant = /*#__PURE__*/function (_Interpolant3) {
+exports.LinearInterpolant = LinearInterpolant;
+var DiscreteInterpolant = /*#__PURE__*/function (_Interpolant3) {
   _inherits(DiscreteInterpolant, _Interpolant3);
   var _super106 = _createSuper(DiscreteInterpolant);
   function DiscreteInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer) {
@@ -30035,7 +30073,8 @@ var DiscreteInterpolant = exports.DiscreteInterpolant = /*#__PURE__*/function (_
   }]);
   return DiscreteInterpolant;
 }(Interpolant);
-var KeyframeTrack = exports.KeyframeTrack = /*#__PURE__*/function () {
+exports.DiscreteInterpolant = DiscreteInterpolant;
+var KeyframeTrack = /*#__PURE__*/function () {
   function KeyframeTrack(name, times, values, interpolation) {
     _classCallCheck(this, KeyframeTrack);
     if (name === undefined) throw new Error('THREE.KeyframeTrack: track name is undefined');
@@ -30088,6 +30127,7 @@ var KeyframeTrack = exports.KeyframeTrack = /*#__PURE__*/function () {
             throw new Error(message); // fatal, in this case
           }
         }
+
         console.warn('THREE.KeyframeTrack:', message);
         return this;
       }
@@ -30326,6 +30366,7 @@ var KeyframeTrack = exports.KeyframeTrack = /*#__PURE__*/function () {
   }]);
   return KeyframeTrack;
 }();
+exports.KeyframeTrack = KeyframeTrack;
 KeyframeTrack.prototype.TimeBufferType = Float32Array;
 KeyframeTrack.prototype.ValueBufferType = Float32Array;
 KeyframeTrack.prototype.DefaultInterpolation = InterpolateLinear;
@@ -30333,7 +30374,7 @@ KeyframeTrack.prototype.DefaultInterpolation = InterpolateLinear;
 /**
  * A Track of Boolean keyframe values.
  */
-var BooleanKeyframeTrack = exports.BooleanKeyframeTrack = /*#__PURE__*/function (_KeyframeTrack) {
+var BooleanKeyframeTrack = /*#__PURE__*/function (_KeyframeTrack) {
   _inherits(BooleanKeyframeTrack, _KeyframeTrack);
   var _super107 = _createSuper(BooleanKeyframeTrack);
   function BooleanKeyframeTrack() {
@@ -30342,6 +30383,7 @@ var BooleanKeyframeTrack = exports.BooleanKeyframeTrack = /*#__PURE__*/function 
   }
   return _createClass(BooleanKeyframeTrack);
 }(KeyframeTrack);
+exports.BooleanKeyframeTrack = BooleanKeyframeTrack;
 BooleanKeyframeTrack.prototype.ValueTypeName = 'bool';
 BooleanKeyframeTrack.prototype.ValueBufferType = Array;
 BooleanKeyframeTrack.prototype.DefaultInterpolation = InterpolateDiscrete;
@@ -30351,7 +30393,7 @@ BooleanKeyframeTrack.prototype.InterpolantFactoryMethodSmooth = undefined;
 /**
  * A Track of keyframe values that represent color.
  */
-var ColorKeyframeTrack = exports.ColorKeyframeTrack = /*#__PURE__*/function (_KeyframeTrack2) {
+var ColorKeyframeTrack = /*#__PURE__*/function (_KeyframeTrack2) {
   _inherits(ColorKeyframeTrack, _KeyframeTrack2);
   var _super108 = _createSuper(ColorKeyframeTrack);
   function ColorKeyframeTrack() {
@@ -30360,12 +30402,13 @@ var ColorKeyframeTrack = exports.ColorKeyframeTrack = /*#__PURE__*/function (_Ke
   }
   return _createClass(ColorKeyframeTrack);
 }(KeyframeTrack);
+exports.ColorKeyframeTrack = ColorKeyframeTrack;
 ColorKeyframeTrack.prototype.ValueTypeName = 'color';
 
 /**
  * A Track of numeric keyframe values.
  */
-var NumberKeyframeTrack = exports.NumberKeyframeTrack = /*#__PURE__*/function (_KeyframeTrack3) {
+var NumberKeyframeTrack = /*#__PURE__*/function (_KeyframeTrack3) {
   _inherits(NumberKeyframeTrack, _KeyframeTrack3);
   var _super109 = _createSuper(NumberKeyframeTrack);
   function NumberKeyframeTrack() {
@@ -30374,12 +30417,13 @@ var NumberKeyframeTrack = exports.NumberKeyframeTrack = /*#__PURE__*/function (_
   }
   return _createClass(NumberKeyframeTrack);
 }(KeyframeTrack);
+exports.NumberKeyframeTrack = NumberKeyframeTrack;
 NumberKeyframeTrack.prototype.ValueTypeName = 'number';
 
 /**
  * Spherical linear unit quaternion interpolant.
  */
-var QuaternionLinearInterpolant = exports.QuaternionLinearInterpolant = /*#__PURE__*/function (_Interpolant4) {
+var QuaternionLinearInterpolant = /*#__PURE__*/function (_Interpolant4) {
   _inherits(QuaternionLinearInterpolant, _Interpolant4);
   var _super110 = _createSuper(QuaternionLinearInterpolant);
   function QuaternionLinearInterpolant(parameterPositions, sampleValues, sampleSize, resultBuffer) {
@@ -30405,7 +30449,8 @@ var QuaternionLinearInterpolant = exports.QuaternionLinearInterpolant = /*#__PUR
 /**
  * A Track of quaternion keyframe values.
  */
-var QuaternionKeyframeTrack = exports.QuaternionKeyframeTrack = /*#__PURE__*/function (_KeyframeTrack4) {
+exports.QuaternionLinearInterpolant = QuaternionLinearInterpolant;
+var QuaternionKeyframeTrack = /*#__PURE__*/function (_KeyframeTrack4) {
   _inherits(QuaternionKeyframeTrack, _KeyframeTrack4);
   var _super111 = _createSuper(QuaternionKeyframeTrack);
   function QuaternionKeyframeTrack() {
@@ -30420,6 +30465,7 @@ var QuaternionKeyframeTrack = exports.QuaternionKeyframeTrack = /*#__PURE__*/fun
   }]);
   return QuaternionKeyframeTrack;
 }(KeyframeTrack);
+exports.QuaternionKeyframeTrack = QuaternionKeyframeTrack;
 QuaternionKeyframeTrack.prototype.ValueTypeName = 'quaternion';
 // ValueBufferType is inherited
 QuaternionKeyframeTrack.prototype.DefaultInterpolation = InterpolateLinear;
@@ -30428,7 +30474,7 @@ QuaternionKeyframeTrack.prototype.InterpolantFactoryMethodSmooth = undefined;
 /**
  * A Track that interpolates Strings
  */
-var StringKeyframeTrack = exports.StringKeyframeTrack = /*#__PURE__*/function (_KeyframeTrack5) {
+var StringKeyframeTrack = /*#__PURE__*/function (_KeyframeTrack5) {
   _inherits(StringKeyframeTrack, _KeyframeTrack5);
   var _super112 = _createSuper(StringKeyframeTrack);
   function StringKeyframeTrack() {
@@ -30437,6 +30483,7 @@ var StringKeyframeTrack = exports.StringKeyframeTrack = /*#__PURE__*/function (_
   }
   return _createClass(StringKeyframeTrack);
 }(KeyframeTrack);
+exports.StringKeyframeTrack = StringKeyframeTrack;
 StringKeyframeTrack.prototype.ValueTypeName = 'string';
 StringKeyframeTrack.prototype.ValueBufferType = Array;
 StringKeyframeTrack.prototype.DefaultInterpolation = InterpolateDiscrete;
@@ -30446,7 +30493,7 @@ StringKeyframeTrack.prototype.InterpolantFactoryMethodSmooth = undefined;
 /**
  * A Track of vectored keyframe values.
  */
-var VectorKeyframeTrack = exports.VectorKeyframeTrack = /*#__PURE__*/function (_KeyframeTrack6) {
+var VectorKeyframeTrack = /*#__PURE__*/function (_KeyframeTrack6) {
   _inherits(VectorKeyframeTrack, _KeyframeTrack6);
   var _super113 = _createSuper(VectorKeyframeTrack);
   function VectorKeyframeTrack() {
@@ -30455,12 +30502,10 @@ var VectorKeyframeTrack = exports.VectorKeyframeTrack = /*#__PURE__*/function (_
   }
   return _createClass(VectorKeyframeTrack);
 }(KeyframeTrack);
+exports.VectorKeyframeTrack = VectorKeyframeTrack;
 VectorKeyframeTrack.prototype.ValueTypeName = 'vector';
-var AnimationClip = exports.AnimationClip = /*#__PURE__*/function () {
-  function AnimationClip(name) {
-    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
-    var tracks = arguments.length > 2 ? arguments[2] : undefined;
-    var blendMode = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : NormalAnimationBlendMode;
+var AnimationClip = /*#__PURE__*/function () {
+  function AnimationClip(name, duration = -1, tracks, blendMode = NormalAnimationBlendMode) {
     _classCallCheck(this, AnimationClip);
     this.name = name;
     this.tracks = tracks;
@@ -30703,6 +30748,7 @@ var AnimationClip = exports.AnimationClip = /*#__PURE__*/function () {
   }]);
   return AnimationClip;
 }();
+exports.AnimationClip = AnimationClip;
 function getTrackTypeForValueTypeName(typeName) {
   switch (typeName.toLowerCase()) {
     case 'scalar':
@@ -30749,7 +30795,7 @@ function parseKeyframeTrack(json) {
     return new trackType(json.name, json.times, json.values, json.interpolation);
   }
 }
-var Cache = exports.Cache = {
+var Cache = {
   enabled: false,
   files: {},
   add: function add(key, file) {
@@ -30773,7 +30819,8 @@ var Cache = exports.Cache = {
     this.files = {};
   }
 };
-var LoadingManager = exports.LoadingManager = /*#__PURE__*/_createClass(function LoadingManager(onLoad, onProgress, onError) {
+exports.Cache = Cache;
+var LoadingManager = /*#__PURE__*/_createClass(function LoadingManager(onLoad, onProgress, onError) {
   _classCallCheck(this, LoadingManager);
   var scope = this;
   var isLoading = false;
@@ -30849,8 +30896,10 @@ var LoadingManager = exports.LoadingManager = /*#__PURE__*/_createClass(function
     return null;
   };
 });
-var DefaultLoadingManager = exports.DefaultLoadingManager = /*@__PURE__*/new LoadingManager();
-var Loader = exports.Loader = /*#__PURE__*/function () {
+exports.LoadingManager = LoadingManager;
+var DefaultLoadingManager = /*@__PURE__*/new LoadingManager();
+exports.DefaultLoadingManager = DefaultLoadingManager;
+var Loader = /*#__PURE__*/function () {
   function Loader(manager) {
     _classCallCheck(this, Loader);
     this.manager = manager !== undefined ? manager : DefaultLoadingManager;
@@ -30907,6 +30956,7 @@ var Loader = exports.Loader = /*#__PURE__*/function () {
   }]);
   return Loader;
 }();
+exports.Loader = Loader;
 Loader.DEFAULT_MATERIAL_NAME = '__DEFAULT';
 var loading = {};
 var HttpError = /*#__PURE__*/function (_Error) {
@@ -30921,7 +30971,7 @@ var HttpError = /*#__PURE__*/function (_Error) {
   }
   return _createClass(HttpError);
 }( /*#__PURE__*/_wrapNativeSuper(Error));
-var FileLoader = exports.FileLoader = /*#__PURE__*/function (_Loader) {
+var FileLoader = /*#__PURE__*/function (_Loader) {
   _inherits(FileLoader, _Loader);
   var _super115 = _createSuper(FileLoader);
   function FileLoader(manager) {
@@ -31005,9 +31055,10 @@ var FileLoader = exports.FileLoader = /*#__PURE__*/function (_Loader) {
             start: function start(controller) {
               readData();
               function readData() {
-                reader.read().then(function (_ref2) {
-                  var done = _ref2.done,
-                    value = _ref2.value;
+                reader.read().then(function ({
+                  done: done,
+                  value: value
+                }) {
                   if (done) {
                     controller.close();
                   } else {
@@ -31104,7 +31155,8 @@ var FileLoader = exports.FileLoader = /*#__PURE__*/function (_Loader) {
   }]);
   return FileLoader;
 }(Loader);
-var AnimationLoader = exports.AnimationLoader = /*#__PURE__*/function (_Loader2) {
+exports.FileLoader = FileLoader;
+var AnimationLoader = /*#__PURE__*/function (_Loader2) {
   _inherits(AnimationLoader, _Loader2);
   var _super116 = _createSuper(AnimationLoader);
   function AnimationLoader(manager) {
@@ -31150,7 +31202,8 @@ var AnimationLoader = exports.AnimationLoader = /*#__PURE__*/function (_Loader2)
  *
  * Sub classes have to implement the parse() method which will be used in load().
  */
-var CompressedTextureLoader = exports.CompressedTextureLoader = /*#__PURE__*/function (_Loader3) {
+exports.AnimationLoader = AnimationLoader;
+var CompressedTextureLoader = /*#__PURE__*/function (_Loader3) {
   _inherits(CompressedTextureLoader, _Loader3);
   var _super117 = _createSuper(CompressedTextureLoader);
   function CompressedTextureLoader(manager) {
@@ -31229,7 +31282,8 @@ var CompressedTextureLoader = exports.CompressedTextureLoader = /*#__PURE__*/fun
   }]);
   return CompressedTextureLoader;
 }(Loader);
-var ImageLoader = exports.ImageLoader = /*#__PURE__*/function (_Loader4) {
+exports.CompressedTextureLoader = CompressedTextureLoader;
+var ImageLoader = /*#__PURE__*/function (_Loader4) {
   _inherits(ImageLoader, _Loader4);
   var _super118 = _createSuper(ImageLoader);
   function ImageLoader(manager) {
@@ -31280,7 +31334,8 @@ var ImageLoader = exports.ImageLoader = /*#__PURE__*/function (_Loader4) {
   }]);
   return ImageLoader;
 }(Loader);
-var CubeTextureLoader = exports.CubeTextureLoader = /*#__PURE__*/function (_Loader5) {
+exports.ImageLoader = ImageLoader;
+var CubeTextureLoader = /*#__PURE__*/function (_Loader5) {
   _inherits(CubeTextureLoader, _Loader5);
   var _super119 = _createSuper(CubeTextureLoader);
   function CubeTextureLoader(manager) {
@@ -31319,7 +31374,8 @@ var CubeTextureLoader = exports.CubeTextureLoader = /*#__PURE__*/function (_Load
  *
  * Sub classes have to implement the parse() method which will be used in load().
  */
-var DataTextureLoader = exports.DataTextureLoader = /*#__PURE__*/function (_Loader6) {
+exports.CubeTextureLoader = CubeTextureLoader;
+var DataTextureLoader = /*#__PURE__*/function (_Loader6) {
   _inherits(DataTextureLoader, _Loader6);
   var _super120 = _createSuper(DataTextureLoader);
   function DataTextureLoader(manager) {
@@ -31380,6 +31436,7 @@ var DataTextureLoader = exports.DataTextureLoader = /*#__PURE__*/function (_Load
           texture.mipmaps = texData.mipmaps;
           texture.minFilter = LinearMipmapLinearFilter; // presumably...
         }
+
         if (texData.mipmapCount === 1) {
           texture.minFilter = LinearFilter;
         }
@@ -31394,7 +31451,8 @@ var DataTextureLoader = exports.DataTextureLoader = /*#__PURE__*/function (_Load
   }]);
   return DataTextureLoader;
 }(Loader);
-var TextureLoader = exports.TextureLoader = /*#__PURE__*/function (_Loader7) {
+exports.DataTextureLoader = DataTextureLoader;
+var TextureLoader = /*#__PURE__*/function (_Loader7) {
   _inherits(TextureLoader, _Loader7);
   var _super121 = _createSuper(TextureLoader);
   function TextureLoader(manager) {
@@ -31420,12 +31478,12 @@ var TextureLoader = exports.TextureLoader = /*#__PURE__*/function (_Loader7) {
   }]);
   return TextureLoader;
 }(Loader);
-var Light = exports.Light = /*#__PURE__*/function (_Object3D11) {
+exports.TextureLoader = TextureLoader;
+var Light = /*#__PURE__*/function (_Object3D11) {
   _inherits(Light, _Object3D11);
   var _super122 = _createSuper(Light);
-  function Light(color) {
+  function Light(color, intensity = 1) {
     var _this98;
-    var intensity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
     _classCallCheck(this, Light);
     _this98 = _super122.call(this);
     _this98.isLight = true;
@@ -31465,7 +31523,8 @@ var Light = exports.Light = /*#__PURE__*/function (_Object3D11) {
   }]);
   return Light;
 }(Object3D);
-var HemisphereLight = exports.HemisphereLight = /*#__PURE__*/function (_Light) {
+exports.Light = Light;
+var HemisphereLight = /*#__PURE__*/function (_Light) {
   _inherits(HemisphereLight, _Light);
   var _super123 = _createSuper(HemisphereLight);
   function HemisphereLight(skyColor, groundColor, intensity) {
@@ -31489,6 +31548,7 @@ var HemisphereLight = exports.HemisphereLight = /*#__PURE__*/function (_Light) {
   }]);
   return HemisphereLight;
 }(Light);
+exports.HemisphereLight = HemisphereLight;
 var _projScreenMatrix$1 = /*@__PURE__*/new Matrix4();
 var _lightPositionWorld$1 = /*@__PURE__*/new Vector3();
 var _lookTarget$1 = /*@__PURE__*/new Vector3();
@@ -31621,15 +31681,11 @@ var SpotLightShadow = /*#__PURE__*/function (_LightShadow) {
   }]);
   return SpotLightShadow;
 }(LightShadow);
-var SpotLight = exports.SpotLight = /*#__PURE__*/function (_Light2) {
+var SpotLight = /*#__PURE__*/function (_Light2) {
   _inherits(SpotLight, _Light2);
   var _super125 = _createSuper(SpotLight);
-  function SpotLight(color, intensity) {
+  function SpotLight(color, intensity, distance = 0, angle = Math.PI / 3, penumbra = 0, decay = 2) {
     var _this101;
-    var distance = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-    var angle = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : Math.PI / 3;
-    var penumbra = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
-    var decay = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 2;
     _classCallCheck(this, SpotLight);
     _this101 = _super125.call(this, color, intensity);
     _this101.isSpotLight = true;
@@ -31676,6 +31732,7 @@ var SpotLight = exports.SpotLight = /*#__PURE__*/function (_Light2) {
   }]);
   return SpotLight;
 }(Light);
+exports.SpotLight = SpotLight;
 var _projScreenMatrix = /*@__PURE__*/new Matrix4();
 var _lightPositionWorld = /*@__PURE__*/new Vector3();
 var _lookTarget = /*@__PURE__*/new Vector3();
@@ -31721,8 +31778,7 @@ var PointLightShadow = /*#__PURE__*/function (_LightShadow2) {
   }
   _createClass(PointLightShadow, [{
     key: "updateMatrices",
-    value: function updateMatrices(light) {
-      var viewportIndex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function updateMatrices(light, viewportIndex = 0) {
       var camera = this.camera;
       var shadowMatrix = this.matrix;
       var far = light.distance || camera.far;
@@ -31744,13 +31800,11 @@ var PointLightShadow = /*#__PURE__*/function (_LightShadow2) {
   }]);
   return PointLightShadow;
 }(LightShadow);
-var PointLight = exports.PointLight = /*#__PURE__*/function (_Light3) {
+var PointLight = /*#__PURE__*/function (_Light3) {
   _inherits(PointLight, _Light3);
   var _super127 = _createSuper(PointLight);
-  function PointLight(color, intensity) {
+  function PointLight(color, intensity, distance = 0, decay = 2) {
     var _this103;
-    var distance = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-    var decay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 2;
     _classCallCheck(this, PointLight);
     _this103 = _super127.call(this, color, intensity);
     _this103.isPointLight = true;
@@ -31788,6 +31842,7 @@ var PointLight = exports.PointLight = /*#__PURE__*/function (_Light3) {
   }]);
   return PointLight;
 }(Light);
+exports.PointLight = PointLight;
 var DirectionalLightShadow = /*#__PURE__*/function (_LightShadow3) {
   _inherits(DirectionalLightShadow, _LightShadow3);
   var _super128 = _createSuper(DirectionalLightShadow);
@@ -31800,7 +31855,7 @@ var DirectionalLightShadow = /*#__PURE__*/function (_LightShadow3) {
   }
   return _createClass(DirectionalLightShadow);
 }(LightShadow);
-var DirectionalLight = exports.DirectionalLight = /*#__PURE__*/function (_Light4) {
+var DirectionalLight = /*#__PURE__*/function (_Light4) {
   _inherits(DirectionalLight, _Light4);
   var _super129 = _createSuper(DirectionalLight);
   function DirectionalLight(color, intensity) {
@@ -31831,7 +31886,8 @@ var DirectionalLight = exports.DirectionalLight = /*#__PURE__*/function (_Light4
   }]);
   return DirectionalLight;
 }(Light);
-var AmbientLight = exports.AmbientLight = /*#__PURE__*/function (_Light5) {
+exports.DirectionalLight = DirectionalLight;
+var AmbientLight = /*#__PURE__*/function (_Light5) {
   _inherits(AmbientLight, _Light5);
   var _super130 = _createSuper(AmbientLight);
   function AmbientLight(color, intensity) {
@@ -31844,13 +31900,12 @@ var AmbientLight = exports.AmbientLight = /*#__PURE__*/function (_Light5) {
   }
   return _createClass(AmbientLight);
 }(Light);
-var RectAreaLight = exports.RectAreaLight = /*#__PURE__*/function (_Light6) {
+exports.AmbientLight = AmbientLight;
+var RectAreaLight = /*#__PURE__*/function (_Light6) {
   _inherits(RectAreaLight, _Light6);
   var _super131 = _createSuper(RectAreaLight);
-  function RectAreaLight(color, intensity) {
+  function RectAreaLight(color, intensity, width = 10, height = 10) {
     var _this107;
-    var width = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 10;
-    var height = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 10;
     _classCallCheck(this, RectAreaLight);
     _this107 = _super131.call(this, color, intensity);
     _this107.isRectAreaLight = true;
@@ -31896,7 +31951,8 @@ var RectAreaLight = exports.RectAreaLight = /*#__PURE__*/function (_Light6) {
  *   https://www.ppsloan.org/publications/StupidSH36.pdf
  */
 // 3-band SH defined by 9 coefficients
-var SphericalHarmonics3 = exports.SphericalHarmonics3 = /*#__PURE__*/function () {
+exports.RectAreaLight = RectAreaLight;
+var SphericalHarmonics3 = /*#__PURE__*/function () {
   function SphericalHarmonics3() {
     _classCallCheck(this, SphericalHarmonics3);
     this.isSphericalHarmonics3 = true;
@@ -32035,8 +32091,7 @@ var SphericalHarmonics3 = exports.SphericalHarmonics3 = /*#__PURE__*/function ()
     }
   }, {
     key: "fromArray",
-    value: function fromArray(array) {
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function fromArray(array, offset = 0) {
       var coefficients = this.coefficients;
       for (var i = 0; i < 9; i++) {
         coefficients[i].fromArray(array, offset + i * 3);
@@ -32045,9 +32100,7 @@ var SphericalHarmonics3 = exports.SphericalHarmonics3 = /*#__PURE__*/function ()
     }
   }, {
     key: "toArray",
-    value: function toArray() {
-      var array = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    value: function toArray(array = [], offset = 0) {
       var coefficients = this.coefficients;
       for (var i = 0; i < 9; i++) {
         coefficients[i].toArray(array, offset + i * 3);
@@ -32084,13 +32137,12 @@ var SphericalHarmonics3 = exports.SphericalHarmonics3 = /*#__PURE__*/function ()
   }]);
   return SphericalHarmonics3;
 }();
-var LightProbe = exports.LightProbe = /*#__PURE__*/function (_Light7) {
+exports.SphericalHarmonics3 = SphericalHarmonics3;
+var LightProbe = /*#__PURE__*/function (_Light7) {
   _inherits(LightProbe, _Light7);
   var _super132 = _createSuper(LightProbe);
-  function LightProbe() {
+  function LightProbe(sh = new SphericalHarmonics3(), intensity = 1) {
     var _this108;
-    var sh = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new SphericalHarmonics3();
-    var intensity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
     _classCallCheck(this, LightProbe);
     _this108 = _super132.call(this, undefined, intensity);
     _this108.isLightProbe = true;
@@ -32121,7 +32173,8 @@ var LightProbe = exports.LightProbe = /*#__PURE__*/function (_Light7) {
   }]);
   return LightProbe;
 }(Light);
-var MaterialLoader = exports.MaterialLoader = /*#__PURE__*/function (_Loader8) {
+exports.LightProbe = LightProbe;
+var MaterialLoader = /*#__PURE__*/function (_Loader8) {
   _inherits(MaterialLoader, _Loader8);
   var _super133 = _createSuper(MaterialLoader);
   function MaterialLoader(manager) {
@@ -32378,7 +32431,8 @@ var MaterialLoader = exports.MaterialLoader = /*#__PURE__*/function (_Loader8) {
   }]);
   return MaterialLoader;
 }(Loader);
-var LoaderUtils = exports.LoaderUtils = /*#__PURE__*/function () {
+exports.MaterialLoader = MaterialLoader;
+var LoaderUtils = /*#__PURE__*/function () {
   function LoaderUtils() {
     _classCallCheck(this, LoaderUtils);
   }
@@ -32440,7 +32494,8 @@ var LoaderUtils = exports.LoaderUtils = /*#__PURE__*/function () {
   }]);
   return LoaderUtils;
 }();
-var InstancedBufferGeometry = exports.InstancedBufferGeometry = /*#__PURE__*/function (_BufferGeometry16) {
+exports.LoaderUtils = LoaderUtils;
+var InstancedBufferGeometry = /*#__PURE__*/function (_BufferGeometry16) {
   _inherits(InstancedBufferGeometry, _BufferGeometry16);
   var _super134 = _createSuper(InstancedBufferGeometry);
   function InstancedBufferGeometry() {
@@ -32470,7 +32525,8 @@ var InstancedBufferGeometry = exports.InstancedBufferGeometry = /*#__PURE__*/fun
   }]);
   return InstancedBufferGeometry;
 }(BufferGeometry);
-var BufferGeometryLoader = exports.BufferGeometryLoader = /*#__PURE__*/function (_Loader9) {
+exports.InstancedBufferGeometry = InstancedBufferGeometry;
+var BufferGeometryLoader = /*#__PURE__*/function (_Loader9) {
   _inherits(BufferGeometryLoader, _Loader9);
   var _super135 = _createSuper(BufferGeometryLoader);
   function BufferGeometryLoader(manager) {
@@ -32591,7 +32647,8 @@ var BufferGeometryLoader = exports.BufferGeometryLoader = /*#__PURE__*/function 
   }]);
   return BufferGeometryLoader;
 }(Loader);
-var ObjectLoader = exports.ObjectLoader = /*#__PURE__*/function (_Loader10) {
+exports.BufferGeometryLoader = BufferGeometryLoader;
+var ObjectLoader = /*#__PURE__*/function (_Loader10) {
   _inherits(ObjectLoader, _Loader10);
   var _super136 = _createSuper(ObjectLoader);
   function ObjectLoader(manager) {
@@ -33042,6 +33099,7 @@ var ObjectLoader = exports.ObjectLoader = /*#__PURE__*/function (_Loader10) {
             }
             if (image) texture.needsUpdate = true; // textures can have undefined image data
           }
+
           texture.source = source;
           texture.uuid = data.uuid;
           if (data.name !== undefined) texture.name = data.name;
@@ -33324,6 +33382,7 @@ var ObjectLoader = exports.ObjectLoader = /*#__PURE__*/function (_Loader10) {
   }]);
   return ObjectLoader;
 }(Loader);
+exports.ObjectLoader = ObjectLoader;
 var TEXTURE_MAPPING = {
   UVMapping: UVMapping,
   CubeReflectionMapping: CubeReflectionMapping,
@@ -33345,7 +33404,7 @@ var TEXTURE_FILTER = {
   LinearMipmapNearestFilter: LinearMipmapNearestFilter,
   LinearMipmapLinearFilter: LinearMipmapLinearFilter
 };
-var ImageBitmapLoader = exports.ImageBitmapLoader = /*#__PURE__*/function (_Loader11) {
+var ImageBitmapLoader = /*#__PURE__*/function (_Loader11) {
   _inherits(ImageBitmapLoader, _Loader11);
   var _super137 = _createSuper(ImageBitmapLoader);
   function ImageBitmapLoader(manager) {
@@ -33409,8 +33468,9 @@ var ImageBitmapLoader = exports.ImageBitmapLoader = /*#__PURE__*/function (_Load
   }]);
   return ImageBitmapLoader;
 }(Loader);
+exports.ImageBitmapLoader = ImageBitmapLoader;
 var _context;
-var AudioContext = exports.AudioContext = /*#__PURE__*/function () {
+var AudioContext = /*#__PURE__*/function () {
   function AudioContext() {
     _classCallCheck(this, AudioContext);
   }
@@ -33430,7 +33490,8 @@ var AudioContext = exports.AudioContext = /*#__PURE__*/function () {
   }]);
   return AudioContext;
 }();
-var AudioLoader = exports.AudioLoader = /*#__PURE__*/function (_Loader12) {
+exports.AudioContext = AudioContext;
+var AudioLoader = /*#__PURE__*/function (_Loader12) {
   _inherits(AudioLoader, _Loader12);
   var _super138 = _createSuper(AudioLoader);
   function AudioLoader(manager) {
@@ -33471,10 +33532,11 @@ var AudioLoader = exports.AudioLoader = /*#__PURE__*/function (_Loader12) {
   }]);
   return AudioLoader;
 }(Loader);
+exports.AudioLoader = AudioLoader;
 var _eyeRight = /*@__PURE__*/new Matrix4();
 var _eyeLeft = /*@__PURE__*/new Matrix4();
 var _projectionMatrix = /*@__PURE__*/new Matrix4();
-var StereoCamera = exports.StereoCamera = /*#__PURE__*/function () {
+var StereoCamera = /*#__PURE__*/function () {
   function StereoCamera() {
     _classCallCheck(this, StereoCamera);
     this.type = 'StereoCamera';
@@ -33546,9 +33608,9 @@ var StereoCamera = exports.StereoCamera = /*#__PURE__*/function () {
   }]);
   return StereoCamera;
 }();
-var Clock = exports.Clock = /*#__PURE__*/function () {
-  function Clock() {
-    var autoStart = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+exports.StereoCamera = StereoCamera;
+var Clock = /*#__PURE__*/function () {
+  function Clock(autoStart = true) {
     _classCallCheck(this, Clock);
     this.autoStart = autoStart;
     this.startTime = 0;
@@ -33596,14 +33658,16 @@ var Clock = exports.Clock = /*#__PURE__*/function () {
   }]);
   return Clock;
 }();
+exports.Clock = Clock;
 function now() {
   return (typeof performance === 'undefined' ? Date : performance).now(); // see #10732
 }
+
 var _position$1 = /*@__PURE__*/new Vector3();
 var _quaternion$1 = /*@__PURE__*/new Quaternion();
 var _scale$1 = /*@__PURE__*/new Vector3();
 var _orientation$1 = /*@__PURE__*/new Vector3();
-var AudioListener = exports.AudioListener = /*#__PURE__*/function (_Object3D12) {
+var AudioListener = /*#__PURE__*/function (_Object3D12) {
   _inherits(AudioListener, _Object3D12);
   var _super139 = _createSuper(AudioListener);
   function AudioListener() {
@@ -33698,7 +33762,8 @@ var AudioListener = exports.AudioListener = /*#__PURE__*/function (_Object3D12) 
   }]);
   return AudioListener;
 }(Object3D);
-var Audio = exports.Audio = /*#__PURE__*/function (_Object3D13) {
+exports.AudioListener = AudioListener;
+var Audio = /*#__PURE__*/function (_Object3D13) {
   _inherits(Audio, _Object3D13);
   var _super140 = _createSuper(Audio);
   function Audio(listener) {
@@ -33771,8 +33836,7 @@ var Audio = exports.Audio = /*#__PURE__*/function (_Object3D13) {
     }
   }, {
     key: "play",
-    value: function play() {
-      var delay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    value: function play(delay = 0) {
       if (this.isPlaying === true) {
         console.warn('THREE.Audio: Audio is already playing.');
         return;
@@ -33980,11 +34044,12 @@ var Audio = exports.Audio = /*#__PURE__*/function (_Object3D13) {
   }]);
   return Audio;
 }(Object3D);
+exports.Audio = Audio;
 var _position = /*@__PURE__*/new Vector3();
 var _quaternion = /*@__PURE__*/new Quaternion();
 var _scale = /*@__PURE__*/new Vector3();
 var _orientation = /*@__PURE__*/new Vector3();
-var PositionalAudio = exports.PositionalAudio = /*#__PURE__*/function (_Audio) {
+var PositionalAudio = /*#__PURE__*/function (_Audio) {
   _inherits(PositionalAudio, _Audio);
   var _super141 = _createSuper(PositionalAudio);
   function PositionalAudio(listener) {
@@ -34091,9 +34156,9 @@ var PositionalAudio = exports.PositionalAudio = /*#__PURE__*/function (_Audio) {
   }]);
   return PositionalAudio;
 }(Audio);
-var AudioAnalyser = exports.AudioAnalyser = /*#__PURE__*/function () {
-  function AudioAnalyser(audio) {
-    var fftSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2048;
+exports.PositionalAudio = PositionalAudio;
+var AudioAnalyser = /*#__PURE__*/function () {
+  function AudioAnalyser(audio, fftSize = 2048) {
     _classCallCheck(this, AudioAnalyser);
     this.analyser = audio.context.createAnalyser();
     this.analyser.fftSize = fftSize;
@@ -34119,7 +34184,8 @@ var AudioAnalyser = exports.AudioAnalyser = /*#__PURE__*/function () {
   }]);
   return AudioAnalyser;
 }();
-var PropertyMixer = exports.PropertyMixer = /*#__PURE__*/function () {
+exports.AudioAnalyser = AudioAnalyser;
+var PropertyMixer = /*#__PURE__*/function () {
   function PropertyMixer(binding, typeName, valueSize) {
     _classCallCheck(this, PropertyMixer);
     this.binding = binding;
@@ -34356,6 +34422,7 @@ var PropertyMixer = exports.PropertyMixer = /*#__PURE__*/function () {
   }]);
   return PropertyMixer;
 }(); // Characters [].:/ are reserved for track binding syntax.
+exports.PropertyMixer = PropertyMixer;
 var _RESERVED_CHARS_RE = '\\[\\]\\.:\\/';
 var _reservedRe = new RegExp('[' + _RESERVED_CHARS_RE + ']', 'g');
 
@@ -34430,7 +34497,7 @@ var Composite = /*#__PURE__*/function () {
 // prototype version of these methods with one that represents
 // the bound state. When the property is not found, the methods
 // become no-ops.
-var PropertyBinding = exports.PropertyBinding = /*#__PURE__*/function () {
+var PropertyBinding = /*#__PURE__*/function () {
   function PropertyBinding(rootNode, path, parsedPath) {
     _classCallCheck(this, PropertyBinding);
     this.path = path;
@@ -34827,6 +34894,7 @@ var PropertyBinding = exports.PropertyBinding = /*#__PURE__*/function () {
   }]);
   return PropertyBinding;
 }();
+exports.PropertyBinding = PropertyBinding;
 PropertyBinding.Composite = Composite;
 PropertyBinding.prototype.BindingType = {
   Direct: 0,
@@ -34879,7 +34947,7 @@ PropertyBinding.prototype._setValue_fromArray, PropertyBinding.prototype._setVal
  *  - A single property can either be controlled through a
  *    target group or directly, but not both.
  */
-var AnimationObjectGroup = exports.AnimationObjectGroup = /*#__PURE__*/function () {
+var AnimationObjectGroup = /*#__PURE__*/function () {
   function AnimationObjectGroup() {
     _classCallCheck(this, AnimationObjectGroup);
     this.isAnimationObjectGroup = true;
@@ -35139,10 +35207,9 @@ var AnimationObjectGroup = exports.AnimationObjectGroup = /*#__PURE__*/function 
   }]);
   return AnimationObjectGroup;
 }();
-var AnimationAction = exports.AnimationAction = /*#__PURE__*/function () {
-  function AnimationAction(mixer, clip) {
-    var localRoot = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-    var blendMode = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : clip.blendMode;
+exports.AnimationObjectGroup = AnimationObjectGroup;
+var AnimationAction = /*#__PURE__*/function () {
+  function AnimationAction(mixer, clip, localRoot = null, blendMode = clip.blendMode) {
     _classCallCheck(this, AnimationAction);
     this._mixer = mixer;
     this._clip = clip;
@@ -35635,8 +35702,9 @@ var AnimationAction = exports.AnimationAction = /*#__PURE__*/function () {
   }]);
   return AnimationAction;
 }();
+exports.AnimationAction = AnimationAction;
 var _controlInterpolantsResultBuffer = new Float32Array(1);
-var AnimationMixer = exports.AnimationMixer = /*#__PURE__*/function (_EventDispatcher7) {
+var AnimationMixer = /*#__PURE__*/function (_EventDispatcher7) {
   _inherits(AnimationMixer, _EventDispatcher7);
   var _super142 = _createSuper(AnimationMixer);
   function AnimationMixer(root) {
@@ -36084,6 +36152,7 @@ var AnimationMixer = exports.AnimationMixer = /*#__PURE__*/function (_EventDispa
       for (var i = 0; i < this._actions.length; i++) {
         this._actions[i].time = 0; // Zero out time attribute for all associated AnimationAction objects.
       }
+
       return this.update(timeInSeconds); // Update used to set exact time. Returns "this" AnimationMixer object.
     }
 
@@ -36162,7 +36231,8 @@ var AnimationMixer = exports.AnimationMixer = /*#__PURE__*/function (_EventDispa
   }]);
   return AnimationMixer;
 }(EventDispatcher);
-var Uniform = exports.Uniform = /*#__PURE__*/function () {
+exports.AnimationMixer = AnimationMixer;
+var Uniform = /*#__PURE__*/function () {
   function Uniform(value) {
     _classCallCheck(this, Uniform);
     this.value = value;
@@ -36175,8 +36245,9 @@ var Uniform = exports.Uniform = /*#__PURE__*/function () {
   }]);
   return Uniform;
 }();
+exports.Uniform = Uniform;
 var _id = 0;
-var UniformsGroup = exports.UniformsGroup = /*#__PURE__*/function (_EventDispatcher8) {
+var UniformsGroup = /*#__PURE__*/function (_EventDispatcher8) {
   _inherits(UniformsGroup, _EventDispatcher8);
   var _super143 = _createSuper(UniformsGroup);
   function UniformsGroup() {
@@ -36245,12 +36316,12 @@ var UniformsGroup = exports.UniformsGroup = /*#__PURE__*/function (_EventDispatc
   }]);
   return UniformsGroup;
 }(EventDispatcher);
-var InstancedInterleavedBuffer = exports.InstancedInterleavedBuffer = /*#__PURE__*/function (_InterleavedBuffer) {
+exports.UniformsGroup = UniformsGroup;
+var InstancedInterleavedBuffer = /*#__PURE__*/function (_InterleavedBuffer) {
   _inherits(InstancedInterleavedBuffer, _InterleavedBuffer);
   var _super144 = _createSuper(InstancedInterleavedBuffer);
-  function InstancedInterleavedBuffer(array, stride) {
+  function InstancedInterleavedBuffer(array, stride, meshPerAttribute = 1) {
     var _this117;
-    var meshPerAttribute = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
     _classCallCheck(this, InstancedInterleavedBuffer);
     _this117 = _super144.call(this, array, stride);
     _this117.isInstancedInterleavedBuffer = true;
@@ -36282,7 +36353,8 @@ var InstancedInterleavedBuffer = exports.InstancedInterleavedBuffer = /*#__PURE_
   }]);
   return InstancedInterleavedBuffer;
 }(InterleavedBuffer);
-var GLBufferAttribute = exports.GLBufferAttribute = /*#__PURE__*/function () {
+exports.InstancedInterleavedBuffer = InstancedInterleavedBuffer;
+var GLBufferAttribute = /*#__PURE__*/function () {
   function GLBufferAttribute(buffer, type, itemSize, elementSize, count) {
     _classCallCheck(this, GLBufferAttribute);
     this.isGLBufferAttribute = true;
@@ -36327,10 +36399,9 @@ var GLBufferAttribute = exports.GLBufferAttribute = /*#__PURE__*/function () {
   }]);
   return GLBufferAttribute;
 }();
-var Raycaster = exports.Raycaster = /*#__PURE__*/function () {
-  function Raycaster(origin, direction) {
-    var near = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-    var far = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : Infinity;
+exports.GLBufferAttribute = GLBufferAttribute;
+var Raycaster = /*#__PURE__*/function () {
+  function Raycaster(origin, direction, near = 0, far = Infinity) {
     _classCallCheck(this, Raycaster);
     this.ray = new Ray(origin, direction);
     // direction is assumed to be normalized (for accurate distance calculations)
@@ -36375,18 +36446,14 @@ var Raycaster = exports.Raycaster = /*#__PURE__*/function () {
     }
   }, {
     key: "intersectObject",
-    value: function intersectObject(object) {
-      var recursive = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-      var intersects = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    value: function intersectObject(object, recursive = true, intersects = []) {
       _intersectObject(object, this, intersects, recursive);
       intersects.sort(ascSort);
       return intersects;
     }
   }, {
     key: "intersectObjects",
-    value: function intersectObjects(objects) {
-      var recursive = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-      var intersects = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    value: function intersectObjects(objects, recursive = true, intersects = []) {
       for (var i = 0, l = objects.length; i < l; i++) {
         _intersectObject(objects[i], this, intersects, recursive);
       }
@@ -36396,6 +36463,7 @@ var Raycaster = exports.Raycaster = /*#__PURE__*/function () {
   }]);
   return Raycaster;
 }();
+exports.Raycaster = Raycaster;
 function ascSort(a, b) {
   return a.distance - b.distance;
 }
@@ -36417,11 +36485,8 @@ function _intersectObject(object, raycaster, intersects, recursive) {
  * The polar angle (phi) is measured from the positive y-axis. The positive y-axis is up.
  * The azimuthal angle (theta) is measured from the positive z-axis.
  */
-var Spherical = exports.Spherical = /*#__PURE__*/function () {
-  function Spherical() {
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var phi = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    var theta = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+var Spherical = /*#__PURE__*/function () {
+  function Spherical(radius = 1, phi = 0, theta = 0) {
     _classCallCheck(this, Spherical);
     this.radius = radius;
     this.phi = phi; // polar angle
@@ -36483,11 +36548,9 @@ var Spherical = exports.Spherical = /*#__PURE__*/function () {
 /**
  * Ref: https://en.wikipedia.org/wiki/Cylindrical_coordinate_system
  */
-var Cylindrical = exports.Cylindrical = /*#__PURE__*/function () {
-  function Cylindrical() {
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var theta = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    var y = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+exports.Spherical = Spherical;
+var Cylindrical = /*#__PURE__*/function () {
+  function Cylindrical(radius = 1, theta = 0, y = 0) {
     _classCallCheck(this, Cylindrical);
     this.radius = radius; // distance from the origin to a point in the x-z plane
     this.theta = theta; // counterclockwise angle in the x-z plane measured in radians from the positive z-axis
@@ -36532,11 +36595,10 @@ var Cylindrical = exports.Cylindrical = /*#__PURE__*/function () {
   }]);
   return Cylindrical;
 }();
+exports.Cylindrical = Cylindrical;
 var _vector$4 = /*@__PURE__*/new Vector2();
-var Box2 = exports.Box2 = /*#__PURE__*/function () {
-  function Box2() {
-    var min = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector2(+Infinity, +Infinity);
-    var max = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector2(-Infinity, -Infinity);
+var Box2 = /*#__PURE__*/function () {
+  function Box2(min = new Vector2(+Infinity, +Infinity), max = new Vector2(-Infinity, -Infinity)) {
     _classCallCheck(this, Box2);
     this.isBox2 = true;
     this.min = min;
@@ -36688,12 +36750,11 @@ var Box2 = exports.Box2 = /*#__PURE__*/function () {
   }]);
   return Box2;
 }();
+exports.Box2 = Box2;
 var _startP = /*@__PURE__*/new Vector3();
 var _startEnd = /*@__PURE__*/new Vector3();
-var Line3 = exports.Line3 = /*#__PURE__*/function () {
-  function Line3() {
-    var start = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector3();
-    var end = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3();
+var Line3 = /*#__PURE__*/function () {
+  function Line3(start = new Vector3(), end = new Vector3()) {
     _classCallCheck(this, Line3);
     this.start = start;
     this.end = end;
@@ -36776,8 +36837,9 @@ var Line3 = exports.Line3 = /*#__PURE__*/function () {
   }]);
   return Line3;
 }();
+exports.Line3 = Line3;
 var _vector$3 = /*@__PURE__*/new Vector3();
-var SpotLightHelper = exports.SpotLightHelper = /*#__PURE__*/function (_Object3D14) {
+var SpotLightHelper = /*#__PURE__*/function (_Object3D14) {
   _inherits(SpotLightHelper, _Object3D14);
   var _super145 = _createSuper(SpotLightHelper);
   function SpotLightHelper(light, color) {
@@ -36831,10 +36893,11 @@ var SpotLightHelper = exports.SpotLightHelper = /*#__PURE__*/function (_Object3D
   }]);
   return SpotLightHelper;
 }(Object3D);
+exports.SpotLightHelper = SpotLightHelper;
 var _vector$2 = /*@__PURE__*/new Vector3();
 var _boneMatrix = /*@__PURE__*/new Matrix4();
 var _matrixWorldInv = /*@__PURE__*/new Matrix4();
-var SkeletonHelper = exports.SkeletonHelper = /*#__PURE__*/function (_LineSegments) {
+var SkeletonHelper = /*#__PURE__*/function (_LineSegments) {
   _inherits(SkeletonHelper, _LineSegments);
   var _super146 = _createSuper(SkeletonHelper);
   function SkeletonHelper(object) {
@@ -36904,6 +36967,7 @@ var SkeletonHelper = exports.SkeletonHelper = /*#__PURE__*/function (_LineSegmen
   }]);
   return SkeletonHelper;
 }(LineSegments);
+exports.SkeletonHelper = SkeletonHelper;
 function getBoneList(object) {
   var boneList = [];
   if (object.isBone === true) {
@@ -36914,7 +36978,7 @@ function getBoneList(object) {
   }
   return boneList;
 }
-var PointLightHelper = exports.PointLightHelper = /*#__PURE__*/function (_Mesh4) {
+var PointLightHelper = /*#__PURE__*/function (_Mesh4) {
   _inherits(PointLightHelper, _Mesh4);
   var _super147 = _createSuper(PointLightHelper);
   function PointLightHelper(light, sphereSize, color) {
@@ -36979,10 +37043,11 @@ var PointLightHelper = exports.PointLightHelper = /*#__PURE__*/function (_Mesh4)
   }]);
   return PointLightHelper;
 }(Mesh);
+exports.PointLightHelper = PointLightHelper;
 var _vector$1 = /*@__PURE__*/new Vector3();
 var _color1 = /*@__PURE__*/new Color();
 var _color2 = /*@__PURE__*/new Color();
-var HemisphereLightHelper = exports.HemisphereLightHelper = /*#__PURE__*/function (_Object3D15) {
+var HemisphereLightHelper = /*#__PURE__*/function (_Object3D15) {
   _inherits(HemisphereLightHelper, _Object3D15);
   var _super148 = _createSuper(HemisphereLightHelper);
   function HemisphereLightHelper(light, size, color) {
@@ -37037,15 +37102,12 @@ var HemisphereLightHelper = exports.HemisphereLightHelper = /*#__PURE__*/functio
   }]);
   return HemisphereLightHelper;
 }(Object3D);
-var GridHelper = exports.GridHelper = /*#__PURE__*/function (_LineSegments2) {
+exports.HemisphereLightHelper = HemisphereLightHelper;
+var GridHelper = /*#__PURE__*/function (_LineSegments2) {
   _inherits(GridHelper, _LineSegments2);
   var _super149 = _createSuper(GridHelper);
-  function GridHelper() {
+  function GridHelper(size = 10, divisions = 10, color1 = 0x444444, color2 = 0x888888) {
     var _this122;
-    var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
-    var divisions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
-    var color1 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0x444444;
-    var color2 = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0x888888;
     _classCallCheck(this, GridHelper);
     color1 = new Color(color1);
     color2 = new Color(color2);
@@ -37087,17 +37149,12 @@ var GridHelper = exports.GridHelper = /*#__PURE__*/function (_LineSegments2) {
   }]);
   return GridHelper;
 }(LineSegments);
-var PolarGridHelper = exports.PolarGridHelper = /*#__PURE__*/function (_LineSegments3) {
+exports.GridHelper = GridHelper;
+var PolarGridHelper = /*#__PURE__*/function (_LineSegments3) {
   _inherits(PolarGridHelper, _LineSegments3);
   var _super150 = _createSuper(PolarGridHelper);
-  function PolarGridHelper() {
+  function PolarGridHelper(radius = 10, sectors = 16, rings = 8, divisions = 64, color1 = 0x444444, color2 = 0x888888) {
     var _this123;
-    var radius = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
-    var sectors = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 16;
-    var rings = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 8;
-    var divisions = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 64;
-    var color1 = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0x444444;
-    var color2 = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0x888888;
     _classCallCheck(this, PolarGridHelper);
     color1 = new Color(color1);
     color2 = new Color(color2);
@@ -37162,10 +37219,11 @@ var PolarGridHelper = exports.PolarGridHelper = /*#__PURE__*/function (_LineSegm
   }]);
   return PolarGridHelper;
 }(LineSegments);
+exports.PolarGridHelper = PolarGridHelper;
 var _v1 = /*@__PURE__*/new Vector3();
 var _v2 = /*@__PURE__*/new Vector3();
 var _v3 = /*@__PURE__*/new Vector3();
-var DirectionalLightHelper = exports.DirectionalLightHelper = /*#__PURE__*/function (_Object3D16) {
+var DirectionalLightHelper = /*#__PURE__*/function (_Object3D16) {
   _inherits(DirectionalLightHelper, _Object3D16);
   var _super151 = _createSuper(DirectionalLightHelper);
   function DirectionalLightHelper(light, size, color) {
@@ -37223,6 +37281,7 @@ var DirectionalLightHelper = exports.DirectionalLightHelper = /*#__PURE__*/funct
   }]);
   return DirectionalLightHelper;
 }(Object3D);
+exports.DirectionalLightHelper = DirectionalLightHelper;
 var _vector = /*@__PURE__*/new Vector3();
 var _camera = /*@__PURE__*/new Camera();
 
@@ -37232,7 +37291,7 @@ var _camera = /*@__PURE__*/new Camera();
  * 	- based on frustum visualization in lightgl.js shadowmap example
  *		https://github.com/evanw/lightgl.js/blob/master/tests/shadowmap.html
  */
-var CameraHelper = exports.CameraHelper = /*#__PURE__*/function (_LineSegments4) {
+var CameraHelper = /*#__PURE__*/function (_LineSegments4) {
   _inherits(CameraHelper, _LineSegments4);
   var _super152 = _createSuper(CameraHelper);
   function CameraHelper(camera) {
@@ -37465,6 +37524,7 @@ var CameraHelper = exports.CameraHelper = /*#__PURE__*/function (_LineSegments4)
   }]);
   return CameraHelper;
 }(LineSegments);
+exports.CameraHelper = CameraHelper;
 function setPoint(point, pointMap, geometry, camera, x, y, z) {
   _vector.set(x, y, z).unproject(camera);
   var points = pointMap[point];
@@ -37476,12 +37536,11 @@ function setPoint(point, pointMap, geometry, camera, x, y, z) {
   }
 }
 var _box = /*@__PURE__*/new Box3();
-var BoxHelper = exports.BoxHelper = /*#__PURE__*/function (_LineSegments5) {
+var BoxHelper = /*#__PURE__*/function (_LineSegments5) {
   _inherits(BoxHelper, _LineSegments5);
   var _super153 = _createSuper(BoxHelper);
-  function BoxHelper(object) {
+  function BoxHelper(object, color = 0xffff00) {
     var _this126;
-    var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xffff00;
     _classCallCheck(this, BoxHelper);
     var indices = new Uint16Array([0, 1, 1, 2, 2, 3, 3, 0, 4, 5, 5, 6, 6, 7, 7, 4, 0, 4, 1, 5, 2, 6, 3, 7]);
     var positions = new Float32Array(8 * 3);
@@ -37578,12 +37637,12 @@ var BoxHelper = exports.BoxHelper = /*#__PURE__*/function (_LineSegments5) {
   }]);
   return BoxHelper;
 }(LineSegments);
-var Box3Helper = exports.Box3Helper = /*#__PURE__*/function (_LineSegments6) {
+exports.BoxHelper = BoxHelper;
+var Box3Helper = /*#__PURE__*/function (_LineSegments6) {
   _inherits(Box3Helper, _LineSegments6);
   var _super154 = _createSuper(Box3Helper);
-  function Box3Helper(box) {
+  function Box3Helper(box, color = 0xffff00) {
     var _this127;
-    var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0xffff00;
     _classCallCheck(this, Box3Helper);
     var indices = new Uint16Array([0, 1, 1, 2, 2, 3, 3, 0, 4, 5, 5, 6, 6, 7, 7, 4, 0, 4, 1, 5, 2, 6, 3, 7]);
     var positions = [1, 1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1];
@@ -37618,13 +37677,12 @@ var Box3Helper = exports.Box3Helper = /*#__PURE__*/function (_LineSegments6) {
   }]);
   return Box3Helper;
 }(LineSegments);
-var PlaneHelper = exports.PlaneHelper = /*#__PURE__*/function (_Line3) {
+exports.Box3Helper = Box3Helper;
+var PlaneHelper = /*#__PURE__*/function (_Line3) {
   _inherits(PlaneHelper, _Line3);
   var _super155 = _createSuper(PlaneHelper);
-  function PlaneHelper(plane) {
+  function PlaneHelper(plane, size = 1, hex = 0xffff00) {
     var _this128;
-    var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    var hex = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0xffff00;
     _classCallCheck(this, PlaneHelper);
     var color = hex;
     var positions = [1, -1, 0, -1, 1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, -1, -1, 0, 1, -1, 0, 1, 1, 0];
@@ -37671,21 +37729,16 @@ var PlaneHelper = exports.PlaneHelper = /*#__PURE__*/function (_Line3) {
   }]);
   return PlaneHelper;
 }(Line);
+exports.PlaneHelper = PlaneHelper;
 var _axis = /*@__PURE__*/new Vector3();
 var _lineGeometry, _coneGeometry;
-var ArrowHelper = exports.ArrowHelper = /*#__PURE__*/function (_Object3D17) {
+var ArrowHelper = /*#__PURE__*/function (_Object3D17) {
   _inherits(ArrowHelper, _Object3D17);
   var _super156 = _createSuper(ArrowHelper);
   // dir is assumed to be normalized
 
-  function ArrowHelper() {
+  function ArrowHelper(dir = new Vector3(0, 0, 1), origin = new Vector3(0, 0, 0), length = 1, color = 0xffff00, headLength = length * 0.2, headWidth = headLength * 0.2) {
     var _this129;
-    var dir = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Vector3(0, 0, 1);
-    var origin = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Vector3(0, 0, 0);
-    var length = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-    var color = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0xffff00;
-    var headLength = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : length * 0.2;
-    var headWidth = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : headLength * 0.2;
     _classCallCheck(this, ArrowHelper);
     _this129 = _super156.call(this);
     _this129.type = 'ArrowHelper';
@@ -37729,9 +37782,7 @@ var ArrowHelper = exports.ArrowHelper = /*#__PURE__*/function (_Object3D17) {
     }
   }, {
     key: "setLength",
-    value: function setLength(length) {
-      var headLength = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : length * 0.2;
-      var headWidth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : headLength * 0.2;
+    value: function setLength(length, headLength = length * 0.2, headWidth = headLength * 0.2) {
       this.line.scale.set(1, Math.max(0.0001, length - headLength), 1); // see #17458
       this.line.updateMatrix();
       this.cone.scale.set(headWidth, headLength, headWidth);
@@ -37763,12 +37814,12 @@ var ArrowHelper = exports.ArrowHelper = /*#__PURE__*/function (_Object3D17) {
   }]);
   return ArrowHelper;
 }(Object3D);
-var AxesHelper = exports.AxesHelper = /*#__PURE__*/function (_LineSegments7) {
+exports.ArrowHelper = ArrowHelper;
+var AxesHelper = /*#__PURE__*/function (_LineSegments7) {
   _inherits(AxesHelper, _LineSegments7);
   var _super157 = _createSuper(AxesHelper);
-  function AxesHelper() {
+  function AxesHelper(size = 1) {
     var _this130;
-    var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
     _classCallCheck(this, AxesHelper);
     var vertices = [0, 0, 0, size, 0, 0, 0, 0, 0, 0, size, 0, 0, 0, 0, 0, 0, size];
     var colors = [1, 0, 0, 1, 0.6, 0, 0, 1, 0, 0.6, 1, 0, 0, 0, 1, 0, 0.6, 1];
@@ -37809,7 +37860,8 @@ var AxesHelper = exports.AxesHelper = /*#__PURE__*/function (_LineSegments7) {
   }]);
   return AxesHelper;
 }(LineSegments);
-var ShapePath = exports.ShapePath = /*#__PURE__*/function () {
+exports.AxesHelper = AxesHelper;
+var ShapePath = /*#__PURE__*/function () {
   function ShapePath() {
     _classCallCheck(this, ShapePath);
     this.type = 'ShapePath';
@@ -37901,6 +37953,7 @@ var ShapePath = exports.ShapePath = /*#__PURE__*/function () {
             // continue;
           }
         }
+
         return inside;
       }
       var isClockWise = ShapeUtils.isClockWise;
@@ -38003,6 +38056,7 @@ var ShapePath = exports.ShapePath = /*#__PURE__*/function () {
   }]);
   return ShapePath;
 }();
+exports.ShapePath = ShapePath;
 if (typeof __THREE_DEVTOOLS__ !== 'undefined') {
   __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('register', {
     detail: {
@@ -38025,11 +38079,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.OrbitControls = void 0;
 var _three = require("three");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
@@ -38044,7 +38098,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 //    Orbit - left mouse / touch: one-finger move
 //    Zoom - middle mouse, or mousewheel / touch: two-finger spread or squish
 //    Pan - right mouse, or left mouse + ctrl/meta/shiftKey, or arrow keys / touch: two-finger move
-
 var _changeEvent = {
   type: 'change'
 };
@@ -38057,7 +38110,7 @@ var _endEvent = {
 var _ray = new _three.Ray();
 var _plane = new _three.Plane();
 var TILT_LIMIT = Math.cos(70 * _three.MathUtils.DEG2RAD);
-var OrbitControls = exports.OrbitControls = /*#__PURE__*/function (_EventDispatcher) {
+var OrbitControls = /*#__PURE__*/function (_EventDispatcher) {
   _inherits(OrbitControls, _EventDispatcher);
   var _super = _createSuper(OrbitControls);
   function OrbitControls(object, domElement) {
@@ -38201,8 +38254,7 @@ var OrbitControls = exports.OrbitControls = /*#__PURE__*/function (_EventDispatc
       var lastQuaternion = new _three.Quaternion();
       var lastTargetPosition = new _three.Vector3();
       var twoPI = 2 * Math.PI;
-      return function update() {
-        var deltaTime = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      return function update(deltaTime = null) {
         var position = scope.object.position;
         offset.copy(position).sub(scope.target);
 
@@ -38901,55 +38953,62 @@ var OrbitControls = exports.OrbitControls = /*#__PURE__*/function (_EventDispatc
   }
   return _createClass(OrbitControls);
 }(_three.EventDispatcher);
+exports.OrbitControls = OrbitControls;
 },{"three":"../node_modules/three/build/three.module.js"}],"4.粒子特效/main.js":[function(require,module,exports) {
 "use strict";
 
 var THREE = _interopRequireWildcard(require("three"));
 var _OrbitControls = require("three/examples/jsm/controls/OrbitControls");
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-var particlesGeometry = new THREE.BufferGeometry();
-// 想要创建的points数量
-var count = 5000;
-// 设置缓冲区数组
-var positions = new Float32Array(count * 3);
-// 设置粒子的每个顶点的颜色
-var colors = new Float32Array(count * 3);
-
-// 设置顶点
-for (var i = 0; i < count * 3; i++) {
-  colors[i] = Math.random();
-  positions[i] = (Math.random() - 0.5) * 30;
-}
-
-// 设置顶点
-particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-// 设置颜色
-particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-// 设置材质
-var pointsMaterial = new THREE.PointsMaterial();
-pointsMaterial.color.set(0xfff000);
-pointsMaterial.size = 0.5;
-pointsMaterial.alphaMap = texture;
-pointsMaterial.transparent = true;
-pointsMaterial.depthWrite = false;
-pointsMaterial.sizeAttenuation = true; // 指定点的大小是否因相机深度而衰减。（仅限透视摄像头。）默认为true。
-// 设置启用顶点颜色
-pointsMaterial.vertexColors = true;
-
-// 载入纹理
-var textureLoader = new THREE.TextureLoader();
-var texture = textureLoader.load('./textures/particles/8.png');
-// 设置纹理
-pointsMaterial.map = texture;
-var points = new THREE.Points(particlesGeometry, pointsMaterial);
-scene.add(points);
-camera.position.set(0, 0, 10);
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 40);
+camera.position.set(0, 0, 40);
 scene.add(camera);
+var createPoints = function createPoints(textureUrl) {
+  var pointsCount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5000;
+  var pointsMaterialSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.5;
+  var particlesGeometry = new THREE.BufferGeometry();
+  // 想要创建的points数量
+  var count = pointsCount;
+  // 设置缓冲区数组
+  var positions = new Float32Array(count * 3);
+  // 设置粒子的每个顶点的颜色
+  var colors = new Float32Array(count * 3);
+
+  // 设置顶点
+  for (var i = 0; i < count * 3; i++) {
+    colors[i] = Math.random();
+    positions[i] = (Math.random() - 0.5) * 100;
+  }
+
+  // 设置顶点
+  particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+  // 设置颜色
+  particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+  // 载入纹理
+  var textureLoader = new THREE.TextureLoader();
+  var texture = textureLoader.load("./textures/particles/".concat(textureUrl, ".png"));
+  // 设置材质
+  var pointsMaterial = new THREE.PointsMaterial();
+  pointsMaterial.color.set(0xfff000);
+  pointsMaterial.size = pointsMaterialSize;
+  pointsMaterial.alphaMap = texture;
+  pointsMaterial.map = texture;
+  pointsMaterial.transparent = true;
+  pointsMaterial.depthWrite = false;
+  pointsMaterial.sizeAttenuation = true; // 指定点的大小是否因相机深度而衰减。（仅限透视摄像头。）默认为true。
+  // 设置启用顶点颜色
+  pointsMaterial.vertexColors = true;
+  var points = new THREE.Points(particlesGeometry, pointsMaterial);
+  scene.add(points);
+  return points;
+};
+var points = createPoints('xh', 2000, 1);
+var points2 = createPoints('xh2', 3000, 0.8);
+var points3 = createPoints('xh3', 2000, 0.7);
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -38957,13 +39016,20 @@ var controls = new _OrbitControls.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 var axesHelper = new THREE.AxesHelper(5);
 scene.add(axesHelper);
+var clock = new THREE.Clock();
 var render = function render() {
+  var time = clock.getElapsedTime();
+  points.rotation.x = time * 0.09;
+  points2.rotation.x = time * 0.07;
+  points2.rotation.y = time * 0.07;
+  points3.rotation.x = time * 0.05;
+  points3.rotation.x = time * 0.05;
   renderer.render(scene, camera);
   controls.update();
   requestAnimationFrame(render);
 };
 render();
-},{"three":"../node_modules/three/build/three.module.js","three/examples/jsm/controls/OrbitControls":"../node_modules/three/examples/jsm/controls/OrbitControls.js"}],"../../../.nvm/versions/node/v16.19.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"three":"../node_modules/three/build/three.module.js","three/examples/jsm/controls/OrbitControls":"../node_modules/three/examples/jsm/controls/OrbitControls.js"}],"C:/Users/Administrator/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -38988,7 +39054,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57478" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54854" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
@@ -39132,5 +39198,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../.nvm/versions/node/v16.19.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","4.粒子特效/main.js"], null)
+},{}]},{},["C:/Users/Administrator/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","4.粒子特效/main.js"], null)
 //# sourceMappingURL=/main.c8392709.js.map
